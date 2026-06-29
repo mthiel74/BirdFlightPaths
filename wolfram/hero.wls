@@ -30,8 +30,8 @@ slerp[p0_, p1_, t_] := Module[{v0 = toVec[p0], v1 = toVec[p1], om, s},
     (Sin[(1 - t) om] v0 + Sin[t om] v1)/s]];
 
 (* ---- build a dense closed annual loop (great-circle) per species ---- *)
-nSub = 3;                         (* sub-frames per month segment      *)
-nFrames = 12 nSub;                (* total animation frames (=36)      *)
+nSub = 1;                         (* sub-frames per month segment      *)
+nFrames = 12 nSub;                (* total animation frames (=12)      *)
 denseLoop[key_] := Module[{pts = (#[[{2, 3}]] & /@ tracks[key]), n, loop},
   n = Length[pts];
   loop = Append[pts, First[pts]];  (* close Dec -> Jan                 *)
@@ -76,12 +76,11 @@ globe[f_] := Module[{spin = 26 Sin[2 Pi f/nFrames]},
     Flatten[{cometTrail[#, f], marker[#, f]} & /@ keys],
     GeoRange -> "World",
     GeoProjection -> {"Orthographic", "Centering" -> {18, -26 + spin}},
-    (* land/coastline vectors are unavailable offline, so give the globe its
-       form with a dark navy ocean disk + a subtle graticule *)
-    GeoBackground -> RGBColor[0.025, 0.045, 0.085],
+    (* real-world textured relief globe -- tiles download at render time *)
+    GeoBackground -> "ReliefMap",
     GeoGridLines -> Automatic,
-    GeoGridLinesStyle -> Directive[GrayLevel[0.32], Opacity[0.28]],
-    ImageSize -> {620, 620}, Background -> Black, ImagePadding -> 2]];
+    GeoGridLinesStyle -> Directive[GrayLevel[0.9], Opacity[0.10]],
+    ImageSize -> {580, 580}, Background -> Black, ImagePadding -> 2]];
 
 (* synchronized month label (nearest month to current phase) *)
 curMonth[f_] := Mod[Round[f/nSub], 12] + 1;
@@ -112,11 +111,11 @@ compose[f_] := Rasterize[
       timeline[f],
       Pane[legend, Alignment -> Center]},
      Background -> Black, Alignment -> Center, Spacings -> {0, 0.45}],
-   Background -> Black, ImageSize -> 640];
+   Background -> Black, ImageSize -> 600];
 
 Print["rendering ", nFrames, " frames ..."];
 frames = Table[compose[f], {f, 0, nFrames - 1}];
-frames = ColorQuantize[#, 200, Dithering -> False] & /@ frames;
+frames = ColorQuantize[#, 240, Dithering -> False] & /@ frames;
 
 (* representative middle frame (nearest month 7) for visual QC *)
 Export[FileNameJoin[{$repoRoot, "docs", "images", "hero_frame_preview.png"}],

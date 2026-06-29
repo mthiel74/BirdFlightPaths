@@ -114,17 +114,38 @@ completes.
 Raw eBird occurrence centroids are **biased by observer effort** (vastly more
 observers in North America/Europe). Mitigations, presented explicitly:
 
-1. **Equal-area gridding:** aggregate monthly occurrences onto ~2° cells; compute
-   the centroid from *cells* (presence, optionally `individualCount`-weighted),
-   not raw points — damps hotspot oversampling.
+1. **Coarse 2° gridding with presence weighting:** aggregate monthly occurrences
+   onto ~2° lat/lon cells and weight each occupied cell **equally (=1)**, not by
+   summed `individualCount` — otherwise well-birded hotspots still dominate and the
+   gridding is cosmetic (a brutal-critic finding, verified). Note: 2° lat/lon cells
+   are **not equal-area** (they shrink ∝ cos lat); this is coarse effort mitigation,
+   not correction.
 2. **Proper spherical centroid:** convert (lat, lon) → 3-D unit vectors, average,
    renormalize, convert back. Required for the circumpolar / dateline-crossing
-   Arctic tern, where a naïve longitude mean is meaningless. Units carried.
-3. **Honest caveat:** centroid displacement *understates* true individual journey
-   length; effort bias remains even after gridding. This motivates Path B.
+   Arctic tern, where a naïve longitude mean is meaningless. Units carried. When the
+   resultant vector ≈ 0 (an antipodally-smeared cloud) the centroid is genuinely
+   undefined → return `Missing`, never a fabricated coordinate. Empty months stay
+   `Missing` (no imputation from the annual mean).
+3. **Per-flyway treatment (the central scientific narrative).** A *single global*
+   centroid is invalid for species spread over disjoint flyways: pooling them makes
+   the monthly centroid teleport between hemispheres (the red knot's naïve global
+   path was 66,315 km, exceeding the Arctic tern — a pooling artifact). The honest,
+   pedagogically strong fix, per species:
+   - **Common swift** — global centroid over its Afro-Palearctic range (lon −30…145):
+     one coherent flyway, the "it works" case.
+   - **Red knot** — primary centroid subset to the **Americas flyway** (lon −110…−30);
+     the broken global version is kept and shown as the teaching contrast.
+   - **Arctic tern** — **Atlantic-basin** centroid track (lon −80…20) plus a global
+     **latitude-vs-month** curve (the real pole-to-pole pulse; longitude meaningless).
+4. **Honest caveat:** centroid displacement measures the population *center of mass*,
+   NOT how far any bird flies — it *understates* for circumpolar species (east-west
+   cancels) and is not a journey at all for pooled disjoint populations. Captions say
+   so explicitly, and cite tracked figures (Egevang et al. 2010, PNAS, for the tern
+   ~70,900 km). This honest treatment is also what motivates Path B.
 
-Headline per species: great-circle distance the monthly centroid travels over a
-year (`GeoDistance`).
+Headline per species: great-circle distance the monthly centroid travels over the
+year, summed over **observed** edges only (`GeoDistance`), captioned as centroid
+displacement.
 
 ## 6. Data path B — eBird Status & Trends via R (PRIVATE VALIDATION ONLY)
 

@@ -1,0 +1,22 @@
+# ---- Secrets / credentials (NEVER commit) ----
+config/
+*.credentials.json
+gbif_credentials.json
+ebirdst_key.txt
+.env
+
+# ---- Bulk / regenerable data ----
+data/raw/
+*.zip
+*.nc
+
+# ---- Notebook build scratch ----
+community/.img-cache/
+*.img-cache/
+
+# ---- OS / editor cruft ----
+.DS_Store
+*.swp
+.Rhistory
+.RData
+__pycache__/

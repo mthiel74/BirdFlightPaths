@@ -10,14 +10,21 @@ $speciesList = {
 
 reqHeaders[extra_List] := Join[{"User-Agent" -> $userAgent}, extra];
 
-httpGetString[url_String, headers_:{}] := Module[{r},
+(* Return the raw HTTPResponse (status-checked) so callers can decode bytes
+   themselves. Decoding from the response *bytes* avoids a WL roundtrip bug
+   where URLRead["Body"] -> ImportString re-encodes UTF-8 as Latin-1 and
+   corrupts non-ASCII text (e.g. "Sor-Trondelag"), breaking JSON parsing. *)
+httpGet[url_String, headers_:{}] := Module[{r},
   r = URLRead[HTTPRequest[url, <|"Headers" -> reqHeaders[headers]|>]];
   If[r["StatusCode"] =!= 200,
     Print["HTTP ", r["StatusCode"], " for ", url]; Return[$Failed]];
-  r["Body"]];
+  r];
 
-httpGetJSON[url_String, headers_:{}] := Module[{b = httpGetString[url, headers]},
-  If[b === $Failed, $Failed, ImportString[b, "RawJSON"]]];
+httpGetString[url_String, headers_:{}] := Module[{r = httpGet[url, headers]},
+  If[r === $Failed, $Failed, ByteArrayToString[r["BodyByteArray"], "UTF-8"]]];
+
+httpGetJSON[url_String, headers_:{}] := Module[{r = httpGet[url, headers]},
+  If[r === $Failed, $Failed, ImportByteArray[r["BodyByteArray"], "RawJSON"]]];
 
 loadConfig[name_String] := Module[{p = FileNameJoin[{$repoRoot, "config", name}]},
   If[! FileExistsQ[p], Print["MISSING config/", name]; Abort[]];

@@ -25,6 +25,9 @@ The end product is a self-contained **Wolfram Community notebook**
    modeled weekly abundance — pulled via the R `ebirdst` package driven through
    `ExternalEvaluate["R"]` from inside the notebook, and overlays the modeled
    track on the raw-occurrence track.
+6. **Adds a live "where are they right now" layer** from the eBird API 2.0
+   (recent observations), for a current-data snapshot alongside the historical
+   maps.
 
 ## Data & licensing
 

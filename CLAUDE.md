@@ -22,6 +22,7 @@ wolfram/load_data.wl            occurrences -> per-species association
 wolfram/centroids.wls           monthly spherical centroids + great-circle path length
 wolfram/seasonal_maps.wls       monthly density maps
 wolfram/ebirdst_r.wls           ExternalEvaluate["R"]: ebirdst weekly abundance -> centroids
+wolfram/ebird_live.wls          eBird API 2.0 recent sightings (live "right now" layer)
 wolfram/hero.wls                combined hero animation (globe + density) -> docs/images/*.gif/.mp4
 wolfram/figures.wls             all static figures
 wolfram/run_all.wls             one entry point
@@ -46,7 +47,8 @@ community/build_notebook.wls    assembles bird_migration.nb + .pdf
 
 ## SECURITY — credentials
 
-* GBIF credentials and the eBird S&T access key live ONLY in `config/`
+* GBIF credentials, the eBird API 2.0 token, and the eBird S&T access key live
+  ONLY in `config/`
   (git-ignored). **Never** commit them; never echo the password. Before any
   commit, grep the staged diff for the password string, `password`, and precise
   coordinates.

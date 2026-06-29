@@ -17,10 +17,13 @@ The post is detailed, scientific and educational, with **blue section headers**,
 **title** (matching the style of reference notebook `125916155.nb`), and a strong
 **combined hero animation** at the top. **No "How to cite" section.**
 
-Two data paths are implemented and explicitly **compared**:
-- **Path A — GBIF/eBird occurrences** in pure Wolfram Language (primary).
+Three data touchpoints are implemented and explicitly **compared**:
+- **Path A — GBIF/eBird occurrences** in pure Wolfram Language (primary, historical).
 - **Path B — eBird Status & Trends** modeled weekly abundance via R `ebirdst`,
-  driven through `ExternalEvaluate["R"]` inside the notebook.
+  driven through `ExternalEvaluate["R"]` inside the notebook (bias-corrected
+  cross-check).
+- **Path C — live eBird API 2.0** recent sightings: a "where are they right now"
+  current-data layer (late-June 2026) via the eBird REST API.
 
 ## 2. Data sources, licensing & attribution
 
@@ -28,6 +31,7 @@ Two data paths are implemented and explicitly **compared**:
 | --- | --- | --- | --- | --- |
 | GBIF — eBird Observation Dataset (EOD), datasetKey `4fa7b334-ce0d-4e88-aaae-2e0c138d049e` | Point occurrences | **CC BY 4.0** (verified live via GBIF dataset API) | GBIF **Download API** (Basic auth) → DOI snapshot | GBIF download **DOI** + EOD dataset |
 | eBird Status & Trends (Cornell Lab) | Modeled weekly relative abundance rasters | **CC BY-NC-SA** / eBird S&T terms (non-commercial) | R `ebirdst` via `ExternalEvaluate["R"]`, access key required | Fink et al., eBird Status & Trends |
+| eBird (Cornell Lab) | Live recent observations (API 2.0) | eBird Terms of Use; cite eBird | eBird REST API 2.0, `X-eBirdApiToken` header | eBird, Cornell Lab of Ornithology |
 
 We are allowed to use both. EOD via GBIF is openly CC BY 4.0; S&T is free for
 research/education under a non-commercial license. The notebook's
@@ -53,6 +57,7 @@ BirdFlightPaths/
     centroids.wls          monthly spherical centroids + great-circle path length
     seasonal_maps.wls      monthly density maps (GeoHistogram/GeoSmoothHistogram)
     ebirdst_r.wls          ExternalEvaluate["R"]: ebirdst weekly abundance → centroids
+    ebird_live.wls         eBird API 2.0 recent sightings (live "right now" layer)
     hero.wls               combined hero (globe comet-trails + synced density)
     figures.wls            all static figures for the notebook
     run_all.wls            one driver
@@ -110,6 +115,16 @@ weekly lat/lon table to WL. A figure overlays the **bias-corrected S&T track vs 
 raw GBIF occurrence track** — the educational payoff showing why modeled products
 exist. License difference (non-commercial S&T vs CC BY GBIF) flagged in-text.
 
+## 6b. Data path C — live eBird API 2.0 sightings
+
+A current-data flourish (ENSO-style "live" ethos). Using the confirmed eBird API
+2.0 token (`config/ebird_api_key.txt`, git-ignored), pull each species' most
+recent observations via the REST API (`/v2/data/obs/...recent` / species-scoped
+endpoints, `X-eBirdApiToken` header), and plot a "where are they right now"
+(late-June 2026) map alongside the historical maps. Region-scoped and
+recency-limited by design, so this complements — does not replace — the GBIF
+historical analysis. eBird Terms of Use; cite eBird / Cornell Lab.
+
 ## 7. Hero animation (combined)
 
 - **Top:** rotating orthographic **globe** (dark ocean basemap) with all three
@@ -129,8 +144,9 @@ Title + subtitle + **hero** → Abstract → 1. The three migrants & why migrati
 matters · 2. The data: eBird, GBIF, CC BY 4.0, the DOI, and the effort-bias
 problem · 3. From checklists to centroids (runnable method) · 4. Seasonal
 migration maps · 5. Animating the population centroid · 6. The bias-corrected
-view: Status & Trends via R · 7. What each journey reveals · 8. Conclusions ·
-9. References · 10. Acknowledgements + data licenses · 11. Reproducibility.
+view: Status & Trends via R · 6b. Live now: recent sightings via the eBird API ·
+7. What each journey reveals · 8. Conclusions · 9. References ·
+10. Acknowledgements + data licenses · 11. Reproducibility.
 
 Blue `Section`/`Subsection` headers matched to `125916155.nb`. Each computed
 figure preceded by a runnable `Input` cell and followed by a pre-rendered static
@@ -142,12 +158,16 @@ illustration carries an `aiNote` disclosure cell (ENSO convention).
 - **GBIF account** (`config/gbif_credentials.json`, git-ignored): supplied &
   validated (HTTP 200 against the Download API user endpoint) on 2026-06-29.
 - **eBird Status & Trends access key** (`config/ebirdst_key.txt`, git-ignored):
-  free research/education key from science.ebird.org — **still to be supplied**.
+  free research/education key from science.ebird.org — **being requested by the
+  user now**; supplied shortly.
+- **eBird API 2.0 token** (`config/ebird_api_key.txt`, git-ignored): supplied &
+  validated (HTTP 200 against the API with `X-eBirdApiToken`, 403 without) on
+  2026-06-29. Powers Path C.
 - **R 4.4.1** present; `ExternalEvaluate["R"]` works. **`ebirdst` not yet
   installed** — installed during Path-B setup.
 
-Until the S&T key arrives, Path A is built/validated end-to-end and Path B is
-scaffolded to run the moment the key is in place.
+Build order: Path A end-to-end first; Path C (live layer) next (token in hand);
+Path B scaffolded and run once the S&T key lands.
 
 ## 10. Defaults
 

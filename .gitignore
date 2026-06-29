@@ -10,6 +10,15 @@ data/raw/
 *.zip
 *.nc
 
+# ---- eBird Status & Trends DERIVED products ----
+# Cornell Lab terms forbid redistributing (modified) S&T Data Products through
+# websites/documents/repos without written permission. Keep all S&T-derived
+# artifacts LOCAL ONLY (used for private method validation, never published).
+data/centroids_st_*.csv
+data/raw/ebirdst/
+docs/images/st_vs_gbif_*.png
+docs/images/ebirdst_*.png
+
 # ---- Notebook build scratch ----
 community/.img-cache/
 *.img-cache/

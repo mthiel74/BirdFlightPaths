@@ -30,14 +30,34 @@ Three data touchpoints are implemented and explicitly **compared**:
 | Source | Product | License | How accessed | Citation |
 | --- | --- | --- | --- | --- |
 | GBIF — eBird Observation Dataset (EOD), datasetKey `4fa7b334-ce0d-4e88-aaae-2e0c138d049e` | Point occurrences | **CC BY 4.0** (verified live via GBIF dataset API) | GBIF **Download API** (Basic auth) → DOI snapshot | GBIF download **DOI** + EOD dataset |
-| eBird Status & Trends (Cornell Lab) | Modeled weekly relative abundance rasters | **CC BY-NC-SA** / eBird S&T terms (non-commercial) | R `ebirdst` via `ExternalEvaluate["R"]`, access key required | Fink et al., eBird Status & Trends |
+| eBird Status & Trends (Cornell Lab) | Modeled weekly relative abundance rasters | **Custom Cornell Lab Terms of Use** — NOT Creative Commons; non-commercial; **modified/derived products may NOT be published online** except when excerpted from a peer-reviewed publication | R `ebirdst` via `ExternalEvaluate["R"]`, access key required | Fink et al., eBird Status & Trends + DOI + required acknowledgement |
 | eBird (Cornell Lab) | Live recent observations (API 2.0) | eBird Terms of Use; cite eBird | eBird REST API 2.0, `X-eBirdApiToken` header | eBird, Cornell Lab of Ornithology |
 
-We are allowed to use both. EOD via GBIF is openly CC BY 4.0; S&T is free for
-research/education under a non-commercial license. The notebook's
-**Acknowledgements** section credits the eBird citizen-scientist community, the
-Cornell Lab of Ornithology, and GBIF, and states both licenses plainly. The
-exact GBIF download DOI(s) are recorded in `data/gbif_dois.json` and cited.
+**Use rights (verified against the published terms 2026-06-29):**
+- **GBIF/EOD = CC BY 4.0** — freely usable and publishable with attribution; all
+  Path A figures derive from this and go in the post. DOI(s) recorded in
+  `data/gbif_dois.json` and cited.
+- **eBird Status & Trends = Cornell custom terms (non-commercial).** Computing
+  with `ebirdst` for research/education is permitted, but **publishing our own
+  derived/modified S&T figures on a website is NOT** (only Cornell's *unmodified*
+  visualizations, or peer-reviewed-excerpted figures, may appear online).
+  **Decision:** S&T is used as **private method validation only** — the derived
+  centroid track is computed locally, never published and never committed (the
+  outputs are git-ignored). The notebook describes the comparison in prose, cites
+  S&T (Fink et al. + DOI), includes Cornell's required acknowledgement verbatim,
+  and **links** readers to Cornell's official S&T visualizations.
+- **eBird API 2.0 (live layer)** is governed by the eBird Terms of Use; verify the
+  redistribution clause before publishing the live-sightings map, and attribute
+  eBird/Cornell Lab.
+
+The **Acknowledgements** section credits the eBird citizen-scientist community,
+the Cornell Lab of Ornithology, and GBIF, and states each source's terms plainly.
+
+**Cornell-required S&T acknowledgement (verbatim, to appear in the notebook):**
+> "This material uses data from the eBird Status and Trends Project at the Cornell
+> Lab of Ornithology, eBird.org. Any opinions, findings, and conclusions or
+> recommendations expressed in this material are those of the author(s) and do not
+> necessarily reflect the views of the Cornell Lab of Ornithology."
 
 **HTTP etiquette:** all GBIF calls set a `User-Agent` with a contact email. Per
 GBIF guidance, large pulls use the **Download API** (not paged search) for proper
@@ -106,14 +126,25 @@ observers in North America/Europe). Mitigations, presented explicitly:
 Headline per species: great-circle distance the monthly centroid travels over a
 year (`GeoDistance`).
 
-## 6. Data path B — eBird Status & Trends via R
+## 6. Data path B — eBird Status & Trends via R (PRIVATE VALIDATION ONLY)
 
-In-notebook `ExternalEvaluate["R"]` session: load `ebirdst` (installed in setup;
-needs the user's access key), download low-resolution **weekly relative-abundance**
-rasters, compute abundance-weighted weekly centroids in R (`terra`), return the
-weekly lat/lon table to WL. A figure overlays the **bias-corrected S&T track vs the
-raw GBIF occurrence track** — the educational payoff showing why modeled products
-exist. License difference (non-commercial S&T vs CC BY GBIF) flagged in-text.
+An `ExternalEvaluate["R"]` session loads `ebirdst` (installed in setup; needs the
+user's access key), downloads low-resolution **weekly relative-abundance** rasters,
+and computes abundance-weighted weekly centroids in R (`terra`). This is used as a
+**local method-validation cross-check** — does our effort-bias-corrected GBIF
+centroid track agree with Cornell's professionally modeled track? The agreement is
+quantified locally (e.g., mean great-circle separation between the two tracks).
+
+**Compliance:** per the S&T terms, derived/modified S&T figures may **not** be
+published online and the derived products may **not** be redistributed. Therefore:
+- The S&T-derived outputs (`data/centroids_st_*.csv`, any S&T overlay PNG, the
+  `ebirdst` raster cache) are **git-ignored** and never committed.
+- The notebook's §6 contains **no S&T-derived figure**. It explains the validation
+  in prose (with the quantified agreement number), cites S&T (Fink et al. + DOI),
+  prints Cornell's **required acknowledgement verbatim**, and **links** readers to
+  Cornell's official S&T visualization pages for the three species.
+- `ebirdst_r.wls` is committed (it is our code, not their data); it regenerates the
+  local validation for anyone with their own S&T key.
 
 ## 6b. Data path C — live eBird API 2.0 sightings
 
@@ -143,10 +174,11 @@ keep whichever is more striking.
 Title + subtitle + **hero** → Abstract → 1. The three migrants & why migration
 matters · 2. The data: eBird, GBIF, CC BY 4.0, the DOI, and the effort-bias
 problem · 3. From checklists to centroids (runnable method) · 4. Seasonal
-migration maps · 5. Animating the population centroid · 6. The bias-corrected
-view: Status & Trends via R · 6b. Live now: recent sightings via the eBird API ·
-7. What each journey reveals · 8. Conclusions · 9. References ·
-10. Acknowledgements + data licenses · 11. Reproducibility.
+migration maps · 5. Animating the population centroid · 6. Cross-checking against the
+professionals: eBird Status & Trends (prose validation + cite/link, no derived
+figure) · 6b. Live now: recent sightings via the eBird API · 7. What each journey
+reveals · 8. Conclusions · 9. References · 10. Acknowledgements + data licenses
+(incl. Cornell's required S&T acknowledgement verbatim) · 11. Reproducibility.
 
 Blue `Section`/`Subsection` headers matched to `125916155.nb`. Each computed
 figure preceded by a runnable `Input` cell and followed by a pre-rendered static

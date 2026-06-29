@@ -35,9 +35,21 @@ API; eBird REST API 2.0; R 4.4.1 + `ebirdst` + `terra` via `ExternalEvaluate`.
   has a Title; **no "How to cite" section**; hero via `AnimatedImage` (not
   `Video`); per-frame `ColorQuantize`; each computed figure = runnable `Input`
   cell + pre-rendered static image; `aiNote` disclosure before any AI asset.
-- **Licensing in-notebook:** GBIF/EOD = CC BY 4.0 (cite download DOI in
-  `data/gbif_dois.json`); S&T = non-commercial CC BY-NC-SA (cite Fink et al.);
-  acknowledge eBird citizen scientists, Cornell Lab, GBIF.
+- **Licensing in-notebook:** GBIF/EOD = **CC BY 4.0** (publishable; cite download
+  DOI in `data/gbif_dois.json`). eBird Status & Trends = **Cornell custom terms,
+  non-commercial — derived/modified figures may NOT be published online**; used
+  for **private validation only**, cite Fink et al. + DOI + Cornell's verbatim
+  acknowledgement, and link to Cornell's official visualizations. Acknowledge
+  eBird citizen scientists, Cornell Lab, GBIF.
+- **S&T outputs are NEVER committed:** `data/centroids_st_*.csv`,
+  `docs/images/st_vs_gbif_*.png`, `docs/images/ebirdst_*.png`, and
+  `data/raw/ebirdst/` are git-ignored (redistribution of modified S&T Data
+  Products is prohibited).
+- **Cornell required S&T acknowledgement (verbatim):** "This material uses data
+  from the eBird Status and Trends Project at the Cornell Lab of Ornithology,
+  eBird.org. Any opinions, findings, and conclusions or recommendations expressed
+  in this material are those of the author(s) and do not necessarily reflect the
+  views of the Cornell Lab of Ornithology."
 - **Commit cadence:** commit after each task; co-author line
   `Co-Authored-By: Claude Opus 4.8 (1M context) <noreply@anthropic.com>`.
   Run the secret-scan guard (below) before every commit.
@@ -704,17 +716,27 @@ git commit -m "feat: GBIF Download API snapshot with citable DOIs"
 
 ---
 
-### Task 9: eBird Status & Trends via R (`ebirdst_r.wls`)
+### Task 9: eBird Status & Trends via R — PRIVATE VALIDATION (`ebirdst_r.wls`)
 
 Runs only once `config/ebirdst_key.txt` exists and `ebirdst` is installed.
+
+> **COMPLIANCE (non-negotiable):** S&T-derived outputs are a "Modified Data
+> Product" and must NOT be committed or published. `data/centroids_st_*.csv` and
+> `data/raw/ebirdst/` are git-ignored. This task produces a **local validation
+> number** (mean great-circle separation between our GBIF centroid track and the
+> S&T track) that the notebook reports in prose — no S&T figure is published.
 
 **Files:**
 - Create: `wolfram/ebirdst_r.wls`
 - Test: `tests/test_ebirdst.wls`
 
 **Interfaces:**
-- Consumes: `loadConfig["ebirdst_key.txt"]`, `ExternalEvaluate["R"]`.
-- Produces: `data/centroids_st_<key>.csv` (`week,lat,lon`, 52 rows) per species.
+- Consumes: `loadConfig["ebirdst_key.txt"]`, `ExternalEvaluate["R"]`, the committed
+  `data/centroids_<key>.csv` (GBIF monthly track).
+- Produces (ALL git-ignored): `data/centroids_st_<key>.csv` (`week,lat,lon`, ~52
+  rows) per species, and prints/writes `data/raw/ebirdst/validation.json`
+  (`{key -> mean_separation_km}`) — the only result that reaches the notebook,
+  as a prose number.
 
 - [ ] **Step 1: Setup — install ebirdst (one-off, document)**
 Run:
@@ -755,39 +777,56 @@ stCentroids[code_] := Module[{rcode, tbl},
     out";
   ExternalEvaluate[sess, rcode]];
 
-Do[ Module[{df = stCentroids[sp["code"]]},
-   Export[FileNameJoin[{$repoRoot,"data","centroids_st_"<>ToString[sp["key"]]<>".csv"}],
-     Prepend[Normal@Values@df, {"week","lat","lon"}] /. Null -> "", "CSV"];
-   Print[sp["common"], ": ", Length[df["week"]], " weekly S&T centroids"];
- ], {sp, $speciesList}];
+valDir = FileNameJoin[{$repoRoot, "data", "raw", "ebirdst"}];
+If[! DirectoryQ[valDir], CreateDirectory[valDir, CreateIntermediateDirectories->True]];
+val = Association @ Table[
+   Module[{df = stCentroids[sp["code"]], st, gb, sep},
+     Export[FileNameJoin[{$repoRoot,"data","centroids_st_"<>ToString[sp["key"]]<>".csv"}],
+       Prepend[Normal@Values@df, {"week","lat","lon"}] /. Null -> "", "CSV"];
+     (* monthly-resample S&T weeks to 12 and compare to the GBIF track *)
+     st = Partition[Transpose[{df["lat"], df["lon"]}], UpTo[Ceiling[Length[df["lat"]]/12]]];
+     st = (Mean /@ st)[[;; 12]];
+     gb = Rest@Import[FileNameJoin[{$repoRoot,"data","centroids_"<>ToString[sp["key"]]<>".csv"}], "CSV"];
+     sep = Mean@Table[QuantityMagnitude@UnitConvert[
+        GeoDistance[{st[[m,1]],st[[m,2]]}, {gb[[m,2]],gb[[m,3]]}], "Kilometers"], {m, 12}];
+     Print[sp["common"], ": ", Length[df["week"]], " S&T weeks; mean GBIF–S&T separation ", Round[sep], " km"];
+     ToString[sp["key"]] -> sep],
+   {sp, $speciesList}];
+Export[FileNameJoin[{valDir, "validation.json"}], val, "RawJSON"];
 DeleteObject[sess];
 ```
 (Note: S&T raster CRS is equal-area Mollweide-like; reproject centroid xy back to
 lon/lat with `terra::project` if `xyFromCell` is not already in lon/lat — verify
 on first run and add `r<-terra::project(r,'EPSG:4326')` if needed.)
 
-- [ ] **Step 5: Run script + test** → `PASS ebirdst`.
+- [ ] **Step 5: Run script + test** → `PASS ebirdst`; note the mean separation km
+  per species (this is the number the notebook §6 quotes).
 
-- [ ] **Step 6: Commit**
+- [ ] **Step 6: Commit (CODE ONLY — never the S&T-derived data)**
 ```bash
-git add wolfram/ebirdst_r.wls tests/test_ebirdst.wls data/centroids_st_*.csv
-git commit -m "feat: eBird Status & Trends weekly centroids via R ebirdst"
+# data/centroids_st_*.csv and data/raw/ebirdst/ are git-ignored; do NOT add them.
+git add wolfram/ebirdst_r.wls tests/test_ebirdst.wls
+git commit -m "feat: S&T-via-R local validation of GBIF centroid track"
 ```
 
 ---
 
-### Task 10: Static figures + GBIF-vs-S&T overlay (`figures.wls`)
+### Task 10: Static figures (GBIF-derived only) (`figures.wls`)
+
+> **COMPLIANCE:** This script produces ONLY GBIF-derived (CC BY 4.0, publishable)
+> figures. It must NOT emit any S&T-derived overlay into `docs/images/` for the
+> notebook. The GBIF-vs-S&T comparison stays a local validation number (Task 9),
+> reported in prose only.
 
 **Files:**
 - Create: `wolfram/figures.wls`
 - Test: `tests/test_figures.wls`
 
 **Interfaces:**
-- Consumes: `data/centroids_*.csv`, `data/centroids_st_*.csv` (if present),
-  `data/path_lengths.csv`.
+- Consumes: `data/centroids_*.csv` (GBIF), `data/path_lengths.csv`.
 - Produces: `docs/images/centroid_track_<key>.png` (per species, GBIF track on a
-  globe with month labels), `docs/images/path_lengths.png` (bar chart),
-  `docs/images/st_vs_gbif_<key>.png` (overlay; only if S&T CSV exists).
+  globe with month labels), `docs/images/path_lengths.png` (bar chart). No S&T
+  figure.
 
 - [ ] **Step 1: Write the failing test** — `tests/test_figures.wls`
 ```wolfram
@@ -822,16 +861,8 @@ Export[FileNameJoin[{img,"path_lengths.png"}],
   BarChart[pl[[All,3]], ChartLabels->pl[[All,2]], BarOrigin->Left,
     PlotLabel->"Annual centroid travel (km)", ImageSize->700], "PNG"];
 
-(* conditional S&T overlay *)
-Do[ Module[{stf = FileNameJoin[{$repoRoot,"data","centroids_st_"<>ToString[sp["key"]]<>".csv"}], st, gb},
-   If[FileExistsQ[stf],
-     st = loadCsv[stf]; gb = loadCsv[FileNameJoin[{$repoRoot,"data","centroids_"<>ToString[sp["key"]]<>".csv"}]];
-     Export[FileNameJoin[{img,"st_vs_gbif_"<>ToString[sp["key"]]<>".png"}],
-       GeoGraphics[{Orange,Thick,GeoPath[{#[[2]],#[[3]]}&/@st],
-                    Cyan,Dashed,Thick,GeoPath[{#[[2]],#[[3]]}&/@gb]},
-         GeoRange->"World", GeoProjection->"Robinson", GeoBackground->GrayLevel[0.15],
-         PlotLabel->sp["common"]<>" — S&T (orange) vs GBIF occurrence (cyan)", ImageSize->900], "PNG"]];
- ], {sp, $speciesList}];
+(* NO S&T overlay here — see Task 9 compliance banner. The GBIF–S&T agreement is a
+   prose number from data/raw/ebirdst/validation.json, not a published figure. *)
 Print["figures done"];
 ```
 
@@ -839,8 +870,8 @@ Print["figures done"];
 
 - [ ] **Step 5: Commit**
 ```bash
-git add wolfram/figures.wls tests/test_figures.wls docs/images/centroid_track_*.png docs/images/path_lengths.png docs/images/st_vs_gbif_*.png
-git commit -m "feat: centroid-track, path-length, and S&T-vs-GBIF figures"
+git add wolfram/figures.wls tests/test_figures.wls docs/images/centroid_track_*.png docs/images/path_lengths.png
+git commit -m "feat: centroid-track and path-length figures (GBIF-derived)"
 ```
 
 ---
@@ -971,9 +1002,19 @@ Port the ENSO builder's cell-helper architecture (`title`, `subtitle`, `hd1/2/3`
 the spec (§8). Set `hd1`/`hd2` `FontColor` to the blue recorded in Step 1. Embed
 `hero.gif` via `animCell` directly under the title. Include the runnable `Input`
 cells that reproduce each figure (the same code from `wolfram/*.wls`, lightly
-adapted to call the helper package). End with References, Acknowledgements (eBird
-citizen scientists + Cornell Lab + GBIF; both licenses), Reproducibility (the DOI
-from `gbif_dois.json`). **No "How to cite" section.** Export `.nb` and `.pdf`.
+adapted to call the helper package).
+
+**§6 (Status & Trends) — COMPLIANCE:** prose only. State that we validated our
+GBIF centroid track against Cornell's modeled S&T track, quote the mean separation
+km (from `data/raw/ebirdst/validation.json`), cite Fink et al. + the S&T DOI, print
+Cornell's required acknowledgement **verbatim** (see Global Constraints), and
+`link[...]` readers to Cornell's official S&T visualization page for each species.
+**Embed NO S&T-derived figure.**
+
+End with References, Acknowledgements (eBird citizen scientists + Cornell Lab +
+GBIF; GBIF CC BY 4.0 + Cornell custom S&T terms stated plainly + the verbatim S&T
+acknowledgement), Reproducibility (the DOI from `gbif_dois.json`). **No "How to
+cite" section.** Export `.nb` and `.pdf`.
 
 - [ ] **Step 5: Run builder + test**
 Run: `wolframscript -file community/build_notebook.wls` then

@@ -21,10 +21,12 @@ The end product is a self-contained **Wolfram Community notebook**
 4. **Animates the centroid through the year** and produces a strong combined
    **hero animation** (rotating globe with comet-trail migration paths +
    synchronized monthly density map).
-5. **Cross-checks against eBird Status & Trends** — Cornell's bias-corrected
-   modeled weekly abundance — pulled via the R `ebirdst` package driven through
-   `ExternalEvaluate["R"]` from inside the notebook, and overlays the modeled
-   track on the raw-occurrence track.
+5. **Privately validates against eBird Status & Trends** — Cornell's
+   bias-corrected modeled weekly abundance — pulled via the R `ebirdst` package
+   through `ExternalEvaluate["R"]`. Per Cornell's terms, S&T-derived figures may
+   not be published, so this is a **local method-validation step only**: the
+   notebook reports the agreement in prose, cites S&T, and links to Cornell's own
+   official visualizations. S&T-derived outputs are git-ignored, never committed.
 6. **Adds a live "where are they right now" layer** from the eBird API 2.0
    (recent observations), for a current-data snapshot alongside the historical
    maps.
@@ -33,8 +35,8 @@ The end product is a self-contained **Wolfram Community notebook**
 
 | Source | License | Citation |
 | --- | --- | --- |
-| GBIF — eBird Observation Dataset (EOD) | **CC BY 4.0** | GBIF download DOI (see `data/gbif_dois.json`) |
-| eBird Status & Trends (Cornell Lab) | **CC BY-NC-SA** (non-commercial) | Fink et al., eBird Status & Trends |
+| GBIF — eBird Observation Dataset (EOD) | **CC BY 4.0** (publishable) | GBIF download DOI (see `data/gbif_dois.json`) |
+| eBird Status & Trends (Cornell Lab) | **Cornell custom terms** — non-commercial; derived figures not publishable online (validation use only) | Fink et al. + DOI + Cornell's required acknowledgement |
 
 We gratefully acknowledge the global community of **eBird** citizen scientists,
 the **Cornell Lab of Ornithology**, and **GBIF** for mobilizing these data.

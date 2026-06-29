@@ -57,7 +57,11 @@ community/build_notebook.wls    assembles bird_migration.nb + .pdf
 
 * GBIF eBird Observation Dataset (EOD) = **CC BY 4.0**. Cite the download DOI
   (recorded in `data/gbif_dois.json`) + the EOD dataset.
-* eBird Status & Trends = **non-commercial** (CC BY-NC-SA). Cite Fink et al.
+* eBird Status & Trends = **Cornell custom terms, non-commercial**. Derived/
+  modified S&T figures may NOT be published online or redistributed (incl. in
+  this repo) — used for **private validation only**; all S&T-derived outputs are
+  git-ignored. Cite Fink et al. + DOI + Cornell's verbatim acknowledgement; link
+  to Cornell's official visualizations in the post.
 * Acknowledge eBird citizen scientists, Cornell Lab of Ornithology, and GBIF.
 
 ## Commit cadence

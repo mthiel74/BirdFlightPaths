@@ -29,3 +29,6 @@ community/.img-cache/
 .Rhistory
 .RData
 __pycache__/
+
+# SDD scratch
+.superpowers/

@@ -3,7 +3,7 @@ $repoRoot = ParentDirectory[DirectoryName[$InputFileName]];
 $userAgent = "BirdFlightPaths/0.1 (marco_thiel@yahoo.com)";
 
 $speciesList = {
-  <|"common"->"Arctic tern", "sci"->"Sterna paradisaea", "key"->5229230, "code"->"arctir1"|>,
+  <|"common"->"Arctic tern", "sci"->"Sterna paradisaea", "key"->5229230, "code"->"arcter"|>,
   <|"common"->"Common swift","sci"->"Apus apus",          "key"->5228676, "code"->"comswi"|>,
   <|"common"->"Red knot",     "sci"->"Calidris canutus",   "key"->2481765, "code"->"redkno"|>
 };

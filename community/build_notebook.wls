@@ -211,7 +211,7 @@ pnRec[spec_] := SelectFirst[$pn, #["species"] === spec &, <||>];
 pnF[spec_, field_, f_] := f[Lookup[pnRec[spec], field, Missing[]]];
 $bh = loadArr["bootstrap_halos.json"];    (* keyed by string "species" *)
 bhRec[spec_] := SelectFirst[$bh, #["species"] === spec &, <||>];
-bhSpan[spec_, agg_] := With[{r = Lookup[bhRec[spec], "ellipseSpanDeg", {}]},
+bhSpan[spec_, agg_] := With[{r = Lookup[bhRec[spec], "ellipseRadiusDeg", {}]},
    If[r === {}, "?", n1[agg[r]]]];
 Print["journey_metrics rows: ", Length[$jm],
    "  energetics rows: ", Length[$en],
@@ -594,7 +594,7 @@ USA and Caribbean still outweigh the sparsely-observed Patagonian coast, and \
 the centroid blends several wintering areas. The shape of the journey is \
 right; the precise southern extreme is pulled north."],
 
-hd2["4.1  Is the seasonal loop real, or just where the birders are?"],
+hd2["Robustness check \[LongDash] is the seasonal loop real, or just where the birders are?"],
 
 para[{"A fair challenge to everything so far: perhaps these loops are not \
 migration at all, but the seasonal pattern of where ", ital["observers"], " \
@@ -603,7 +603,10 @@ happen to be. We can test that head-on. Take each species' occurrences, ",
 location but is reassigned a random month \[LongDash] and recompute the centroid \
 loop. Repeat 500 times. If the apparent migration were a sampling artifact, the \
 shuffled loops would swing as widely as the real one; if it is real, the true \
-loop's north\[Dash]south span will sit far beyond anything the shuffles produce."}],
+loop's north\[Dash]south span will sit far beyond anything the shuffles produce. \
+(We permute the ~60,000 individual records, not a twelve-point series, so a full \
+shuffle is the right null here; the autocorrelation caveat that weakens the \
+photoperiod test later applies only to that 12-month correlation.)"}],
 
 imgCell["permutation_null.png"],
 captionCell["Figure 4.4  Permutation null test. Grey histograms: the latitude \
@@ -612,11 +615,12 @@ span of the monthly centroid loop under 500 random month-label shufflings \
 observed span (Arctic tern ", pnF["Arctic tern", "obsLatSpanDeg", n1],
    "\[Degree], common swift ", pnF["Common swift", "obsLatSpanDeg", n1],
    "\[Degree], red knot ", pnF["Red knot", "obsLatSpanDeg", n1],
-   "\[Degree]). Every observed span is roughly ten times the largest shuffled \
-value (", bold["p < 0.002"], ", n = 500) \[LongDash] the seasonal loop is a real \
-signal in the data, not an artifact of observer geography."],
+   "\[Degree]). Every observed span is five to seven times the largest shuffled \
+value (and seven to ten times the average shuffle; ", bold["p < 0.002"],
+   ", n = 500) \[LongDash] the seasonal loop is a real signal in the data, not an \
+artifact of a static, seasonally-mislabelled range."],
 
-hd2["4.2  How sharply is each monthly centroid pinned?"],
+hd2["Robustness check \[LongDash] how sharply is each monthly centroid pinned?"],
 
 para[{"A point on a map invites false confidence. Each monthly centroid is an \
 estimate from a finite, uneven sample, so it deserves an error bar. We attach one \
@@ -626,14 +630,24 @@ times, and draw the 95% confidence ellipse of the resulting cloud. Tight ellipse
 mark well-sampled months; sprawling ones mark the sparse, oceanic stretches where \
 the centroid is barely constrained."}],
 
-imgCell["bootstrap_halos.png"],
-captionCell["Figure 4.5  Monthly centroids with their 95% block-bootstrap \
-confidence ellipses (resampling years). The contrast is the point: the Arctic \
-tern's ocean-crossing months span about ", bhSpan["Arctic tern", Max],
-   "\[Degree] of latitude uncertainty over the open Atlantic, but tighten to ~",
-   bhSpan["Arctic tern", Min], "\[Degree] at the densely-watched Greenland/Iceland \
-breeding grounds. The honest reading of a centroid map is: trust the tight \
-months, treat the sprawling ones as directional, not precise."]
+imgCell["bootstrap_halos_5229230.png"],
+captionCell["Figure 4.5a  Arctic tern \[LongDash] monthly centroids with their 95% \
+block-bootstrap confidence ellipses (resampling years with replacement). The \
+contrast is the point: the ocean-crossing months reach a mean 95%-ellipse radius \
+of about ", bhSpan["Arctic tern", Max], "\[Degree] over the open Atlantic, but \
+tighten to ~", bhSpan["Arctic tern", Min], "\[Degree] at the densely-watched \
+Greenland/Iceland breeding grounds."],
+
+imgCell["bootstrap_halos_5228676.png"],
+captionCell["Figure 4.5b  Common swift \[LongDash] one coherent Afro-Palearctic \
+flyway is well sampled year-round, so the ellipses stay small (mean radius down to \
+~", bhSpan["Common swift", Min], "\[Degree])."],
+
+imgCell["bootstrap_halos_2481765.png"],
+captionCell["Figure 4.5c  Red knot \[LongDash] the Americas flyway. ", ital["The \
+honest reading of a centroid map:"], " trust the tight months, treat the \
+sprawling ones as directional, not precise. (Ellipse radii are mean centre-to-edge \
+distances in degrees, combining latitude and longitude.)"]
 
 }];
 

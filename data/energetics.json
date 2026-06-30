@@ -1,0 +1,35 @@
+[
+	{
+		"name":"Arctic tern",
+		"m_kg":0.11,
+		"b_m":0.79,
+		"VmpKmh":2.7400000000000002e1,
+		"PchemW":2.71,
+		"COTkJkm":0.36,
+		"fatFracPer1000km":8.2e-2,
+		"annualCentroidKm":24115,
+		"annualFlightMJ":8.6
+	},
+	{
+		"name":"Common swift",
+		"m_kg":4.0e-2,
+		"b_m":0.42,
+		"VmpKmh":2.68e1,
+		"PchemW":1.3,
+		"COTkJkm":0.17,
+		"fatFracPer1000km":0.111,
+		"annualCentroidKm":14063,
+		"annualFlightMJ":2.4000000000000004
+	},
+	{
+		"name":"Red knot",
+		"m_kg":0.135,
+		"b_m":0.57,
+		"VmpKmh":3.45e1,
+		"PchemW":5.3500000000000005,
+		"COTkJkm":0.56,
+		"fatFracPer1000km":0.105,
+		"annualCentroidKm":7921,
+		"annualFlightMJ":4.4
+	}
+]

@@ -1,20 +1,23 @@
 [
 	{
 		"species":"Arctic tern",
-		"inclSDdeg":5.51e1,
-		"nullMedianSDdeg":5.6800000000000004e1,
-		"fracNullTighter":4.3000000000000003e-2
+		"dipRangeDeg":1.319e2,
+		"dipSDdeg":5.51e1,
+		"lonEffectDeg":2.7,
+		"inclLatCorr":0.988
 	},
 	{
 		"species":"Common swift",
-		"inclSDdeg":4.21e1,
-		"nullMedianSDdeg":4.07e1,
-		"fracNullTighter":1.0
+		"dipRangeDeg":1.0910000000000001e2,
+		"dipSDdeg":4.21e1,
+		"lonEffectDeg":1.3,
+		"inclLatCorr":0.989
 	},
 	{
 		"species":"Red knot",
-		"inclSDdeg":1.34e1,
-		"nullMedianSDdeg":1.3100000000000001e1,
-		"fracNullTighter":0.998
+		"dipRangeDeg":3.61e1,
+		"dipSDdeg":1.34e1,
+		"lonEffectDeg":0.5,
+		"inclLatCorr":0.998
 	}
 ]

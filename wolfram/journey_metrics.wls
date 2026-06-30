@@ -38,18 +38,24 @@ monthlyStep[tr_] := Table[
      GeoDistance[{tr[[i, 2]], tr[[i, 3]]}, {tr[[Mod[i, 12] + 1, 2]], tr[[Mod[i, 12] + 1, 3]]}],
      "Kilometers"], {i, 12}];
 
-metric[key_] := Module[{tr = tracks[key], steps, speeds, dl, dlChange, stopThresh, stopMonths, r},
+metric[key_] := Module[{tr = tracks[key], steps, speeds, dl, dlChange, loThresh, loMonths, r, permR, pCyc},
   steps = monthlyStep[tr];                              (* km, step from month i to i+1 *)
   speeds = steps/daysPerMonth;                          (* km/day *)
   dl = daylightHours[tr[[#, 2]], tr[[#, 1]]] & /@ Range[12];      (* hours, per month *)
   dlChange = Table[Abs[dl[[Mod[i, 12] + 1]] - dl[[i]]], {i, 12}]; (* |Δ daylight| per step *)
-  stopThresh = 0.4 Mean[speeds];                        (* "slow" = < 40% of mean speed *)
-  stopMonths = Select[Range[12], speeds[[#]] < stopThresh &];
+  loThresh = 0.4 Mean[speeds];                          (* "slow" = < 40% of mean speed *)
+  loMonths = Select[Range[12], speeds[[#]] < loThresh &];
   r = If[Variance[speeds] > 0 && Variance[dlChange] > 0, Correlation[speeds, dlChange], 0.];
+  (* cyclic-permutation p-value: respects the annual autocorrelation (n=12 is small,
+     and both series share a seasonal cycle, so a naive Pearson p is meaningless).
+     Null = all 12 cyclic rotations of |Δdaylight| against speed. *)
+  permR = Table[Correlation[speeds, RotateRight[dlChange, s]], {s, 0, 11}];
+  pCyc = N@Mean[Boole[Abs[#] >= Abs[r] & /@ permR]];
   <|"species" -> names[key], "key" -> key,
     "meanSpeedKmDay" -> Round[Mean[speeds], 0.1], "maxSpeedKmDay" -> Round[Max[speeds], 0.1],
     "speeds" -> Round[speeds, 0.1], "daylightHrs" -> Round[dl, 0.1],
-    "stopoverMonths" -> stopMonths, "speedDaylightR" -> Round[r, 0.01]|>];
+    "lowDisplacementMonths" -> loMonths, "speedDaylightR" -> Round[r, 0.01],
+    "speedDaylightPcyclic" -> Round[pCyc, 0.001]|>];
 M = Association[# -> metric[#] & /@ keys];
 
 (* ---------- item 13/14: speed profile + stopovers ---------- *)
@@ -61,7 +67,7 @@ speedFig = ListLinePlot[
    GridLines -> {Range[12], Automatic}, PlotRange -> {{1, 12}, {0, All}}, ImageSize -> 900,
    Epilog -> Flatten@Table[With[{sp = M[k]["speeds"]},
       {cols[k], PointSize[0.02], Opacity[0.5],
-       Point[{#, sp[[#]]}] & /@ M[k]["stopoverMonths"]}], {k, keys}]];
+       Point[{#, sp[[#]]}] & /@ M[k]["lowDisplacementMonths"]}], {k, keys}]];
 Export[FileNameJoin[{img, "speed_profile.png"}], speedFig, "PNG", ImageResolution -> 130];
 Print["wrote speed_profile.png"];
 
@@ -77,6 +83,6 @@ Print["wrote daylight.png"];
 
 Export[FileNameJoin[{$repoRoot, "data", "journey_metrics.json"}], Values[M], "RawJSON"];
 Do[Print["  ", M[k]["species"], ": mean ", M[k]["meanSpeedKmDay"], " km/day, max ",
-   M[k]["maxSpeedKmDay"], ", stopover months ", M[k]["stopoverMonths"],
+   M[k]["maxSpeedKmDay"], ", stopover months ", M[k]["lowDisplacementMonths"],
    ", speed~|Δdaylight| r=", M[k]["speedDaylightR"]], {k, keys}];
 Print["journey_metrics: OK"];

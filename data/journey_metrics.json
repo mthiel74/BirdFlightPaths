@@ -32,14 +32,15 @@
 			1.1700000000000001e1,
 			1.3e1
 		],
-		"stopoverMonths":[
+		"lowDisplacementMonths":[
 			1,
 			5,
 			6,
 			7,
 			8
 		],
-		"speedDaylightR":-0.26
+		"speedDaylightR":-0.26,
+		"speedDaylightPcyclic":0.25
 	},
 	{
 		"species":"Common swift",
@@ -74,11 +75,12 @@
 			1.19e1,
 			1.24e1
 		],
-		"stopoverMonths":[
+		"lowDisplacementMonths":[
 			6,
 			12
 		],
-		"speedDaylightR":-6.0e-2
+		"speedDaylightR":-6.0e-2,
+		"speedDaylightPcyclic":0.833
 	},
 	{
 		"species":"Red knot",
@@ -113,7 +115,7 @@
 			1.1600000000000001e1,
 			1.14e1
 		],
-		"stopoverMonths":[
+		"lowDisplacementMonths":[
 			1,
 			2,
 			3,
@@ -121,6 +123,7 @@
 			11,
 			12
 		],
-		"speedDaylightR":0.71
+		"speedDaylightR":0.71,
+		"speedDaylightPcyclic":8.3e-2
 	}
 ]

@@ -82,20 +82,30 @@ Export[FileNameJoin[{img, "geomag_signature.png"}], Grid[sigPlot /@ Keys[tracks]
    "PNG", ImageResolution -> 130];
 Print["wrote geomag_signature.png"];
 
-(* ---------- item 8: magnetic contour-following test (interpolation, fast) ---------- *)
-SeedRandom[42];
-followTest[key_] := Module[{tr = tracks[key], sdAct, lonLo, lonHi, nulls, frac},
-  sdAct = StandardDeviation[inclAt[#[[2]], #[[3]]] & /@ tr];
-  {lonLo, lonHi} = MinMax[tr[[All, 3]]];
-  nulls = Table[
-    StandardDeviation[MapThread[inclAt, {tr[[All, 2]], RandomReal[{lonLo, lonHi}, Length[tr]]}]],
-    {1000}];
-  frac = N@Mean[Boole[# <= sdAct & /@ nulls]];
-  <|"species" -> names[key], "inclSDdeg" -> Round[sdAct, 0.1],
-    "nullMedianSDdeg" -> Round[Median[nulls], 0.1], "fracNullTighter" -> Round[frac, 0.001]|>];
-follow = followTest /@ Keys[tracks];
-Export[FileNameJoin[{$repoRoot, "data", "geomag_following.json"}], follow, "RawJSON"];
-Print["contour-following test:"];
-Do[Print["  ", f["species"], ": track dip SD=", f["inclSDdeg"], "\[Degree]  null median=",
-   f["nullMedianSDdeg"], "\[Degree]  P(null tighter)=", f["fracNullTighter"]], {f, follow}];
+(* ---------- item 8: how the field varies along each track (descriptive) ----------
+   We do NOT claim the birds "follow" or "use" the field — occurrence centroids
+   cannot test a navigational mechanism. We characterise the magnetic landscape
+   each track crosses, honestly (a maths-critic finding):
+     - dipRangeDeg: the total span of inclination the track traverses;
+     - lonEffectDeg: how much of the dip variation is due to LONGITUDE alone
+       (latitude held at its mean) -- this is small, so dip ~ f(latitude);
+     - inclLatCorr: correlation of inclination with latitude along the track --
+       near +/-1 confirms the geocentric-dipole relation tan I = 2 tan(lambda_m),
+       i.e. inclination is essentially a latitude signal. *)
+fieldAlong[key_] := Module[{tr = tracks[key], inc, lat, meanLat, lonEffect},
+  inc = inclAt[#[[2]], #[[3]]] & /@ tr;
+  lat = tr[[All, 2]];
+  meanLat = Mean[lat];
+  lonEffect = StandardDeviation[inclAt[meanLat, #] & /@ tr[[All, 3]]]; (* lat fixed, lon varies *)
+  <|"species" -> names[key],
+    "dipRangeDeg" -> Round[Max[inc] - Min[inc], 0.1],
+    "dipSDdeg" -> Round[StandardDeviation[inc], 0.1],
+    "lonEffectDeg" -> Round[lonEffect, 0.1],
+    "inclLatCorr" -> Round[Correlation[inc, lat], 0.001]|>];
+field = fieldAlong /@ Keys[tracks];
+Export[FileNameJoin[{$repoRoot, "data", "geomag_following.json"}], field, "RawJSON"];
+Print["magnetic field along each track (descriptive):"];
+Do[Print["  ", f["species"], ": dip range=", f["dipRangeDeg"], "\[Degree] (SD ", f["dipSDdeg"],
+   "\[Degree]); longitude-only effect=", f["lonEffectDeg"], "\[Degree]; corr(dip,lat)=",
+   f["inclLatCorr"]], {f, field}];
 Print["geomag: OK"];

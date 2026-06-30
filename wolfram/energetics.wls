@@ -36,19 +36,25 @@ cols = <|5229230 -> RGBColor[1, 0.4, 0.25], 5228676 -> RGBColor[0.35, 0.9, 1.0],
          2481765 -> RGBColor[0.9, 0.7, 0.1]|>;
 keys = {5229230, 5228676, 2481765};
 
-flight[m_, b_] := Module[{Sb, A, B, Vmp, Pam, Pind, Ppar, Pmech, Pchem, bmr, cotJm},
+(* Cost of transport is minimised at the MAXIMUM-RANGE speed Vmr, NOT at the
+   minimum-power speed Vmp. Migrants fly near Vmr to minimise fuel per distance
+   (Pennycuick / flight-range theory), so all fuel/COT metrics are evaluated at
+   Vmr; Vmp is reported only as the airspeed of minimum power. *)
+flight[m_, b_] := Module[{Sb, A, B, Vmp, Pam, Ppro, bmr, Pchem, cot, Vmr, cotMr, V},
   Sb = 0.00813 m^0.666;
   A = 2 kInd (m g)^2/(rho Pi b^2);          (* P_ind = A / V        *)
   B = 0.5 rho Sb cDb;                        (* P_par = B V^3        *)
   Vmp = (A/(3 B))^(1/4);
-  Pind = A/Vmp; Ppar = B Vmp^3; Pam = Pind + Ppar;
-  Pmech = Pind + Ppar + x1 Pam;
+  Pam = A/Vmp + B Vmp^3;                      (* absolute minimum aerodynamic power *)
+  Ppro = x1 Pam;                             (* profile power ~ constant in V        *)
   bmr = 3.79 m^0.723;
-  Pchem = Pmech/eta + bmr;
-  cotJm = Pchem/Vmp;                         (* J per metre of flight *)
-  <|"Vmp" -> Vmp, "Pmech" -> Pmech, "Pchem" -> Pchem, "COTJkm" -> cotJm*1000,
-    "fatPer1000km" -> cotJm*1.0*^6/eFat,     (* kg fat per 1000 km    *)
-    "fatFracPer1000km" -> cotJm*1.0*^6/eFat/m|>];
+  Pchem[v_] := (A/v + B v^3 + Ppro)/eta + bmr;
+  cot[v_] := Pchem[v]/v;                      (* J per metre at airspeed v           *)
+  Vmr = v /. Last@FindMinimum[{cot[v], 5 < v < 100}, {v, 1.6 Vmp}];
+  cotMr = cot[Vmr];
+  <|"Vmp" -> Vmp, "Vmr" -> Vmr, "PchemMr" -> Pchem[Vmr], "COTJkm" -> cotMr*1000,
+    "fatPer1000km" -> cotMr*1.0*^6/eFat,     (* kg fat per 1000 km at Vmr            *)
+    "fatFracPer1000km" -> cotMr*1.0*^6/eFat/m|>];
 
 (* path length per species (km) from path_lengths.csv, primary track *)
 pl = Rest@Import[FileNameJoin[{$repoRoot, "data", "path_lengths.csv"}], "CSV"];
@@ -57,7 +63,8 @@ primKm[key_] := SelectFirst[pl, #[[1]] == key && ! StringContainsQ[ToString[#[[3
 enr = Association @ Table[
    With[{f = flight[morph[k]["m"], morph[k]["b"]], dkm = primKm[k]},
      k -> Join[<|"name" -> morph[k]["name"], "m_kg" -> morph[k]["m"], "b_m" -> morph[k]["b"],
-        "VmpKmh" -> Round[f["Vmp"]*3.6, 0.1], "PchemW" -> Round[f["Pchem"], 0.01],
+        "VmpKmh" -> Round[f["Vmp"]*3.6, 0.1], "VmrKmh" -> Round[f["Vmr"]*3.6, 0.1],
+        "PchemW" -> Round[f["PchemMr"], 0.01],
         "COTkJkm" -> Round[f["COTJkm"]/1000, 0.01],
         "fatFracPer1000km" -> Round[f["fatFracPer1000km"], 0.001],
         "annualCentroidKm" -> Round[dkm],
@@ -67,8 +74,8 @@ enr = Association @ Table[
 metricBar[prop_, lab_] := BarChart[enr[#][prop] & /@ keys,
    ChartLabels -> (morph[#]["name"] & /@ keys), ChartStyle -> (cols /@ keys),
    PlotLabel -> Style[lab, 12], ImageSize -> 300, LabelingFunction -> Above];
-dash = Grid[{{metricBar["VmpKmh", "min-power airspeed (km/h)"],
-              metricBar["COTkJkm", "cost of transport (kJ/km)"]},
+dash = Grid[{{metricBar["VmrKmh", "max-range cruising airspeed (km/h)"],
+              metricBar["COTkJkm", "cost of transport at Vmr (kJ/km)"]},
              {metricBar["fatFracPer1000km", "fat fraction burned / 1000 km"],
               metricBar["annualFlightMJ", "annual flight energy (MJ, centroid path)"]}},
    Spacings -> {1, 1}];
@@ -93,7 +100,8 @@ Export[FileNameJoin[{img, "energy_budget.png"}], budFig, "PNG", ImageResolution 
 Print["wrote energy_budget.png"];
 
 Export[FileNameJoin[{$repoRoot, "data", "energetics.json"}], Values[enr], "RawJSON"];
-Do[Print["  ", enr[k]["name"], ": Vmp ", enr[k]["VmpKmh"], " km/h, COT ", enr[k]["COTkJkm"],
-   " kJ/km, fat ", Round[100 enr[k]["fatFracPer1000km"]], "%/1000km, annual ",
+Do[Print["  ", enr[k]["name"], ": Vmp ", enr[k]["VmpKmh"], " / Vmr ", enr[k]["VmrKmh"],
+   " km/h, COT@Vmr ", enr[k]["COTkJkm"], " kJ/km, fat ",
+   Round[100 enr[k]["fatFracPer1000km"]], "%/1000km, annual ",
    enr[k]["annualFlightMJ"], " MJ"], {k, keys}];
 Print["energetics: OK"];

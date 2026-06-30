@@ -198,6 +198,9 @@ nComma[x_] := If[NumberQ[x],
 jmF[key_, field_, f_] := f[Lookup[jmRec[key], field, Missing[]]];
 enF[name_, field_, f_] := f[Lookup[enRec[name], field, Missing[]]];
 gmF[spec_, field_, f_] := f[Lookup[gmRec[spec], field, Missing[]]];
+$pn = loadArr["permutation_null.json"];   (* keyed by string "species" *)
+pnRec[spec_] := SelectFirst[$pn, #["species"] === spec &, <||>];
+pnF[spec_, field_, f_] := f[Lookup[pnRec[spec], field, Missing[]]];
 Print["journey_metrics rows: ", Length[$jm],
    "  energetics rows: ", Length[$en],
    "  geomag rows: ", Length[$gm]];
@@ -577,7 +580,29 @@ around Panama/northern Colombia rather than at the iconic ", ital["rufa"], \
 " wintering grounds in Tierra del Fuego (~54\[Degree]S): the densely-birded \
 USA and Caribbean still outweigh the sparsely-observed Patagonian coast, and \
 the centroid blends several wintering areas. The shape of the journey is \
-right; the precise southern extreme is pulled north."]
+right; the precise southern extreme is pulled north."],
+
+hd2["4.1  Is the seasonal loop real, or just where the birders are?"],
+
+para[{"A fair challenge to everything so far: perhaps these loops are not \
+migration at all, but the seasonal pattern of where ", ital["observers"], " \
+happen to be. We can test that head-on. Take each species' occurrences, ",
+   bold["shuffle the month labels"], " \[LongDash] every record keeps its \
+location but is reassigned a random month \[LongDash] and recompute the centroid \
+loop. Repeat 500 times. If the apparent migration were a sampling artifact, the \
+shuffled loops would swing as widely as the real one; if it is real, the true \
+loop's north\[Dash]south span will sit far beyond anything the shuffles produce."}],
+
+imgCell["permutation_null.png"],
+captionCell["Figure 4.4  Permutation null test. Grey histograms: the latitude \
+span of the monthly centroid loop under 500 random month-label shufflings \
+(locations kept, the month\[Dash]location link broken). Coloured line: the \
+observed span (Arctic tern ", pnF["Arctic tern", "obsLatSpanDeg", n1],
+   "\[Degree], common swift ", pnF["Common swift", "obsLatSpanDeg", n1],
+   "\[Degree], red knot ", pnF["Red knot", "obsLatSpanDeg", n1],
+   "\[Degree]). Every observed span is roughly ten times the largest shuffled \
+value (", bold["p < 0.002"], ", n = 500) \[LongDash] the seasonal loop is a real \
+signal in the data, not an artifact of observer geography."]
 
 }];
 
@@ -732,7 +757,10 @@ not pretend the twelve months are independent draws), it is ",
    bold["r = " <> jmF[2481765, "speedDaylightR", n2]],
    ", and even there ", bold["p = " <> jmF[2481765, "speedDaylightPcyclic", n2]],
    " (n = 12). Suggestive at best \[LongDash] a hypothesis to take to \
-tracking data, not a result to report."}],
+tracking data, not a result to report. (With only twelve months, the cyclic \
+permutation has just twelve distinct rotations, so the smallest p it can return \
+is 1/12 \[TildeEqual] 0.083: this test can never reach p < 0.05, which is itself \
+an honest admission of how little a 12-point annual series can prove.)"}],
 
 imgCell["daylight.png"],
 captionCell["Figure 6.2  Day length experienced along each centroid track \

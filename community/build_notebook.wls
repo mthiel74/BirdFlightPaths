@@ -106,7 +106,7 @@ imgCell[file_] := Module[{path = FileNameJoin[{imgDir, file}], small, im},
 (* animCell -- embed a GIF as an inline AnimatedImage cell. Community's
    web renderer preserves AnimatedImage as a looping <img>. ColorQuantize
    per frame keeps the embedded notebook small. *)
-animWidth = 620;
+animWidth = 460;
 
 animCell[file_] := animCell[file, ""];
 animCell[file_String, caption_] := Module[
@@ -115,7 +115,7 @@ animCell[file_String, caption_] := Module[
      Return @ Cell[TextData[{bold["[ missing animation: " <> file <> " ]"]}],
         "Text", FontColor -> RGBColor[0.7, 0.1, 0.1], TextAlignment -> Center]];
    all = Import[path, {"GIF", "ImageList"}];
-   all = ColorQuantize[ImageResize[#, {animWidth}], 256] & /@ all;
+   all = ColorQuantize[ImageResize[#, {animWidth}], 128] & /@ all;
    anim = AnimatedImage[all, FrameRate -> 1.25,
       AnimationRunning -> True, AnimationRepetitions -> Infinity];
    boxes = ToBoxes[

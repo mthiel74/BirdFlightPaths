@@ -57,7 +57,7 @@ frame[fr_, nFrames_] := Module[{prog = fr/nFrames},
     ImageSize -> {960, 520},
     PlotLabel -> Style["Migration in motion \[LongDash] flocks streaming along each flyway", 14]]];
 
-nFrames = 40;
+nFrames = 24;
 Print["rendering ", nFrames, " flock frames ..."];
 frames = Table[ColorQuantize[Rasterize[frame[fr, nFrames], ImageResolution -> 92], 200], {fr, 0, nFrames - 1}];
 Export[FileNameJoin[{img, "flock.gif"}],

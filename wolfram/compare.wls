@@ -41,7 +41,7 @@ rows = {{"", "Arctic tern", "Common swift", "Red knot"},
    {"mean centroid speed (km/day)", Sequence @@ (jm[#]["meanSpeedKmDay"] & /@ keys)},
    {"peak centroid speed (km/day)", Sequence @@ (jm[#]["maxSpeedKmDay"] & /@ keys)},
    {"latitude span (\[Degree])", Sequence @@ (latSpan /@ keys)},
-   {"min-power airspeed (km/h)", Sequence @@ (enr[#]["VmpKmh"] & /@ keys)},
+   {"max-range airspeed Vmr (km/h)", Sequence @@ (enr[#]["VmrKmh"] & /@ keys)},
    {"cost of transport (kJ/km)", Sequence @@ (enr[#]["COTkJkm"] & /@ keys)},
    {"fat burned /1000 km (%)", Sequence @@ (Round[100 enr[#]["fatFracPer1000km"]] & /@ keys)}};
 With[{vf = FileNameJoin[{dataD, "raw", "ebirdst", "validation.json"}]},

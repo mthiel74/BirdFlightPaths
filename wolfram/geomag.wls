@@ -59,7 +59,7 @@ inclMap = ListContourPlot[grid[[All, {1, 2, 3}]],
    ColorFunction -> "ThermometerColors", ColorFunctionScaling -> True,
    PlotRange -> {{-180, 180}, {-90, 90}},
    FrameLabel -> {"longitude (\[Degree])", "latitude (\[Degree])"},
-   PlotLabel -> Style["Geomagnetic inclination (dip angle, \[Degree]) and migration tracks \[LongDash] WMM 2026", 14],
+   PlotLabel -> Style["Geomagnetic inclination (dip angle, \[Degree]) and migration tracks \[LongDash] WMM2025 (epoch 2026)", 14],
    PlotLegends -> BarLegend[Automatic, LegendLabel -> "dip \[Degree]"],
    ContourStyle -> Directive[GrayLevel[0.4], Opacity[0.4]],
    AspectRatio -> 1/2, ImageSize -> 1000, Epilog -> trackEpilog];

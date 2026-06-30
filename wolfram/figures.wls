@@ -7,6 +7,19 @@ Get[FileNameJoin[{DirectoryName[$InputFileName], "fetcher_common.wl"}]];
 
 img = FileNameJoin[{$repoRoot, "docs", "images"}];
 
+(* Render via Rasterize + a content check. We use the LOCAL vector basemap
+   (GeoBackground -> Automatic) rather than the online "ReliefMap" tile server,
+   which intermittently serves only part of its tiles and yields a blank canvas.
+   The retry is a cheap safety net; the vector basemap normally succeeds first try. *)
+renderRobust[g_, res_:120] := Module[{im, sd, k = 0},
+  While[k < 6,
+    k++;
+    im = Rasterize[g, ImageResolution -> res];
+    sd = Mean[N@Flatten[ImageMeasurements[im, "StandardDeviation"]]];
+    If[sd > 0.05, Return[im]];
+    Pause[4]];
+  im];
+
 trackName = <|
   5229230 -> "Atlantic basin",
   5228676 -> "Afro-Palearctic",
@@ -34,11 +47,10 @@ Do[
     g = GeoGraphics[{
       cols[key], Thick,
       GeoPath[GeoPosition[{#[[2]], #[[3]]}] & /@ cs],
-      Table[
-        {cols[key],
-         Disk[GeoPosition[{cs[[m, 2]], cs[[m, 3]]}], Quantity[120, "Kilometers"]]},
-        {m, Length[cs]}
-      ],
+      (* Point markers (PointSize), NOT geo Disk[..,Quantity[..]] which throws
+         during Rasterize and blanks the whole image. *)
+      {cols[key], PointSize[0.02],
+       Point[GeoPosition[{cs[[#, 2]], cs[[#, 3]]}]] & /@ Range[Length[cs]]},
       Table[
         Text[Style[ToString[Round @ cs[[m, 1]]], 9, White, Bold],
              GeoPosition[{cs[[m, 2]], cs[[m, 3]]}]],
@@ -48,12 +60,16 @@ Do[
       GeoRange       -> "World",
       GeoProjection  -> {"Orthographic",
                          "Centering" -> {Mean[cs[[All, 2]]], Mean[cs[[All, 3]]]}},
-      GeoBackground  -> "ReliefMap",
+      GeoBackground  -> Automatic,
       PlotLabel      -> Style[sp <> " \[LongDash] monthly centroid (" <> trackName[key] <> ")", 14],
-      ImageSize      -> 760
+      ImageSize      -> 620
     ];
-    Export[FileNameJoin[{img, "centroid_track_" <> ToString[key] <> ".png"}], g, "PNG"];
-    Print["wrote centroid_track_", key];
+    (* renderRobust rasterizes and retries until the ReliefMap tiles actually
+       arrive (a direct Export[g,"PNG"] can write a blank canvas otherwise). *)
+    Export[FileNameJoin[{img, "centroid_track_" <> ToString[key] <> ".png"}],
+      renderRobust[g, 120], "PNG"];
+    Print["wrote centroid_track_", key, " (",
+      FileByteCount[FileNameJoin[{img, "centroid_track_" <> ToString[key] <> ".png"}]], " bytes)"];
   ],
   {key, {5229230, 5228676, 2481765}}
 ];

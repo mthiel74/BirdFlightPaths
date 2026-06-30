@@ -78,7 +78,15 @@ link[txt_String, url_String] := Sequence[
 imgCacheDir = FileNameJoin[{repoRoot, "community", ".img-cache"}];
 If[! DirectoryQ[imgCacheDir], CreateDirectory[imgCacheDir]];
 
-resizedCopy[path_] := Module[{cached, w, h, im, target = 760},
+resizedCopy[path_] := Module[{cached, w, h, im,
+   (* per-file embed width: tall multi-panel/stacked figures are capped smaller
+      so the stored raster (which scales with the figure's pixel count) stays
+      modest and the .nb fits under the 10 MB Community cap *)
+   target = Which[
+     StringContainsQ[path, "bootstrap_halos"], 470,
+     StringContainsQ[path, "annual_profiles" | "geomag_signature"], 600,
+     StringContainsQ[path, "seasonal_"], 640,
+     True, 720]},
    cached = FileNameJoin[{imgCacheDir, FileNameTake[path]}];
    If[FileExistsQ[cached] &&
       FileDate[cached, "Modification"] > FileDate[path, "Modification"],

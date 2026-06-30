@@ -767,9 +767,9 @@ sums three terms: ", bold["induced power"], " (the cost of generating lift, \
 dominant at low speed), ", bold["parasite power"], " (drag on the body, \
 dominant at high speed), and ", bold["profile power"],
    " (drag on the flapping wings). Their sum is the classic U-shaped power \
-curve, whose two landmark speeds are the ", bold["minimum-power speed ",
-   math["V"], math["mp"]], " (cheapest per hour, where you would loiter) \
-and the higher ", bold["maximum-range speed ", math["V"], math["mr"]],
+curve, whose two landmark speeds are the ", bold["minimum-power speed "],
+   math["V"], math["mp"], " (cheapest per hour, where you would loiter) \
+and the higher ", bold["maximum-range speed "], math["V"], math["mr"],
    " (cheapest per kilometre, where the tangent from the origin touches the \
 curve). A bird minimising the fuel needed to cover distance should cruise \
 near ", math["V"], math["mr"], " \[LongDash] and that is the speed at which \

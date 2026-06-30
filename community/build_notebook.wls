@@ -144,10 +144,13 @@ wlIn[code_String] := Cell[code, "Input",
 doiPending = "DOI pending (rerun after the GBIF download completes)";
 doiFile = FileNameJoin[{dataDir, "gbif_dois.json"}];
 $dois = If[FileExistsQ[doiFile], Quiet @ Import[doiFile, "RawJSON"], $Failed];
+(* each value in gbif_dois.json is an association <|"doi"->_,"downloadKey"->_,"n"->_|>;
+   pull the "doi" STRING (the earlier version handed the whole assoc to mono[],
+   which the front end rendered as raw syntax + ErrorBox). *)
 doiFor[key_] := If[AssociationQ[$dois],
-   Lookup[$dois, ToString[key], Lookup[$dois, key, doiPending]],
+   Lookup[Lookup[$dois, ToString[key], <||>], "doi", doiPending],
    doiPending];
-Print["DOIs available: ", AssociationQ[$dois]];
+Print["DOIs available: ", AssociationQ[$dois], "  e.g. tern -> ", doiFor[5229230]];
 
 
 (* ==================================================================
@@ -220,7 +223,7 @@ abstractCell[{"The central lesson is methodological: a single ",
    ital["global"], " centroid is meaningless for a species spread across \
 several disjoint flyways \[LongDash] pooling the red knot's three flyways \
 puts its \[OpenCurlyDoubleQuote]centre\[CloseCurlyDoubleQuote] in the \
-mid-Atlantic, displaced ~3,800 km/month from where the Americas population \
+mid-Atlantic, displaced ~4,670 km/month from where the Americas population \
 actually is. Computing one centroid ", ital["per coherent flyway"],
    " fixes this. Throughout, the prose opens each section intuitively for \
 the general reader, then deepens into the quantitative method for the \
@@ -285,10 +288,11 @@ daylight per year than any other animal."}],
 para[{bold["Common swift"], " (", ital["Apus apus"], "). An \
 Afro-Palearctic migrant that breeds across Europe and temperate Asia and \
 winters in sub-Saharan Africa. Remarkably, it is almost entirely ",
-   bold["aerial"], " for the roughly ten months it is not nesting: it \
-feeds, sleeps, and even mates on the wing, landing only to breed. A young \
-swift may not touch a solid surface for its first two or three years of \
-life."}],
+   bold["aerial"], " for the roughly ten months it is not nesting \
+(Hedenstr\[ODoubleDot]m et al. 2016): it feeds and sleeps on the wing \
+\[LongDash] and may even mate aloft \[LongDash] landing essentially only to \
+breed. A young swift may not touch a solid surface for its first two or three \
+years of life."}],
 
 para[{bold["Red knot"], " (", ital["Calidris canutus"], "). A medium-sized \
 shorebird that undertakes some of the longest-known shorebird migrations, \
@@ -333,7 +337,7 @@ para[{"GBIF's Download API lets us mint a reproducible, ", bold["citable \
 DOI"], " for an exact query. We ask for human observations of each \
 species, with coordinates, from the EOD dataset (",
    mono["datasetKey 4fa7b334-ce0d-4e88-aaae-2e0c138d049e"],
-   "), over a fixed decade. The predicate below is the actual query \
+   "), over a fixed eleven-year window (2014\[Dash]2024). The predicate below is the actual query \
 structure used by the project's ", mono["wolfram/gbif_download.wls"], ":"}],
 
 wlIn["(* GBIF Download API predicate: one citable download per species.
@@ -486,7 +490,7 @@ the empty space between them."}],
 para[{"The red knot is the textbook case. Pool its Americas, \
 European/African, and Asian-Australasian flyways into one global centroid \
 and the result drifts out into the open ", bold["mid-Atlantic"],
-   ", on average ", bold["~3,800 km per month"], " away from where the \
+   ", on average ", bold["~4,670 km per month"], " away from where the \
 Americas (", ital["rufa"], ") population \[LongDash] the one a North \
 American reader actually sees \[LongDash] truly is. The number is not a \
 rounding artefact; it is the signature of averaging across populations \
@@ -526,8 +530,14 @@ imgCell["centroid_track_2481765.png"],
 captionCell["Figure 4.3  Red knot \[LongDash] monthly population centroid \
 restricted to the Americas flyway. Compare this coherent loop with the \
 broken global centroid (the ", mono["knotGlobal"], " contrast above), \
-which would sit uselessly in the mid-Atlantic, ~3,800 km/month from this \
-track."]
+which would sit uselessly in the mid-Atlantic, ~4,670 km/month from this \
+track. ", ital["A caveat in the other direction:"], " presence weighting \
+blunts but does not erase effort bias. The Americas winter centroid here sits \
+around Panama/northern Colombia rather than at the iconic ", ital["rufa"], \
+" wintering grounds in Tierra del Fuego (~54\[Degree]S): the densely-birded \
+USA and Caribbean still outweigh the sparsely-observed Patagonian coast, and \
+the centroid blends several wintering areas. The shape of the journey is \
+right; the precise southern extreme is pulled north."]
 
 }];
 
@@ -679,7 +689,7 @@ the ", bold["eBird API 2.0"], " recent-observations endpoint (",
 species in a region. We sweep a representative spread of countries and plot \
 the result:"}],
 
-wlIn["(* Live recent sightings (last 30 days). LoadLiveSightings sweeps a
+wlIn["(* Live recent sightings (last 30 days, as of late June 2026). LoadLiveSightings sweeps a
    spread of regions, returns {lat,lon} pairs ROUNDED TO 0.1 deg for
    privacy. Supply your own eBird API 2.0 token. *)
 pts = LoadLiveSightings[\"arcter\", \"<your-ebird-api-token>\"];  (* arcter|comswi|redkno *)
@@ -691,16 +701,16 @@ Source: eBird.org (Cornell Lab of Ornithology)\", ImageSize -> 900]"],
 
 imgCell["live_5229230.png"],
 captionCell["Figure 6b.1  Arctic tern \[LongDash] recent eBird sightings \
-(last 30 days), swept across a spread of countries. ", bold["Source: \
+(last 30 days, as of late June 2026), swept across a spread of countries. ", bold["Source: \
 eBird.org (Cornell Lab of Ornithology)"], "."],
 
 imgCell["live_5228676.png"],
 captionCell["Figure 6b.2  Common swift \[LongDash] recent eBird sightings \
-(last 30 days). ", bold["Source: eBird.org (Cornell Lab of Ornithology)"], "."],
+(last 30 days, as of late June 2026). ", bold["Source: eBird.org (Cornell Lab of Ornithology)"], "."],
 
 imgCell["live_2481765.png"],
 captionCell["Figure 6b.3  Red knot \[LongDash] recent eBird sightings \
-(last 30 days). ", bold["Source: eBird.org (Cornell Lab of Ornithology)"], "."],
+(last 30 days, as of late June 2026). ", bold["Source: eBird.org (Cornell Lab of Ornithology)"], "."],
 
 para[{ital["Privacy and attribution."], " Live coordinates are coarsened \
 to one decimal place (~11 km) before plotting or storage, so no precise \
@@ -766,7 +776,7 @@ cross-validate them against a professional abundance model."}],
 
 para[{"But the central lesson is a cautionary one. ", bold["Naive pooling \
 misleads."], " A single global centroid placed the red knot in the empty \
-mid-Atlantic, ~3,800 km/month from any real bird. Two disciplines rescue \
+mid-Atlantic, ~4,670 km/month from any real bird. Two disciplines rescue \
 the analysis: ", bold["bias-awareness"],
    " (presence weighting on a coarse grid, so birders are not mistaken for \
 birds) and ", bold["per-flyway analysis"],
@@ -791,6 +801,12 @@ Fox, J. W., & Silk, J. R. D."], " (2010). Tracking of Arctic terns ",
    ital["Sterna paradisaea"], " reveals longest animal migration. ",
    ital["Proceedings of the National Academy of Sciences"], " 107(5), \
 2078\[Dash]2081. [Geolocator tracking; ~70,900 km/yr round trip.]"}],
+
+para[{bold["Hedenstr\[ODoubleDot]m, A., Norevik, G., Warfvinge, K., \
+Andersson, A., B\[ADoubleDot]ckman, J., & \[CapitalARing]kesson, S."], \
+" (2016). Annual 10-month aerial life phase in the common swift ",
+   ital["Apus apus"], ". ", ital["Current Biology"], " 26(22), \
+3066\[Dash]3070. [Common swifts remain airborne for ~10 months.]"}],
 
 para[{bold["Fink, D., Auer, T., Johnston, A., Strimas-Mackey, M., Ligocki, \
 S., Robinson, O., Hochachka, W., et al."], " eBird Status and Trends. \
@@ -930,12 +946,23 @@ TimeConstrained[
          WindowSize -> {980, 800}, StyleDefinitions -> "Default.nb"];
       NotebookSave[nbObj, outNb];
       Print["wrote ", outNb, " (", FileByteCount[outNb], " B)"];
-      Quiet @ Check[
-         Export[outPdf, nbObj];
-         Print["wrote ", outPdf, " (", FileByteCount[outPdf], " B)"],
-         Print["warn: PDF export failed"]];
+      (* Export the saved notebook to PDF. Errors are surfaced (no Quiet) so a
+         failed/partial render is visible, not silently swallowed. *)
+      Export[outPdf, nbObj];
+      Print["wrote ", outPdf, " (", FileByteCount[outPdf], " B)"];
       NotebookClose[nbObj];
    ],
-   900,
-   Print["warn: notebook save timed out"]
+   1800,
+   Print["ERROR: notebook save timed out"]; Exit[1]
 ];
+
+(* Verify the PDF is complete: enough pages and a sane byte count. The full
+   post is ~15 pages; a truncated export (e.g. an empty Reproducibility section)
+   shows up as too few pages. Fail loudly so a broken PDF is never committed. *)
+If[FileExistsQ[outPdf],
+   Module[{pc = Quiet @ Check[Import[outPdf, "PageCount"], 0]},
+      Print["PDF pages: ", pc, "  bytes: ", FileByteCount[outPdf]];
+      If[! IntegerQ[pc] || pc < 13,
+         Print["ERROR: PDF looks truncated (", pc, " pages, expected >=13)"]; Exit[1]]],
+   Print["ERROR: no PDF produced"]; Exit[1]];
+Print["build_notebook: OK"];

@@ -28,7 +28,7 @@ trackName = <|
 
 cols = <|
   5229230 -> RGBColor[1, 0.4, 0.25],
-  5228676 -> RGBColor[0.2, 0.55, 0.95],
+  5228676 -> RGBColor[0.35, 0.9, 1.0],   (* cyan, matching the hero legend *)
   2481765 -> RGBColor[0.9, 0.7, 0.1]
 |>;
 

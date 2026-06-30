@@ -1,0 +1,26 @@
+[
+	{
+		"species":"Arctic tern",
+		"obsLatSpanDeg":1.1080000000000001e2,
+		"nullMeanDeg":1.55e1,
+		"nullMaxDeg":2.0400000000000002e1,
+		"p":1.996007984031936e-3,
+		"nRecords":60000
+	},
+	{
+		"species":"Common swift",
+		"obsLatSpanDeg":6.36e1,
+		"nullMeanDeg":6.2,
+		"nullMaxDeg":8.8,
+		"p":1.996007984031936e-3,
+		"nRecords":60000
+	},
+	{
+		"species":"Red knot",
+		"obsLatSpanDeg":3.36e1,
+		"nullMeanDeg":3.3000000000000003,
+		"nullMaxDeg":5.9,
+		"p":1.996007984031936e-3,
+		"nRecords":60000
+	}
+]

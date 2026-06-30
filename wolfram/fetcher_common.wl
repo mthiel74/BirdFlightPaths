@@ -1,6 +1,6 @@
 (* ::Package:: *)
 $repoRoot = ParentDirectory[DirectoryName[$InputFileName]];
-$userAgent = "BirdFlightPaths/0.1 (marco_thiel@yahoo.com)";
+$userAgent = "BirdFlightPaths/0.1 (https://github.com/mthiel74/BirdFlightPaths)";
 
 $speciesList = {
   <|"common"->"Arctic tern", "sci"->"Sterna paradisaea", "key"->5229230, "code"->"arcter"|>,

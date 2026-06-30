@@ -302,19 +302,45 @@ the post."], " Every figure is pre-rendered into the notebook as a static \
 image, so the prose, maps, and animations all work without evaluating \
 anything."}],
 
-para[{"If you ", ital["do"], " want to run the code cells, the helper \
-functions (spherical centroid, centroid-CSV loaders, orthographic globe, \
-live-sightings fetcher) live in a single attached package, ",
-   mono["birdflightpaths_helpers.wl"], ", uploaded alongside the notebook. \
-Run the cell below once after opening the notebook; it loads every helper \
-symbol used in the rest of the post."}],
+para[{ital["To run it yourself you need just two files"], " in the same \
+folder: this notebook and the companion package ",
+   mono["birdflightpaths_helpers.wl"], " (attached). The package is \
+self-contained \[LongDash] it carries the spherical-centroid maths, the \
+orthographic-globe renderer, and the live-sightings fetcher, and it ",
+   bold["pulls its data live"], " from public sources, so no data files ship \
+with the notebook. Put the two files together, open the notebook, and \
+shift-Enter the cell below once:"}],
 
-wlIn["(* Put birdflightpaths_helpers.wl in the same folder as this
-   notebook, then shift-Enter. The package sets $BFPDataDir-relative
-   paths; point it at your local data/ folder if needed. *)
+wlIn["(* Two files only: this notebook + birdflightpaths_helpers.wl, same folder. *)
 SetDirectory[NotebookDirectory[]];
-$BFPDataDir = FileNameJoin[{NotebookDirectory[], \"data\"}];
-Get[\"birdflightpaths_helpers.wl\"];"]
+Get[\"birdflightpaths_helpers.wl\"];"],
+
+para[{ital["What you need (and where to get it)."], " The core analysis \[LongDash] \
+occurrences, centroids, the per-flyway maps and globes \[LongDash] needs ",
+   bold["nothing"], ": it reads eBird observations through GBIF's public API \
+(the eBird Observation Dataset, CC BY 4.0) ", ital["anonymously"], ", so a cell \
+like ", mono["centroidGlobe[5229230]"], " just works (it fetches and computes on \
+the spot; first call takes a few seconds)."}],
+
+para[{"Two optional pieces need a free key, which is why they are shown as code \
+plus a static image rather than auto-run:"}],
+
+para[{"\[Bullet] ", bold["Live recent sightings"], " \[LongDash] a free eBird \
+API 2.0 token: sign in at ", link["ebird.org", "https://ebird.org"],
+   ", request a token at ", link["ebird.org/api/keygen", "https://ebird.org/api/keygen"],
+   ", then set ", mono["$ebirdApiToken = \"\[Ellipsis]\""], " and call ",
+   mono["LoadLiveSightings[\"arcter\", $ebirdApiToken]"], "."}],
+
+para[{"\[Bullet] ", bold["Status & Trends cross-check"], " \[LongDash] the R \
+package ", mono["ebirdst"], " plus a free Status & Trends access key from ",
+   link["science.ebird.org", "https://science.ebird.org/en/status-and-trends/download-data"],
+   " (research/education, non-commercial \[LongDash] see \[Section]Acknowledgements). \
+The exact archived GBIF snapshot used here was minted with a free ",
+   link["GBIF", "https://www.gbif.org"], " account; the anonymous fetch above \
+needs no account."}],
+
+para[{ital["No credentials are stored in the notebook or the package"], " \
+\[LongDash] only placeholders you replace with your own key."}]
 
 }];
 
@@ -677,11 +703,15 @@ between consecutive monthly centroids (over observed months only) gives the \
 ", bold["annual centroid displacement"], " \[LongDash] how far the centre \
 of mass travels in a year:"}],
 
-wlIn["(* Annual centroid displacement per primary flyway track. *)
-pl = Import[FileNameJoin[{$BFPDataDir, \"path_lengths.csv\"}], \"CSV\"];
-prim = Select[Rest[pl], ! StringContainsQ[#[[3]], \"global\", IgnoreCase -> True] &];
-BarChart[prim[[All, 4]],
-   ChartLabels -> (Style[#[[2]] <> \"\\n(\" <> #[[3]] <> \")\", 10] & /@ prim),
+wlIn["(* Annual centroid displacement per flyway, computed live from the
+   centroids (monthlyCentroids fetches public GBIF data; no files needed). *)
+pathLenKm[key_] := Module[{tr = monthlyCentroids[key][[All, {2, 3}]], n},
+   n = Length[tr];
+   Total @ Table[QuantityMagnitude @ UnitConvert[
+      GeoDistance[tr[[i]], tr[[Mod[i, n] + 1]]], \"Kilometers\"], {i, n}]];
+spp = {5228676, 2481765, 5229230};
+BarChart[pathLenKm /@ spp,
+   ChartLabels -> (speciesName /@ spp), ChartStyle -> (speciesColors /@ spp),
    BarOrigin -> Left,
    PlotLabel -> Style[
      \"Annual centroid displacement (km) -- NOT individual journey distance\", 13],
@@ -1077,10 +1107,11 @@ the ", bold["eBird API 2.0"], " recent-observations endpoint (",
 species in a region. We sweep a representative spread of countries and plot \
 the result:"}],
 
-wlIn["(* Live recent sightings (last 30 days, as of late June 2026). LoadLiveSightings sweeps a
-   spread of regions, returns {lat,lon} pairs ROUNDED TO 0.1 deg for
-   privacy. Supply your own eBird API 2.0 token. *)
-pts = LoadLiveSightings[\"arcter\", \"<your-ebird-api-token>\"];  (* arcter|comswi|redkno *)
+wlIn["(* Live recent sightings (last 30 days, as of late June 2026). LoadLiveSightings
+   sweeps a spread of regions, returns {lat,lon} pairs ROUNDED TO 0.1 deg for
+   privacy. First get a free token (https://ebird.org/api/keygen) and set:
+     $ebirdApiToken = \"your-token-here\";  *)
+pts = LoadLiveSightings[\"arcter\", $ebirdApiToken];  (* species code: arcter|comswi|redkno *)
 GeoListPlot[GeoPosition /@ pts, GeoRange -> \"World\",
    GeoProjection -> \"Robinson\", GeoBackground -> GrayLevel[0.15],
    PlotStyle -> Directive[Orange, Opacity[0.7], PointSize[0.006]],

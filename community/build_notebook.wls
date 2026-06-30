@@ -201,6 +201,10 @@ gmF[spec_, field_, f_] := f[Lookup[gmRec[spec], field, Missing[]]];
 $pn = loadArr["permutation_null.json"];   (* keyed by string "species" *)
 pnRec[spec_] := SelectFirst[$pn, #["species"] === spec &, <||>];
 pnF[spec_, field_, f_] := f[Lookup[pnRec[spec], field, Missing[]]];
+$bh = loadArr["bootstrap_halos.json"];    (* keyed by string "species" *)
+bhRec[spec_] := SelectFirst[$bh, #["species"] === spec &, <||>];
+bhSpan[spec_, agg_] := With[{r = Lookup[bhRec[spec], "ellipseSpanDeg", {}]},
+   If[r === {}, "?", n1[agg[r]]]];
 Print["journey_metrics rows: ", Length[$jm],
    "  energetics rows: ", Length[$en],
    "  geomag rows: ", Length[$gm]];
@@ -602,7 +606,26 @@ observed span (Arctic tern ", pnF["Arctic tern", "obsLatSpanDeg", n1],
    "\[Degree], red knot ", pnF["Red knot", "obsLatSpanDeg", n1],
    "\[Degree]). Every observed span is roughly ten times the largest shuffled \
 value (", bold["p < 0.002"], ", n = 500) \[LongDash] the seasonal loop is a real \
-signal in the data, not an artifact of observer geography."]
+signal in the data, not an artifact of observer geography."],
+
+hd2["4.2  How sharply is each monthly centroid pinned?"],
+
+para[{"A point on a map invites false confidence. Each monthly centroid is an \
+estimate from a finite, uneven sample, so it deserves an error bar. We attach one \
+by ", bold["block-bootstrapping over years"], ": for each month we resample the \
+2014\[Dash]2024 years with replacement, recompute the gridded centroid, repeat 300 \
+times, and draw the 95% confidence ellipse of the resulting cloud. Tight ellipses \
+mark well-sampled months; sprawling ones mark the sparse, oceanic stretches where \
+the centroid is barely constrained."}],
+
+imgCell["bootstrap_halos.png"],
+captionCell["Figure 4.5  Monthly centroids with their 95% block-bootstrap \
+confidence ellipses (resampling years). The contrast is the point: the Arctic \
+tern's ocean-crossing months span about ", bhSpan["Arctic tern", Max],
+   "\[Degree] of latitude uncertainty over the open Atlantic, but tighten to ~",
+   bhSpan["Arctic tern", Min], "\[Degree] at the densely-watched Greenland/Iceland \
+breeding grounds. The honest reading of a centroid map is: trust the tight \
+months, treat the sprawling ones as directional, not precise."]
 
 }];
 

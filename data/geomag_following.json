@@ -1,0 +1,20 @@
+[
+	{
+		"species":"Arctic tern",
+		"inclSDdeg":5.51e1,
+		"nullMedianSDdeg":5.6800000000000004e1,
+		"fracNullTighter":4.3000000000000003e-2
+	},
+	{
+		"species":"Common swift",
+		"inclSDdeg":4.21e1,
+		"nullMedianSDdeg":4.07e1,
+		"fracNullTighter":1.0
+	},
+	{
+		"species":"Red knot",
+		"inclSDdeg":1.34e1,
+		"nullMedianSDdeg":1.3100000000000001e1,
+		"fracNullTighter":0.998
+	}
+]

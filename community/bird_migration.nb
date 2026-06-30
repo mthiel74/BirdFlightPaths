@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       154,          7]
-NotebookDataLength[   8155001,     135026]
-NotebookOptionsPosition[   8137199,     134784]
-NotebookOutlinePosition[   8137641,     134802]
-CellTagsIndexPosition[   8137598,     134799]
+NotebookDataLength[   8154997,     135026]
+NotebookOptionsPosition[   8137195,     134784]
+NotebookOutlinePosition[   8137637,     134802]
+CellTagsIndexPosition[   8137594,     134799]
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
@@ -23,18 +23,18 @@ Cell[CellGroupData[{
 Cell["Bird migration paths from eBird data", "Title",
  FontFamily->"Roboto Condensed",
  FontColor->RGBColor[
-  0.153, 0.51, 0.64],ExpressionUUID->"83fe0f77-b078-423d-a58f-7557b07a2920"],
+  0.153, 0.51, 0.64],ExpressionUUID->"3b5368a2-26e4-46c9-ace1-81aa9db49257"],
 
 Cell["\<\
 Seasonal maps and animated population centroids for the Arctic tern, common \
-swift, and red knot \[LongDash] from hundreds of millions of citizen-science \
+swift, and red knot \[LongDash] from more than two billion citizen-science \
 observations\
-\>", "Subtitle",ExpressionUUID->"9e790cc7-33e2-4e7b-b5b7-03fb96711295"],
+\>", "Subtitle",ExpressionUUID->"1c44ba03-547d-4e9a-9fd6-18b8f1a1a3f5"],
 
 Cell["Wolfram Community submission \[LongDash] 2026", "Subsubtitle",
  FontSlant->Italic,
  FontColor->GrayLevel[
-  0.4],ExpressionUUID->"e2e2cb6e-7e0d-42f5-bfac-64bbd2014cb9"],
+  0.4],ExpressionUUID->"47792a6d-bc21-4570-be4e-4bd147f63338"],
 
 Cell[BoxData[
  TagBox[GridBox[{
@@ -27800,7 +27800,7 @@ given in \[Section]3\[Dash]\[Section]5.\"\>",
   "Column"]], "Output",
  CellMargins->{{Automatic, Automatic}, {10, 14}},
  ShowCellLabel->False,
- TextAlignment->Center,ExpressionUUID->"c7823b69-60d7-4d98-91d3-1e974a35fad1"],
+ TextAlignment->Center,ExpressionUUID->"904e0949-d4a2-41b2-b7ed-d7bdfda24813"],
 
 Cell[CellGroupData[{
 
@@ -27808,7 +27808,7 @@ Cell["Abstract", "Section",
  FontFamily->"Roboto Condensed",
  FontSize->30,
  FontColor->RGBColor[
-  0.153, 0.51, 0.64],ExpressionUUID->"82f017ff-9e29-4caa-8f43-5e4eadce7d88"],
+  0.153, 0.51, 0.64],ExpressionUUID->"2ede60ad-e590-4fb4-8fda-404b4d79cf11"],
 
 Cell[TextData[{
  "This notebook reconstructs the annual migration of three iconic birds \
@@ -27836,7 +27836,7 @@ citizen-science data, in pure Wolfram Language."
  CellMargins->{{60, 60}, {6, 6}},
  FontSize->14,
  Background->RGBColor[
-  0.94, 0.97, 0.98],ExpressionUUID->"ec9f6740-34ae-46a9-9c8f-9faf50a9d91b"],
+  0.94, 0.97, 0.98],ExpressionUUID->"00abf34e-c96c-42f1-ba1d-5e8271426a82"],
 
 Cell[TextData[{
  "The pipeline pulls eBird observations through ",
@@ -27863,7 +27863,7 @@ API."
  CellMargins->{{60, 60}, {6, 6}},
  FontSize->14,
  Background->RGBColor[
-  0.94, 0.97, 0.98],ExpressionUUID->"b579a6d3-7829-4413-b1d4-62085c847d3b"],
+  0.94, 0.97, 0.98],ExpressionUUID->"33d75490-a733-4f81-8843-2346e073d969"],
 
 Cell[TextData[{
  "The central lesson is methodological: a single ",
@@ -27883,7 +27883,7 @@ specialist."
  CellMargins->{{60, 60}, {6, 6}},
  FontSize->14,
  Background->RGBColor[
-  0.94, 0.97, 0.98],ExpressionUUID->"db1679dd-2b5d-4da1-a9a8-1cb634179edf"]
+  0.94, 0.97, 0.98],ExpressionUUID->"b774ca9e-996d-4544-b6e2-7a1108a0fb55"]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -27892,7 +27892,7 @@ Cell["Setup (optional \[LongDash] only needed to run the code)", "Section",
  FontFamily->"Roboto Condensed",
  FontSize->30,
  FontColor->RGBColor[
-  0.153, 0.51, 0.64],ExpressionUUID->"8fd455e8-f7cc-495f-b5e1-58d807893115"],
+  0.153, 0.51, 0.64],ExpressionUUID->"f1e881b7-d283-4353-b9a2-763fc7b89525"],
 
 Cell[TextData[{
  StyleBox["You can ignore this section entirely if you just want to read the \
@@ -27902,7 +27902,7 @@ post.",
 prose, maps, and animations all work without evaluating anything."
 }], "Text",
  CellMargins->{{50, 50}, {6, 
-  6}},ExpressionUUID->"c4cdc97c-4d93-44f4-b1eb-266d39acf7ee"],
+  6}},ExpressionUUID->"abaaf6a3-249e-4882-933b-dbf0023d1ad1"],
 
 Cell[TextData[{
  StyleBox["To run it yourself you need just two files",
@@ -27919,7 +27919,7 @@ live-sightings fetcher, and it ",
 files together, open the notebook, and shift-Enter the cell below once:"
 }], "Text",
  CellMargins->{{50, 50}, {6, 
-  6}},ExpressionUUID->"e2305ff2-c6e8-43e5-aa29-da0d04fb0314"],
+  6}},ExpressionUUID->"1f69b00e-9cbe-4a01-bcc1-e3ceecc72541"],
 
 Cell["\<\
 (* Two files only: this notebook + birdflightpaths_helpers.wl, same folder. \
@@ -27928,7 +27928,7 @@ SetDirectory[NotebookDirectory[]];
 Get[\"birdflightpaths_helpers.wl\"];\
 \>", "Input",
  CellMargins->{{60, 30}, {6, 6}},
- FontSize->11,ExpressionUUID->"9e45a41f-c1ba-4dab-b3c4-3e6bb612bc00"],
+ FontSize->11,ExpressionUUID->"df97e8c3-7865-41d8-824e-a26995ff2a1d"],
 
 Cell[TextData[{
  StyleBox["What you need (and where to get it).",
@@ -27948,14 +27948,14 @@ Observation Dataset, CC BY 4.0) ",
 seconds)."
 }], "Text",
  CellMargins->{{50, 50}, {6, 
-  6}},ExpressionUUID->"3fa7f8cb-40cf-42c7-9bd7-67acee7a1aa9"],
+  6}},ExpressionUUID->"0cec3caa-4284-432d-9668-51b3bd905268"],
 
 Cell["\<\
 Two optional pieces need a free key, which is why they are shown as code plus \
 a static image rather than auto-run:\
 \>", "Text",
  CellMargins->{{50, 50}, {6, 
-  6}},ExpressionUUID->"7edf622e-e87c-42e5-8694-703dce071674"],
+  6}},ExpressionUUID->"9ddebe7a-e17b-4994-a0ff-880433f6dde4"],
 
 Cell[TextData[{
  "\[Bullet] ",
@@ -27986,7 +27986,7 @@ Cell[TextData[{
  "."
 }], "Text",
  CellMargins->{{50, 50}, {6, 
-  6}},ExpressionUUID->"c2c971b9-bdbb-4d7a-943e-b8cb715630c8"],
+  6}},ExpressionUUID->"cf50af3c-5c18-4114-8fc9-b7e0f7f38885"],
 
 Cell[TextData[{
  "\[Bullet] ",
@@ -28016,7 +28016,7 @@ minted with a free ",
  " account; the anonymous fetch above needs no account."
 }], "Text",
  CellMargins->{{50, 50}, {6, 
-  6}},ExpressionUUID->"69b1687d-2c00-4ad5-a7d1-fc691f3418a7"],
+  6}},ExpressionUUID->"c7eaaee4-d93e-4bf1-bbfe-76c619de8ac4"],
 
 Cell[TextData[{
  StyleBox["No credentials are stored in the notebook or the package",
@@ -28024,7 +28024,7 @@ Cell[TextData[{
  " \[LongDash] only placeholders you replace with your own key."
 }], "Text",
  CellMargins->{{50, 50}, {6, 
-  6}},ExpressionUUID->"e576029f-6566-42ab-892b-5a945f0a0a75"]
+  6}},ExpressionUUID->"648bc90b-eef5-466d-95fd-f0f0022097fe"]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -28033,7 +28033,7 @@ Cell["1.  Three great migrants & why migration matters", "Section",
  FontFamily->"Roboto Condensed",
  FontSize->30,
  FontColor->RGBColor[
-  0.153, 0.51, 0.64],ExpressionUUID->"ce71ebbb-c1ba-4231-abc3-8395f6e8c567"],
+  0.153, 0.51, 0.64],ExpressionUUID->"53328980-d3b5-45c4-8436-1701176d6d30"],
 
 Cell[TextData[{
  StyleBox["The basic story.",
@@ -28047,7 +28047,7 @@ sustained, navigated, long-distance flight, twice annually, for life. We \
 follow three species that bracket the extremes of that feat."
 }], "Text",
  CellMargins->{{50, 50}, {6, 
-  6}},ExpressionUUID->"85e962bf-3b6f-45da-b56f-6929aac19af3"],
+  6}},ExpressionUUID->"bb72ce14-561c-40da-bf6a-1752d48fc19f"],
 
 Cell[TextData[{
  StyleBox["Arctic tern",
@@ -28067,7 +28067,7 @@ pack ice and back (Egevang et al. 2010, ",
 the Arctic tern experiences more daylight per year than any other animal."
 }], "Text",
  CellMargins->{{50, 50}, {6, 
-  6}},ExpressionUUID->"f46ac96d-25de-475d-a4e6-964b210d2eb9"],
+  6}},ExpressionUUID->"ce4aa137-572f-4489-a825-5ff4df5e8987"],
 
 Cell[TextData[{
  StyleBox["Common swift",
@@ -28085,7 +28085,7 @@ aloft \[LongDash] landing essentially only to breed. A young swift may not \
 touch a solid surface for its first two or three years of life."
 }], "Text",
  CellMargins->{{50, 50}, {6, 
-  6}},ExpressionUUID->"630835f1-1ada-45a4-9dc0-448aaceb5fcb"],
+  6}},ExpressionUUID->"772665f9-de48-4f93-8fc6-90bb5ca4896e"],
 
 Cell[TextData[{
  StyleBox["Red knot",
@@ -28103,7 +28103,7 @@ the final leg to the Arctic. That tight coupling makes the species a textbook \
 case of migratory vulnerability."
 }], "Text",
  CellMargins->{{50, 50}, {6, 
-  6}},ExpressionUUID->"cc3f7471-7f5b-4f1d-adcc-3803177a7ec0"],
+  6}},ExpressionUUID->"67a62b24-43a7-46e6-b7e4-1199326912c2"],
 
 Cell[TextData[{
  StyleBox["Why migration matters.",
@@ -28117,7 +28117,7 @@ both ends of its range. Mapping where these birds are, month by month, is the \
 first step to understanding and protecting them."
 }], "Text",
  CellMargins->{{50, 50}, {6, 
-  6}},ExpressionUUID->"6f4f4772-74ae-438e-a58c-5f12018893ca"]
+  6}},ExpressionUUID->"892515f2-3433-49f5-ab7f-88da8493b0c6"]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -28126,7 +28126,7 @@ Cell["2.  The data: eBird, GBIF, and the effort-bias problem", "Section",
  FontFamily->"Roboto Condensed",
  FontSize->30,
  FontColor->RGBColor[
-  0.153, 0.51, 0.64],ExpressionUUID->"0cb0680b-a742-498e-8060-d09176372d28"],
+  0.153, 0.51, 0.64],ExpressionUUID->"60b59041-e648-4ed8-8029-a5f7a59b1d10"],
 
 Cell[TextData[{
  StyleBox["Where the data come from.",
@@ -28135,10 +28135,10 @@ Cell[TextData[{
  StyleBox["eBird",
   FontWeight->Bold],
  ", run by the Cornell Lab of Ornithology, is the world's largest \
-biodiversity citizen-science project: hundreds of millions of bird \
-observations submitted by hundreds of thousands of volunteer birdwatchers as \
-dated, located checklists. We do not query eBird directly. Instead we access \
-its observations through ",
+biodiversity citizen-science project: more than two billion bird observations \
+submitted by hundreds of thousands of volunteer birdwatchers as dated, \
+located checklists. We do not query eBird directly. Instead we access its \
+observations through ",
  StyleBox["GBIF",
   FontWeight->Bold],
  " (the Global Biodiversity Information Facility), which republishes them as \
@@ -28152,7 +28152,7 @@ the ",
 we cite the source DOI."
 }], "Text",
  CellMargins->{{50, 50}, {6, 
-  6}},ExpressionUUID->"06246d96-b77b-4f20-806f-9ba2a3c45ed9"],
+  6}},ExpressionUUID->"8eeeebe1-02c5-4ae6-ae1f-9fdf2f5e8e7d"],
 
 Cell[TextData[{
  "GBIF's Download API lets us mint a reproducible, ",
@@ -28169,7 +28169,7 @@ is the actual query structure used by the project's ",
  ":"
 }], "Text",
  CellMargins->{{50, 50}, {6, 
-  6}},ExpressionUUID->"dc22d803-5302-441e-b1e5-3326bff341a8"],
+  6}},ExpressionUUID->"dc8708da-bfb2-4485-9821-9907b1bd7534"],
 
 Cell["\<\
 (* GBIF Download API predicate: one citable download per species.
@@ -28193,7 +28193,7 @@ ToString[key]|>,
    that resolves to a permanent DOI once the archive is built. *)\
 \>", "Input",
  CellMargins->{{60, 30}, {6, 6}},
- FontSize->11,ExpressionUUID->"27eba099-1cc7-4294-ad5d-ddf3fcccdf78"],
+ FontSize->11,ExpressionUUID->"bfc1a371-2566-45f7-84fb-401ba7277f28"],
 
 Cell[TextData[{
  "The raw archive arrives as a tidy table of ",
@@ -28204,7 +28204,7 @@ seasonal story \[LongDash] here for the Arctic tern, whose occurrences sweep \
 from the northern breeding grounds down the Atlantic and back over the year:"
 }], "Text",
  CellMargins->{{50, 50}, {6, 
-  6}},ExpressionUUID->"88fe1786-04d3-4444-a7d9-1d0e712897de"],
+  6}},ExpressionUUID->"c7a00cfd-04b4-4c4b-9fe9-1f0cb285497b"],
 
 Cell[CellGroupData[{
 
@@ -28223,7 +28223,7 @@ Grid@Partition[Table[
    {m, 12}], 4]\
 \>", "Input",
  CellMargins->{{60, 30}, {6, 6}},
- FontSize->11,ExpressionUUID->"c05ae421-dc63-43e6-aa26-c9fc5e2187ae"],
+ FontSize->11,ExpressionUUID->"b01f37c5-3a23-4962-b695-4c65c5d4a259"],
 
 Cell[BoxData[
  GraphicsBox[
@@ -30136,7 +30136,7 @@ rEdZ/P8AcZX8Zw==
   PlotRange->{{0, 384.}, {0, 165.}}]], "Output",
  CellMargins->{{Automatic, Automatic}, {10, 6}},
  ShowCellLabel->False,
- TextAlignment->Center,ExpressionUUID->"1d822ef6-d333-44be-b336-f47832959079"]
+ TextAlignment->Center,ExpressionUUID->"dbf8e823-0ad0-4e8a-bade-ed73b61fed32"]
 }, Open  ]],
 
 Cell[TextData[{
@@ -30153,7 +30153,7 @@ both visible. ",
  FontSize->11,
  FontSlant->Italic,
  FontColor->GrayLevel[
-  0.35],ExpressionUUID->"84892441-ee13-469b-b845-f90e29e036a5"],
+  0.35],ExpressionUUID->"e926f88a-554c-47ad-abcd-9a17a785d7b7"],
 
 Cell[TextData[{
  StyleBox["The honest caveat: effort bias.",
@@ -30173,7 +30173,7 @@ conclusions \[LongDash] which is exactly what the centroid method in \
 \[Section]3 is built to do."
 }], "Text",
  CellMargins->{{50, 50}, {6, 
-  6}},ExpressionUUID->"f5083356-1e05-4997-8be8-30f66761a1a5"]
+  6}},ExpressionUUID->"f0283269-7a55-4d65-93a3-30235980c59c"]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -30182,7 +30182,7 @@ Cell["3.  From checklists to centroids (method)", "Section",
  FontFamily->"Roboto Condensed",
  FontSize->30,
  FontColor->RGBColor[
-  0.153, 0.51, 0.64],ExpressionUUID->"f772f696-6f0a-4355-a588-ba628aefbacf"],
+  0.153, 0.51, 0.64],ExpressionUUID->"8848b2df-2630-4119-bffe-e15024b3ae54"],
 
 Cell[TextData[{
  StyleBox["The idea.",
@@ -30197,14 +30197,14 @@ naively this inherits all the effort bias of \[Section]2 and is geometrically \
 wrong for a round planet. Two corrections fix both problems."
 }], "Text",
  CellMargins->{{50, 50}, {6, 
-  6}},ExpressionUUID->"78400971-df66-42ed-8017-80668be4eb2f"],
+  6}},ExpressionUUID->"a7e7d64c-22eb-4af0-9f0d-d82d9e9cc69c"],
 
 Cell[CellGroupData[{
 
 Cell["3.1  Correction one: presence weighting on a coarse grid", "Subsection",
  FontFamily->"Roboto Condensed",
  FontColor->RGBColor[
-  0.153, 0.51, 0.64],ExpressionUUID->"33722a35-a779-4353-9c9f-2f33f1847b8b"],
+  0.153, 0.51, 0.64],ExpressionUUID->"12acd81b-c248-4037-a60b-6a4abc1e1b1f"],
 
 Cell[TextData[{
  "A raw average over occurrence ",
@@ -30226,7 +30226,7 @@ present,\[CloseCurlyDoubleQuote] which is far closer to the quantity we \
 want."
 }], "Text",
  CellMargins->{{50, 50}, {6, 
-  6}},ExpressionUUID->"c6c2344a-5865-4b1e-b57f-3d2a00ccd3b6"],
+  6}},ExpressionUUID->"adb61420-b145-4817-b593-c8dffe807226"],
 
 Cell[TextData[{
  StyleBox["A subtlety for the specialist.",
@@ -30244,7 +30244,7 @@ converted to a unit vector whose contribution is naturally weighted by the \
 geometry of the sphere, not by a flat lon\[Times]lat rectangle."
 }], "Text",
  CellMargins->{{50, 50}, {6, 
-  6}},ExpressionUUID->"86c24729-d1e8-43a3-9039-c7720c4f05f2"]
+  6}},ExpressionUUID->"090e0ad8-dee2-454e-8bc2-07d135b32607"]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -30252,7 +30252,7 @@ Cell[CellGroupData[{
 Cell["3.2  Correction two: a proper spherical centroid", "Subsection",
  FontFamily->"Roboto Condensed",
  FontColor->RGBColor[
-  0.153, 0.51, 0.64],ExpressionUUID->"beeb3fc1-9259-4977-a960-667315ac6f6a"],
+  0.153, 0.51, 0.64],ExpressionUUID->"ff72271e-8df8-4522-b3ea-62e5a4a7f16b"],
 
 Cell[TextData[{
  "The deeper problem is that ",
@@ -30266,7 +30266,7 @@ simply meaningless. The correct construction embeds each point on the unit \
 sphere, averages the 3-D vectors, and projects back:"
 }], "Text",
  CellMargins->{{50, 50}, {6, 
-  6}},ExpressionUUID->"cedadb9c-8c9a-4e15-b936-38d159675887"],
+  6}},ExpressionUUID->"a21fa3ee-cef3-4401-8d3f-d74e431710df"],
 
 Cell["\<\
 (* Weighted spherical mean of (lat,lon) points. Returns {lat,lon}
@@ -30284,7 +30284,7 @@ sphericalCentroid[lats_, lons_, w_] := Module[{v, m},
   {ArcSin[m[[3]]]/Degree, ArcTan[m[[1]], m[[2]]]/Degree}];\
 \>", "Input",
  CellMargins->{{60, 30}, {6, 6}},
- FontSize->11,ExpressionUUID->"a6e04f7e-3d40-404a-b188-3b6586ddc12d"],
+ FontSize->11,ExpressionUUID->"0a4ce47d-6110-4521-bb2e-98d8a0bb0ea6"],
 
 Cell[TextData[{
  "The ",
@@ -30301,7 +30301,7 @@ precisely the situation a global centroid walks into for a multi-flyway \
 species, and the reason we must split by flyway first."
 }], "Text",
  CellMargins->{{50, 50}, {6, 
-  6}},ExpressionUUID->"ecbb3889-5614-4eb1-9043-c5083be93b06"]
+  6}},ExpressionUUID->"36135e96-ef6e-4874-ae8d-61e4de591d76"]
 }, Open  ]]
 }, Open  ]],
 
@@ -30311,7 +30311,7 @@ Cell["4.  The multi-flyway trap (the key lesson)", "Section",
  FontFamily->"Roboto Condensed",
  FontSize->30,
  FontColor->RGBColor[
-  0.153, 0.51, 0.64],ExpressionUUID->"7bc0a5ce-689e-4e01-8625-597b9351bf63"],
+  0.153, 0.51, 0.64],ExpressionUUID->"711ab4e4-933c-4af2-b064-ef9ed00dd14f"],
 
 Cell[TextData[{
  StyleBox["The trap.",
@@ -30331,7 +30331,7 @@ to a single, ",
  " \[LongDash] the midpoint of two crowds is the empty space between them."
 }], "Text",
  CellMargins->{{50, 50}, {6, 
-  6}},ExpressionUUID->"69e54a62-782b-493f-a1bf-bbcb5a15467c"],
+  6}},ExpressionUUID->"cb062b1a-c427-4a59-b705-d60b4c0fb581"],
 
 Cell[TextData[{
  "The red knot is the textbook case. Pool its Americas, European/African, and \
@@ -30351,7 +30351,7 @@ signature of averaging across populations that should never have been \
 combined."
 }], "Text",
  CellMargins->{{50, 50}, {6, 
-  6}},ExpressionUUID->"7d68f5e7-fe2d-4b72-9893-58e84fcfe254"],
+  6}},ExpressionUUID->"5abbb8a7-9a91-4335-89e1-2ad631ffe183"],
 
 Cell["\<\
 (* The fix: restrict to one coherent flyway BEFORE taking the
@@ -30367,7 +30367,7 @@ tern  = monthlyCentroids[5229230, <|\"lon\" -> {-80, 20},   \"lat\" -> {-90, \
 knotGlobal = monthlyCentroids[2481765, All];\
 \>", "Input",
  CellMargins->{{60, 30}, {6, 6}},
- FontSize->11,ExpressionUUID->"9ef14052-188b-4a64-be9d-6bda8a74d4cd"],
+ FontSize->11,ExpressionUUID->"fa135371-55d8-4bee-b8e6-313715fdb293"],
 
 Cell["\<\
 With each species reduced to a single coherent flyway, the monthly centroids \
@@ -30379,7 +30379,7 @@ separately, as a latitude-versus-month curve, since its defining signal is \
 the pole-to-pole north\[Dash]south sweep):\
 \>", "Text",
  CellMargins->{{50, 50}, {6, 
-  6}},ExpressionUUID->"4ebb8ebc-edb7-402d-ad8c-0509528bf186"],
+  6}},ExpressionUUID->"df2adc02-639e-4622-8e64-7cdc9a1120b8"],
 
 Cell[BoxData[
  GraphicsBox[
@@ -41332,7 +41332,7 @@ F2/fGA0sPm3qvzA6hSM8CPmefFgeOSAIem0BAAAAwDOBmXK7qN++4DJ/E3ri
   PlotRange->{{0, 432.}, {0, 442.8}}]], "Output",
  CellMargins->{{Automatic, Automatic}, {10, 6}},
  ShowCellLabel->False,
- TextAlignment->Center,ExpressionUUID->"9234c38a-e4d5-4868-814c-cd422a9736cd"],
+ TextAlignment->Center,ExpressionUUID->"47641ddb-c8f9-45cf-bbfe-f61400e40b13"],
 
 Cell["\<\
 Figure 4.1  Arctic tern \[LongDash] monthly population centroid on the \
@@ -41344,7 +41344,7 @@ high-Arctic breeding latitudes and back.\
  FontSize->11,
  FontSlant->Italic,
  FontColor->GrayLevel[
-  0.35],ExpressionUUID->"7ab6089d-78d7-4ddb-8b59-5f2f64aaca8e"],
+  0.35],ExpressionUUID->"b7d3efc3-34e9-4d2d-b94b-80da42ead00e"],
 
 Cell[BoxData[
  GraphicsBox[
@@ -53475,7 +53475,7 @@ H/zKT4f5gxW//LNjH5SjBuTz+SBkAQAAAABHgc/r3v93xnAAAPiM+f+c1Q9/
   PlotRange->{{0, 432.}, {0, 442.8}}]], "Output",
  CellMargins->{{Automatic, Automatic}, {10, 6}},
  ShowCellLabel->False,
- TextAlignment->Center,ExpressionUUID->"7a80c564-585f-4260-a6f9-a5d94ff6b535"],
+ TextAlignment->Center,ExpressionUUID->"b947b5b7-612a-4a29-a272-db9890058703"],
 
 Cell["\<\
 Figure 4.2  Common swift \[LongDash] monthly population centroid on the \
@@ -53488,7 +53488,7 @@ population.\
  FontSize->11,
  FontSlant->Italic,
  FontColor->GrayLevel[
-  0.35],ExpressionUUID->"a966ff1c-9e31-4ebb-a190-d1948ddebc45"],
+  0.35],ExpressionUUID->"895da798-f9e8-4d75-b628-4081a1405d48"],
 
 Cell[BoxData[
  GraphicsBox[
@@ -61429,7 +61429,7 @@ DNl/oxzjxJ2nT+88fXznCaVHE4/vT75+Nb/0dtHzliCC668kxGhj41b2tW3x
   PlotRange->{{0, 432.}, {0, 442.8}}]], "Output",
  CellMargins->{{Automatic, Automatic}, {10, 6}},
  ShowCellLabel->False,
- TextAlignment->Center,ExpressionUUID->"f2ba2c12-3ef0-46b6-b4dd-ad8643e0a975"],
+ TextAlignment->Center,ExpressionUUID->"212b8141-2e1e-4cbf-9a04-684e09cef818"],
 
 Cell[TextData[{
  "Figure 4.3  Red knot \[LongDash] monthly population centroid restricted to \
@@ -61455,7 +61455,7 @@ right; the precise southern extreme is pulled north."
  FontSize->11,
  FontSlant->Italic,
  FontColor->GrayLevel[
-  0.35],ExpressionUUID->"68cc1854-b2c2-49a8-8110-94f81b812347"],
+  0.35],ExpressionUUID->"cd240046-e59a-4a24-8774-6096ab0da629"],
 
 Cell[CellGroupData[{
 
@@ -61465,7 +61465,7 @@ birders are?\
 \>", "Subsection",
  FontFamily->"Roboto Condensed",
  FontColor->RGBColor[
-  0.153, 0.51, 0.64],ExpressionUUID->"0f819888-43ca-4403-a681-5d9e34d918be"],
+  0.153, 0.51, 0.64],ExpressionUUID->"ce1f2022-44e6-4e88-9184-6f8e3feda93b"],
 
 Cell[TextData[{
  "A fair challenge to everything so far: perhaps these loops are not \
@@ -61485,7 +61485,7 @@ the right null here; the autocorrelation caveat that weakens the photoperiod \
 test later applies only to that 12-month correlation.)"
 }], "Text",
  CellMargins->{{50, 50}, {6, 
-  6}},ExpressionUUID->"cbe63a82-e964-4ae3-a286-1724f2590a59"],
+  6}},ExpressionUUID->"3123e357-2626-43e3-b258-46c55f2fe3dc"],
 
 Cell[BoxData[
  GraphicsBox[
@@ -62228,7 +62228,7 @@ PJfc5ttvv71K7tr9P987etE=
   PlotRange->{{0, 398.7692307692308}, {0, 90.27692307692308}}]], "Output",
  CellMargins->{{Automatic, Automatic}, {10, 6}},
  ShowCellLabel->False,
- TextAlignment->Center,ExpressionUUID->"29942787-b65b-49b1-b772-e425732884dc"],
+ TextAlignment->Center,ExpressionUUID->"c5c71978-2e5d-4fc7-8b8f-eb2337b9475f"],
 
 Cell[TextData[{
  "Figure 4.4  Permutation null test. Grey histograms: the latitude span of \
@@ -62251,7 +62251,7 @@ an artifact of a static, seasonally-mislabelled range."
  FontSize->11,
  FontSlant->Italic,
  FontColor->GrayLevel[
-  0.35],ExpressionUUID->"2f87b5e1-fa51-4a90-a909-4c798207e786"]
+  0.35],ExpressionUUID->"d6edc40f-6d16-4fbd-b5d3-480288ff5b42"]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -62261,7 +62261,7 @@ Robustness check \[LongDash] how sharply is each monthly centroid pinned?\
 \>", "Subsection",
  FontFamily->"Roboto Condensed",
  FontColor->RGBColor[
-  0.153, 0.51, 0.64],ExpressionUUID->"b3ae2285-d3d8-46a4-b7d6-836fcfc4a1e8"],
+  0.153, 0.51, 0.64],ExpressionUUID->"f1096715-a5e8-4e5a-a3a8-52b40ac07a41"],
 
 Cell[TextData[{
  "A point on a map invites false confidence. Each monthly centroid is an \
@@ -62276,7 +62276,7 @@ sprawling ones mark the sparse, oceanic stretches where the centroid is \
 barely constrained."
 }], "Text",
  CellMargins->{{50, 50}, {6, 
-  6}},ExpressionUUID->"a23e1a45-42df-4e0d-8a29-1d07f9eb16cc"],
+  6}},ExpressionUUID->"4dcc704d-7f86-4af7-b77a-639bfc34230a"],
 
 Cell[BoxData[
  GraphicsBox[
@@ -70225,7 +70225,7 @@ d6IcYY0vPuOsPG4lFMHq9283BmDS
   PlotRange->{{0, 282.}, {0, 616.2}}]], "Output",
  CellMargins->{{Automatic, Automatic}, {10, 6}},
  ShowCellLabel->False,
- TextAlignment->Center,ExpressionUUID->"fb301440-074c-4bbd-8ed1-7d6383f1b08c"],
+ TextAlignment->Center,ExpressionUUID->"65579543-5884-4c1b-93c8-08cce330bd7d"],
 
 Cell["\<\
 Figure 4.5a  Arctic tern \[LongDash] monthly centroids with their 95% \
@@ -70238,7 +70238,7 @@ radius of about 23.8\[Degree] over the open Atlantic, but tighten to ~2.\
  FontSize->11,
  FontSlant->Italic,
  FontColor->GrayLevel[
-  0.35],ExpressionUUID->"cb02892f-a546-40b6-87b6-a95ef9a6464c"],
+  0.35],ExpressionUUID->"b8436429-53ae-44a0-b164-7a9170022070"],
 
 Cell[BoxData[
  GraphicsBox[
@@ -88403,7 +88403,7 @@ w5/y6031K3hTxa+rF+rX34U3v2357+znzb/8+Db+54777b/5iO/8xG+3fP9P
   PlotRange->{{0, 282.}, {0, 577.2}}]], "Output",
  CellMargins->{{Automatic, Automatic}, {10, 6}},
  ShowCellLabel->False,
- TextAlignment->Center,ExpressionUUID->"efa80728-a4af-4f2f-a17a-ac6971e82fac"],
+ TextAlignment->Center,ExpressionUUID->"edd73cd1-79b1-4b83-8ed3-8e9e7e5780f8"],
 
 Cell["\<\
 Figure 4.5b  Common swift \[LongDash] one coherent Afro-Palearctic flyway is \
@@ -88414,7 +88414,7 @@ well sampled year-round, so the ellipses stay small (mean radius down to ~0.7\
  FontSize->11,
  FontSlant->Italic,
  FontColor->GrayLevel[
-  0.35],ExpressionUUID->"e9659c82-5b9d-4325-b7c1-21c9174bfe9b"],
+  0.35],ExpressionUUID->"c58d386b-559a-4913-9740-a3be0b6c1c80"],
 
 Cell[BoxData[
  GraphicsBox[
@@ -98571,7 +98571,7 @@ rw==
   PlotRange->{{0, 282.}, {0, 535.8}}]], "Output",
  CellMargins->{{Automatic, Automatic}, {10, 6}},
  ShowCellLabel->False,
- TextAlignment->Center,ExpressionUUID->"f33366f4-c57f-4bd3-b7bf-a1e643d8cc4e"],
+ TextAlignment->Center,ExpressionUUID->"9cdc4340-b78e-4098-b7e5-d5211c3dd2fe"],
 
 Cell[TextData[{
  "Figure 4.5c  Red knot \[LongDash] the Americas flyway. ",
@@ -98585,7 +98585,7 @@ combining latitude and longitude.)"
  FontSize->11,
  FontSlant->Italic,
  FontColor->GrayLevel[
-  0.35],ExpressionUUID->"d9982e7d-284b-4ec6-bee2-74a110ece397"]
+  0.35],ExpressionUUID->"7bfda7f3-534b-4d72-b6e6-71fa9d1c3687"]
 }, Open  ]]
 }, Open  ]],
 
@@ -98595,7 +98595,7 @@ Cell["5.  Animating the population centroid", "Section",
  FontFamily->"Roboto Condensed",
  FontSize->30,
  FontColor->RGBColor[
-  0.153, 0.51, 0.64],ExpressionUUID->"b5ac9bc6-a781-41dc-9c37-b92d17b417bf"],
+  0.153, 0.51, 0.64],ExpressionUUID->"f72b4d9c-3f46-41a3-a0e7-5d0ec5301577"],
 
 Cell["\<\
 Stringing the twelve monthly centroids together and interpolating along great \
@@ -98606,7 +98606,7 @@ compact possible summary of \[OpenCurlyDoubleQuote]where is this population, \
 right now, on average.\[CloseCurlyDoubleQuote]\
 \>", "Text",
  CellMargins->{{50, 50}, {6, 
-  6}},ExpressionUUID->"92372dec-7cc3-4120-bd97-d1de747d3303"],
+  6}},ExpressionUUID->"7abfa464-25f8-4a6a-bcfc-14fd06c8ae74"],
 
 Cell[TextData[{
  "We can also quantify each loop. Summing the great-circle distances between \
@@ -98616,7 +98616,7 @@ consecutive monthly centroids (over observed months only) gives the ",
  " \[LongDash] how far the centre of mass travels in a year:"
 }], "Text",
  CellMargins->{{50, 50}, {6, 
-  6}},ExpressionUUID->"695497ff-6638-4c8b-8e74-ec33f53733ea"],
+  6}},ExpressionUUID->"f69b9ce1-15a7-4822-8b6e-5f8e2e1dfde8"],
 
 Cell[CellGroupData[{
 
@@ -98637,7 +98637,7 @@ distance\", 13],
    ImageSize -> 780, AspectRatio -> 0.5]\
 \>", "Input",
  CellMargins->{{60, 30}, {6, 6}},
- FontSize->11,ExpressionUUID->"471177fd-3718-4c23-a045-2d784392baf3"],
+ FontSize->11,ExpressionUUID->"e2abcfd9-5a68-4a07-8762-3bf72fe69f47"],
 
 Cell[BoxData[
  GraphicsBox[
@@ -99076,7 +99076,7 @@ xw==
   PlotRange->{{0, 360.}, {0, 176.}}]], "Output",
  CellMargins->{{Automatic, Automatic}, {10, 6}},
  ShowCellLabel->False,
- TextAlignment->Center,ExpressionUUID->"3d1ff2f1-3168-42c2-b401-1e73256fda51"]
+ TextAlignment->Center,ExpressionUUID->"214bcd8e-5c0b-4485-bf34-9f9a4e9f2d48"]
 }, Open  ]],
 
 Cell["\<\
@@ -99090,7 +99090,7 @@ excluded.\
  FontSize->11,
  FontSlant->Italic,
  FontColor->GrayLevel[
-  0.35],ExpressionUUID->"df362aa2-d892-48fe-bdfa-f33c8b928447"],
+  0.35],ExpressionUUID->"db1e8f4d-9471-4bad-81d2-07665d2debae"],
 
 Cell[TextData[{
  StyleBox["Crucial caveat \[LongDash] read before quoting these numbers. ",
@@ -99117,14 +99117,14 @@ figure is an individual's odometer. Do not conflate them."
  CellMargins->{{60, 60}, {6, 10}},
  CellFrameColor->RGBColor[0.85, 0.6, 0.15],
  Background->RGBColor[
-  1., 0.97, 0.88],ExpressionUUID->"08429671-b497-467b-bca6-be537d09fa35"],
+  1., 0.97, 0.88],ExpressionUUID->"93da93df-6cc1-4fc9-9841-041654f6aad6"],
 
 Cell[CellGroupData[{
 
 Cell["5.1  From one point to a flock", "Subsection",
  FontFamily->"Roboto Condensed",
  FontColor->RGBColor[
-  0.153, 0.51, 0.64],ExpressionUUID->"7c586d12-9fbd-4658-ac45-fe2027f637db"],
+  0.153, 0.51, 0.64],ExpressionUUID->"32220824-6c7c-45e7-ad0c-a5751dec5bd0"],
 
 Cell["\<\
 A centroid is one point; the population is millions of birds. The same twelve \
@@ -99133,7 +99133,7 @@ turn the journey into motion \[LongDash] not to add new information, but to \
 make the seasonal sweep legible at a glance:\
 \>", "Text",
  CellMargins->{{50, 50}, {6, 
-  6}},ExpressionUUID->"960a807e-c5b7-4751-9f85-5e386271ba45"],
+  6}},ExpressionUUID->"b4b78964-cd80-4f24-8c7c-e03f0ab5b8fa"],
 
 Cell[BoxData[
  TagBox[GridBox[{
@@ -119026,7 +119026,7 @@ visualisation of the centroid route, not tracked individuals.\"\>",
   "Column"]], "Output",
  CellMargins->{{Automatic, Automatic}, {10, 14}},
  ShowCellLabel->False,
- TextAlignment->Center,ExpressionUUID->"0c282b71-7dbe-4025-8fea-a320872c9739"],
+ TextAlignment->Center,ExpressionUUID->"2853ebd3-08be-4254-85d8-dc6d626ede45"],
 
 Cell[TextData[{
  "The flock frames are generated by ",
@@ -119036,7 +119036,7 @@ Cell[TextData[{
 centroid path and renders the orthographic globe frame by frame."
 }], "Text",
  CellMargins->{{50, 50}, {6, 
-  6}},ExpressionUUID->"fe41a8c3-b7c1-4d5d-85c5-fe216cf39fba"]
+  6}},ExpressionUUID->"6643f80b-3ef3-409b-b4fd-b1116b2b015f"]
 }, Open  ]]
 }, Open  ]],
 
@@ -119046,7 +119046,7 @@ Cell["6.  Speeds and stopovers", "Section",
  FontFamily->"Roboto Condensed",
  FontSize->30,
  FontColor->RGBColor[
-  0.153, 0.51, 0.64],ExpressionUUID->"da4ae438-b0ac-4861-9d88-3c9f27856cb5"],
+  0.153, 0.51, 0.64],ExpressionUUID->"efef4d0f-074e-4ab5-aa46-dba73b4ed025"],
 
 Cell[TextData[{
  StyleBox["The basic question.",
@@ -119061,7 +119061,7 @@ centroid track of \[Section]4 already contains that rhythm \[LongDash] we \
 just have to differentiate it."
 }], "Text",
  CellMargins->{{50, 50}, {6, 
-  6}},ExpressionUUID->"abde1d64-b4e8-472e-8a76-31100692c89f"],
+  6}},ExpressionUUID->"d307d363-1f0b-4a93-a404-e5a4557b8f4e"],
 
 Cell[TextData[{
  StyleBox["The quantity.",
@@ -119086,7 +119086,7 @@ Arctic tern's centre of mass averages about ",
  "."
 }], "Text",
  CellMargins->{{50, 50}, {6, 
-  6}},ExpressionUUID->"774679b2-502a-4e3c-a9ee-a4264add472c"],
+  6}},ExpressionUUID->"555f57e0-9dcf-4d20-8086-9e7f12ed2fa7"],
 
 Cell[CellGroupData[{
 
@@ -119103,7 +119103,7 @@ ListLinePlot[speedKmDay /@ {tern, swift, knot},
    AxesLabel -> {\"month\", \"km/day\"}]\
 \>", "Input",
  CellMargins->{{60, 30}, {6, 6}},
- FontSize->11,ExpressionUUID->"6e91d8c8-b161-4241-9f37-187115247629"],
+ FontSize->11,ExpressionUUID->"e93b4242-3f8e-4dc6-8b20-212bf2cd546e"],
 
 Cell[BoxData[
  GraphicsBox[
@@ -120508,7 +120508,7 @@ BoPBYDAYDIZM6LT4Bt35IriHCO0uCa701SkkyklnMBjnKv8fzGNCQQ==
   PlotRange->{{0, 398.7692307692308}, {0, 224.86153846153846`}}]], "Output",
  CellMargins->{{Automatic, Automatic}, {10, 6}},
  ShowCellLabel->False,
- TextAlignment->Center,ExpressionUUID->"f2c14916-9ecb-46e0-95fa-72ca780b05e9"]
+ TextAlignment->Center,ExpressionUUID->"7755ab83-6c9c-43d9-813e-3dee4d7c8ab9"]
 }, Open  ]],
 
 Cell["\<\
@@ -120520,7 +120520,7 @@ separate the near-zero plateaux of the breeding and wintering seasons.\
  FontSize->11,
  FontSlant->Italic,
  FontColor->GrayLevel[
-  0.35],ExpressionUUID->"6d6b5829-71fc-4470-822b-c2a6f5b5752d"],
+  0.35],ExpressionUUID->"8980e98f-a645-48b8-b040-c5b9b1d2cd96"],
 
 Cell[TextData[{
  StyleBox["Crucial caveat \[LongDash] this is a lower bound. ",
@@ -120544,14 +120544,14 @@ the population statistic, not of an individual bird."
  CellMargins->{{60, 60}, {6, 10}},
  CellFrameColor->RGBColor[0.85, 0.6, 0.15],
  Background->RGBColor[
-  1., 0.97, 0.88],ExpressionUUID->"def3b5e6-14f3-4caa-a36c-c41577681f0d"],
+  1., 0.97, 0.88],ExpressionUUID->"b1e355b2-a995-4167-8a0b-6fd0b35a5338"],
 
 Cell[CellGroupData[{
 
 Cell["6.1  Does day length pace the journey?", "Subsection",
  FontFamily->"Roboto Condensed",
  FontColor->RGBColor[
-  0.153, 0.51, 0.64],ExpressionUUID->"a8a73690-33fc-4a4d-9ac5-95890beb59a7"],
+  0.153, 0.51, 0.64],ExpressionUUID->"16f744f3-6f02-46ad-aa8d-5b91be5657cd"],
 
 Cell[TextData[{
  "A natural hypothesis: migrants might travel fastest when the photoperiod is \
@@ -120580,7 +120580,7 @@ is itself an honest admission of how little a 12-point annual series can \
 prove.)"
 }], "Text",
  CellMargins->{{50, 50}, {6, 
-  6}},ExpressionUUID->"228a6c1f-800b-4885-9c42-32f3072b69d9"],
+  6}},ExpressionUUID->"393ec9e8-54f5-4f62-b67d-3a3d4cec1425"],
 
 Cell[BoxData[
  GraphicsBox[
@@ -121563,7 +121563,7 @@ vA==
   PlotRange->{{0, 398.7692307692308}, {0, 225.96923076923076`}}]], "Output",
  CellMargins->{{Automatic, Automatic}, {10, 6}},
  ShowCellLabel->False,
- TextAlignment->Center,ExpressionUUID->"5817d022-f17f-4f29-bac0-70dabe829813"],
+ TextAlignment->Center,ExpressionUUID->"22fe39f4-8207-44f3-afff-eef3d934f4d1"],
 
 Cell[TextData[{
  "Figure 6.2  Day length experienced along each centroid track through the \
@@ -121579,7 +121579,7 @@ daylight over the year than any other animal. Whether day length actually ",
  FontSize->11,
  FontSlant->Italic,
  FontColor->GrayLevel[
-  0.35],ExpressionUUID->"0f6c23e6-bc3c-496a-8f73-f6b9fb558ed1"]
+  0.35],ExpressionUUID->"1d156f1a-c494-43e3-affe-c75c05699348"]
 }, Open  ]]
 }, Open  ]],
 
@@ -121589,7 +121589,7 @@ Cell["7.  The energy of migration", "Section",
  FontFamily->"Roboto Condensed",
  FontSize->30,
  FontColor->RGBColor[
-  0.153, 0.51, 0.64],ExpressionUUID->"71b778b3-174a-4d07-bdba-8e928c12e88c"],
+  0.153, 0.51, 0.64],ExpressionUUID->"0efbfc9b-52ea-4ce9-aabe-a51212225192"],
 
 Cell[TextData[{
  StyleBox["Cheap per kilometre, ruinous per year.",
@@ -121604,7 +121604,7 @@ cost-per-kilometre that looks trivial becomes an enormous annual fuel bill \
 when multiplied by tens of thousands of kilometres."
 }], "Text",
  CellMargins->{{50, 50}, {6, 
-  6}},ExpressionUUID->"b74a5929-d5ed-4777-b3a8-b68edeb93cfe"],
+  6}},ExpressionUUID->"364bf689-157c-44c3-8b52-0bcd7e788f57"],
 
 Cell[TextData[{
  StyleBox["The model.",
@@ -121652,7 +121652,7 @@ near ",
  " \[LongDash] and that is the speed at which we evaluate the fuel cost below."
 }], "Text",
  CellMargins->{{50, 50}, {6, 
-  6}},ExpressionUUID->"96ddfde2-2643-458f-8411-24557d5f5d14"],
+  6}},ExpressionUUID->"eab45729-ac6d-48b4-b217-e3b47e3f8437"],
 
 Cell[TextData[{
  "For our three species the model gives a max-range speed ",
@@ -121689,7 +121689,7 @@ Cell[TextData[{
 nearly double its weight in fat before departure."
 }], "Text",
  CellMargins->{{50, 50}, {6, 
-  6}},ExpressionUUID->"0dd2e38e-78cf-44de-b550-1e67e541f4e9"],
+  6}},ExpressionUUID->"72a189c6-d5c2-4ed2-9bec-a1294e8c9b00"],
 
 Cell[CellGroupData[{
 
@@ -121706,7 +121706,7 @@ Ptot[m_, b_, V_] := Pind[m, b, V] + Ppar[m, b, V] + Ppro[m, V];
 Vmr[m_, b_] := V /. Last @ Minimize[{Ptot[m, b, V]/V, V > 5}, V];\
 \>", "Input",
  CellMargins->{{60, 30}, {6, 6}},
- FontSize->11,ExpressionUUID->"911f6046-ad83-4e17-8c2e-beedb3a25308"],
+ FontSize->11,ExpressionUUID->"3817b8d5-3f1e-4d0a-a14f-2de213334c1e"],
 
 Cell[BoxData[
  GraphicsBox[
@@ -123058,7 +123058,7 @@ HFLp+WdWrNIzld5SFU+rykQVjVl9ERVTukMqNVT11a7Kwi7H1ZuuKmt4xSte
   PlotRange->{{0, 398.7692307692308}, {0, 284.12307692307695`}}]], "Output",
  CellMargins->{{Automatic, Automatic}, {10, 6}},
  ShowCellLabel->False,
- TextAlignment->Center,ExpressionUUID->"7de94086-c7f4-41a7-b671-2d61c8f7f003"]
+ TextAlignment->Center,ExpressionUUID->"eb5757b9-8209-4ed7-a6d4-737f43c3826d"]
 }, Open  ]],
 
 Cell[TextData[{
@@ -123084,7 +123084,7 @@ should cruise."
  FontSize->11,
  FontSlant->Italic,
  FontColor->GrayLevel[
-  0.35],ExpressionUUID->"71d73497-6576-4994-beff-aa8d20f3774b"],
+  0.35],ExpressionUUID->"9be7ec9a-e4c0-414e-bca0-b9e59dd8a7f2"],
 
 Cell[BoxData[
  GraphicsBox[
@@ -124232,7 +124232,7 @@ qo1hWm6u6TBQwioYACz3G5mkwgU=
   PlotRange->{{0, 398.7692307692308}, {0, 228.73846153846154`}}]], "Output",
  CellMargins->{{Automatic, Automatic}, {10, 6}},
  ShowCellLabel->False,
- TextAlignment->Center,ExpressionUUID->"54a2ea5d-c9e3-4edc-b4e3-73aad76be4cf"],
+ TextAlignment->Center,ExpressionUUID->"707852eb-6e59-4c29-a159-6108a9447c5f"],
 
 Cell[TextData[{
  "Figure 7.2  Cumulative flight energy along each species' ",
@@ -124252,7 +124252,7 @@ shown here."
  FontSize->11,
  FontSlant->Italic,
  FontColor->GrayLevel[
-  0.35],ExpressionUUID->"69a25656-0097-4cb0-9b48-08836d92e3b4"],
+  0.35],ExpressionUUID->"351b0b0b-b4b9-4dcb-b7cb-b3a9044d5237"],
 
 Cell[TextData[{
  StyleBox["A note on rigour. ",
@@ -124274,7 +124274,7 @@ species as more trustworthy than any single absolute value."
  CellMargins->{{60, 60}, {6, 10}},
  CellFrameColor->RGBColor[0.85, 0.6, 0.15],
  Background->RGBColor[
-  1., 0.97, 0.88],ExpressionUUID->"d284f686-b145-4894-8ead-9f6d3c31d59f"]
+  1., 0.97, 0.88],ExpressionUUID->"5de8c16b-84ab-4ebd-8728-2657a9bf35ef"]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -124283,7 +124283,7 @@ Cell["8.  Finding the way: the magnetic landscape", "Section",
  FontFamily->"Roboto Condensed",
  FontSize->30,
  FontColor->RGBColor[
-  0.153, 0.51, 0.64],ExpressionUUID->"7cd7b3fb-087a-4188-bfe7-265bd5837be2"],
+  0.153, 0.51, 0.64],ExpressionUUID->"6a46f8d5-29db-4dc8-b29e-4c55e9eaa53f"],
 
 Cell[TextData[{
  StyleBox["How does a bird know where it is?",
@@ -124317,7 +124317,7 @@ than its polarity (Wiltschko & Wiltschko 1972). For the broader mechanism see \
 Mouritsen (2018)."
 }], "Text",
  CellMargins->{{50, 50}, {6, 
-  6}},ExpressionUUID->"a218b2b8-bb79-4945-97f8-15b475f619db"],
+  6}},ExpressionUUID->"3e324582-0a53-4822-a554-28271573f167"],
 
 Cell[TextData[{
  StyleBox["What we can compute.",
@@ -124333,7 +124333,7 @@ magnetic ",
 global backdrop with the three centroid tracks laid over it:"
 }], "Text",
  CellMargins->{{50, 50}, {6, 
-  6}},ExpressionUUID->"28e3baf6-2a17-48cb-9f36-5b033356f9c5"],
+  6}},ExpressionUUID->"244885b5-78d4-4a35-9d10-cff05c3d8d56"],
 
 Cell[CellGroupData[{
 
@@ -124346,7 +124346,7 @@ GeoRegionValuePlot[ ... ]   (* dip backdrop *)
 trackDip = dip @@@ Transpose[{tern[[All, 1]], tern[[All, 2]]}];\
 \>", "Input",
  CellMargins->{{60, 30}, {6, 6}},
- FontSize->11,ExpressionUUID->"17201cea-131c-4bf6-b955-eb24acb0f5dc"],
+ FontSize->11,ExpressionUUID->"eab9012b-b2fc-426c-bbd2-70c95e63f746"],
 
 Cell[BoxData[
  GraphicsBox[
@@ -126866,7 +126866,7 @@ AdiDz+erSbwoMWLEiBEjZpX2dIyptcwwMDBQWVmJYWPUBthTgeFBP6OXPk70
   PlotRange->{{0, 398.7692307692308}, {0, 199.3846153846154}}]], "Output",
  CellMargins->{{Automatic, Automatic}, {10, 6}},
  ShowCellLabel->False,
- TextAlignment->Center,ExpressionUUID->"40d6f352-1f37-4788-a994-a2fdc9705f1d"]
+ TextAlignment->Center,ExpressionUUID->"fd6552a2-b0e5-4920-b6e9-65177e4e9bd0"]
 }, Open  ]],
 
 Cell["\<\
@@ -126880,7 +126880,7 @@ east\[Dash]west, nearly parallel to geographic latitude.\
  FontSize->11,
  FontSlant->Italic,
  FontColor->GrayLevel[
-  0.35],ExpressionUUID->"b03f06b5-fd08-4dba-9271-217b2d9993fb"],
+  0.35],ExpressionUUID->"bc94e0e7-315e-49ea-b491-4a00cdcedf8e"],
 
 Cell[BoxData[
  GraphicsBox[
@@ -128845,7 +128845,7 @@ PUptH08ikUgk0gKJoEYikUikj4m42YLcur7cr9zuD75fccc0lV5Z/T9q8Uxw
   PlotRange->{{0, 332.3076923076923}, {0, 352.24615384615385`}}]], "Output",
  CellMargins->{{Automatic, Automatic}, {10, 6}},
  ShowCellLabel->False,
- TextAlignment->Center,ExpressionUUID->"e3b46be6-f3f2-4801-91da-bb25877c452d"],
+ TextAlignment->Center,ExpressionUUID->"240acfd6-65ea-4dd6-944e-6a652342f286"],
 
 Cell["\<\
 Figure 8.2  Magnetic dip and total-field intensity sampled month by month \
@@ -128857,7 +128857,7 @@ flyway would experience through the year.\
  FontSize->11,
  FontSlant->Italic,
  FontColor->GrayLevel[
-  0.35],ExpressionUUID->"fe9c2dfe-5016-4ab4-bc77-8a89d37da158"],
+  0.35],ExpressionUUID->"132019ea-e00a-4a60-b608-24e43b12025f"],
 
 Cell[TextData[{
  StyleBox["What this shows \[LongDash] and what it cannot. ",
@@ -128898,7 +128898,7 @@ where-the-crowd-is data."
  CellMargins->{{60, 60}, {6, 10}},
  CellFrameColor->RGBColor[0.85, 0.6, 0.15],
  Background->RGBColor[
-  1., 0.97, 0.88],ExpressionUUID->"32e693f0-5462-4d7d-8cf5-96a2132f9f29"]
+  1., 0.97, 0.88],ExpressionUUID->"160855aa-7b0b-41dd-a815-49cd4a2c694b"]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -128907,7 +128907,7 @@ Cell["9.  Cross-check: eBird Status & Trends", "Section",
  FontFamily->"Roboto Condensed",
  FontSize->30,
  FontColor->RGBColor[
-  0.153, 0.51, 0.64],ExpressionUUID->"577bce7d-3cd5-410d-9f20-798a306aa129"],
+  0.153, 0.51, 0.64],ExpressionUUID->"51766512-1564-4bde-8c9c-9fd9d581c009"],
 
 Cell[TextData[{
  StyleBox["Are our occurrence-based centroids actually right?",
@@ -128925,7 +128925,7 @@ detectability, and outputs ",
 coarse occurrence centroid (Fink et al., eBird Status and Trends)."
 }], "Text",
  CellMargins->{{50, 50}, {6, 
-  6}},ExpressionUUID->"ca79d41f-58d6-45ed-a86a-f424fe27559f"],
+  6}},ExpressionUUID->"139eae58-6dd2-4895-be2f-558b972b6940"],
 
 Cell[TextData[{
  "As a ",
@@ -128946,7 +128946,7 @@ centroids and ours, month by month. The pattern of code (our code, not \
 Cornell's data) is:"
 }], "Text",
  CellMargins->{{50, 50}, {6, 
-  6}},ExpressionUUID->"e3635d3e-31aa-4f03-be49-5dd9000e0267"],
+  6}},ExpressionUUID->"3e52160c-0f7b-4106-a28f-5e3564ea2e7e"],
 
 Cell["\<\
 (* PRIVATE S&T validation: abundance-weighted centroids from the
@@ -128964,7 +128964,7 @@ ExternalEvaluate[r, \"
    and compared to the GBIF track with GeoDistance. *)\
 \>", "Input",
  CellMargins->{{60, 30}, {6, 6}},
- FontSize->11,ExpressionUUID->"f680cd52-4477-46d1-84dc-e03d8092ec6c"],
+ FontSize->11,ExpressionUUID->"c08e7483-73a0-44fc-8cf7-52e18bb96497"],
 
 Cell[TextData[{
  StyleBox["The result.",
@@ -128985,7 +128985,7 @@ within a small fraction of the flyway length is a strong endorsement that the \
 centroid approach captures the real seasonal signal."
 }], "Text",
  CellMargins->{{50, 50}, {6, 
-  6}},ExpressionUUID->"7da6dc8d-916f-48c1-a681-131f13d26247"],
+  6}},ExpressionUUID->"f17e75d7-b0b4-418b-82d0-30919f765986"],
 
 Cell[TextData[{
  StyleBox["Why you see no S&T figure here.",
@@ -129013,7 +129013,7 @@ visualizations instead: ",
  "."
 }], "Text",
  CellMargins->{{50, 50}, {6, 
-  6}},ExpressionUUID->"ecf5f442-4e82-4bc7-af22-b513956883d4"],
+  6}},ExpressionUUID->"20f131dd-c133-45e1-a961-5aa3de08e52f"],
 
 Cell["\<\
 This material uses data from the eBird Status and Trends Project at the \
@@ -129028,7 +129028,7 @@ Ornithology.\
  FontSize->12,
  FontSlant->Italic,
  Background->RGBColor[
-  0.93, 0.95, 0.97],ExpressionUUID->"989efcc3-993e-4158-a40d-3bae56634d5e"]
+  0.93, 0.95, 0.97],ExpressionUUID->"c59e35e6-b37d-4ab5-b49a-d036556ab0f9"]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -129037,7 +129037,7 @@ Cell["9b.  Live now: recent sightings via the eBird API", "Section",
  FontFamily->"Roboto Condensed",
  FontSize->30,
  FontColor->RGBColor[
-  0.153, 0.51, 0.64],ExpressionUUID->"554c7d3b-58b8-4262-b0c1-b6b3fc9a69a2"],
+  0.153, 0.51, 0.64],ExpressionUUID->"26cc695a-86f1-41b3-bb05-1f6828c03ea8"],
 
 Cell[TextData[{
  "The centroids summarise a decade of history. For a sense of where these \
@@ -129054,7 +129054,7 @@ birds are ",
 a region. We sweep a representative spread of countries and plot the result:"
 }], "Text",
  CellMargins->{{50, 50}, {6, 
-  6}},ExpressionUUID->"1942c414-3ebb-451b-8c11-77e167d59e91"],
+  6}},ExpressionUUID->"e7518efb-ce84-4eb1-988c-2f7035418e8f"],
 
 Cell[CellGroupData[{
 
@@ -129073,7 +129073,7 @@ GeoListPlot[GeoPosition /@ pts, GeoRange -> \"World\",
 Source: eBird.org (Cornell Lab of Ornithology)\", ImageSize -> 900]\
 \>", "Input",
  CellMargins->{{60, 30}, {6, 6}},
- FontSize->11,ExpressionUUID->"b721a0c1-965b-41ba-b9d6-63f3502c68aa"],
+ FontSize->11,ExpressionUUID->"1e425054-d96f-4213-bf34-844171968ce7"],
 
 Cell[BoxData[
  GraphicsBox[
@@ -129753,7 +129753,7 @@ jz/++E8//WRttaS9YvcMoKAdO8Pqn3/+OXz4cCsADC5peaT9Mdsi3diQmFEi
   PlotRange->{{0, 432.}, {0, 234.}}]], "Output",
  CellMargins->{{Automatic, Automatic}, {10, 6}},
  ShowCellLabel->False,
- TextAlignment->Center,ExpressionUUID->"27522914-93ed-4816-b496-471714d08618"]
+ TextAlignment->Center,ExpressionUUID->"93a406cd-52e5-427a-bb06-3c3eb1d10afd"]
 }, Open  ]],
 
 Cell[TextData[{
@@ -129767,7 +129767,7 @@ as of late June 2026), swept across a spread of countries. ",
  FontSize->11,
  FontSlant->Italic,
  FontColor->GrayLevel[
-  0.35],ExpressionUUID->"d3301567-9df2-4e0e-8699-de3b3c07dd08"],
+  0.35],ExpressionUUID->"40f18027-5c03-4494-b3d6-32f5c2e5c3e1"],
 
 Cell[BoxData[
  GraphicsBox[
@@ -130387,7 +130387,7 @@ pC0KhUJr167dunXrxx9/fPbsWd1kqYxBzADyggoe58+ft050njlz5rnnnuvs
   PlotRange->{{0, 432.}, {0, 234.}}]], "Output",
  CellMargins->{{Automatic, Automatic}, {10, 6}},
  ShowCellLabel->False,
- TextAlignment->Center,ExpressionUUID->"b9a8e75a-ff94-4a8c-a9ed-cc89bf043388"],
+ TextAlignment->Center,ExpressionUUID->"d9c8b6e1-3200-4ca7-85ca-d9eab94596ba"],
 
 Cell[TextData[{
  "Figure 9b.2  Common swift \[LongDash] recent eBird sightings (last 30 days, \
@@ -130400,7 +130400,7 @@ as of late June 2026). ",
  FontSize->11,
  FontSlant->Italic,
  FontColor->GrayLevel[
-  0.35],ExpressionUUID->"30550857-472f-418c-aebc-cbdd499addd6"],
+  0.35],ExpressionUUID->"ce4313fa-79eb-4d1c-9030-3d7a3d90abca"],
 
 Cell[BoxData[
  GraphicsBox[
@@ -131103,7 +131103,7 @@ XUvuV+yeARS14zus/vSnPx08ePAAAOSW3Hnk/mPdi9TGhsSMEvH/mkffkA==
   PlotRange->{{0, 432.}, {0, 234.}}]], "Output",
  CellMargins->{{Automatic, Automatic}, {10, 6}},
  ShowCellLabel->False,
- TextAlignment->Center,ExpressionUUID->"3b8b78be-4717-4721-8669-1b364311d6fe"],
+ TextAlignment->Center,ExpressionUUID->"2345f396-9416-4a29-8c92-c1f2e8bdf477"],
 
 Cell[TextData[{
  "Figure 9b.3  Red knot \[LongDash] recent eBird sightings (last 30 days, as \
@@ -131116,7 +131116,7 @@ of late June 2026). ",
  FontSize->11,
  FontSlant->Italic,
  FontColor->GrayLevel[
-  0.35],ExpressionUUID->"43c1ab29-8288-4717-bff3-d85bd7185ee2"],
+  0.35],ExpressionUUID->"8fb19f29-c563-4fa9-b3c8-59abd4103f4a"],
 
 Cell[TextData[{
  StyleBox["Privacy and attribution.",
@@ -131127,7 +131127,7 @@ republished. All live data are attributed to eBird.org (Cornell Lab of \
 Ornithology) per the eBird Terms of Use."
 }], "Text",
  CellMargins->{{50, 50}, {6, 
-  6}},ExpressionUUID->"3482112f-9af1-4553-b3ed-e53c2eaa72a0"]
+  6}},ExpressionUUID->"5954a55a-207e-4d25-a597-ef45a20f3315"]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -131136,7 +131136,7 @@ Cell["10.  What each journey reveals", "Section",
  FontFamily->"Roboto Condensed",
  FontSize->30,
  FontColor->RGBColor[
-  0.153, 0.51, 0.64],ExpressionUUID->"6a808308-1dd3-43b3-b00d-9a78df870b1b"],
+  0.153, 0.51, 0.64],ExpressionUUID->"e13c5ae8-cf73-4d44-95c8-1468a68d89ec"],
 
 Cell["\<\
 Read together, the three tracks tell three different stories about how a bird \
@@ -131144,7 +131144,7 @@ can solve the problem of seasonal survival. Plotting the centroid latitude \
 against the month for all three at once makes the contrast plain:\
 \>", "Text",
  CellMargins->{{50, 50}, {6, 
-  6}},ExpressionUUID->"af2d1e2c-7ead-4281-9824-8b82e0953a39"],
+  6}},ExpressionUUID->"95e22f15-2816-433b-af97-010a2d177f42"],
 
 Cell[BoxData[
  GraphicsBox[
@@ -132729,7 +132729,7 @@ JHX+LGtGrMY/bC7CSY9Kz4eR1t8gProUruUfE6d8o7Y//z+F2F7f
   PlotRange->{{0, 332.3076923076923}, {0, 177.7846153846154}}]], "Output",
  CellMargins->{{Automatic, Automatic}, {10, 6}},
  ShowCellLabel->False,
- TextAlignment->Center,ExpressionUUID->"22cd0eec-9a3f-4389-beeb-2904ce929170"],
+ TextAlignment->Center,ExpressionUUID->"7739a7e1-5143-46c2-8975-1d6546746e3e"],
 
 Cell["\<\
 Figure 10.1  Annual latitude profile of each population centroid. The Arctic \
@@ -132741,7 +132741,7 @@ are immediately distinguishable by amplitude and phase.\
  FontSize->11,
  FontSlant->Italic,
  FontColor->GrayLevel[
-  0.35],ExpressionUUID->"f17196fe-0de8-4d08-96a7-094a42b5cc57"],
+  0.35],ExpressionUUID->"4ab48d02-95f3-46a8-95a2-e6bf0d261d05"],
 
 Cell[TextData[{
  StyleBox["Arctic tern \[LongDash] the pole-to-pole Atlantic sweep.",
@@ -132755,7 +132755,7 @@ the population mean \[LongDash] a vivid illustration of the difference \
 between a population statistic and an individual track."
 }], "Text",
  CellMargins->{{50, 50}, {6, 
-  6}},ExpressionUUID->"f77b40c4-5538-4090-930c-35fdee48e3f0"],
+  6}},ExpressionUUID->"3508c461-c9d6-418c-87f3-66eabca34d12"],
 
 Cell[TextData[{
  StyleBox["Common swift \[LongDash] the Europe\[LeftRightArrow]sub-Saharan \
@@ -132768,7 +132768,7 @@ shows what the method looks like when nothing has to be corrected for \
 multiple populations \[LongDash] it just works."
 }], "Text",
  CellMargins->{{50, 50}, {6, 
-  6}},ExpressionUUID->"0ded20e1-4972-49c7-b87d-b8b69d202cc3"],
+  6}},ExpressionUUID->"6e4cadb3-35c8-4753-9025-6f62410d29b9"],
 
 Cell[TextData[{
  StyleBox["Red knot \[LongDash] the Americas long-haul (and the cautionary \
@@ -132781,7 +132781,7 @@ multi-flyway trap: pooled globally, its centroid is nonsense. The knot is the \
 reason this post insists on per-flyway analysis."
 }], "Text",
  CellMargins->{{50, 50}, {6, 
-  6}},ExpressionUUID->"fc52a9f1-a8c1-4e62-b4ba-938e47658635"],
+  6}},ExpressionUUID->"ffaf81b7-5af2-43e7-bc0b-643e12194555"],
 
 Cell["\<\
 Side by side, the quantitative summaries of \[Section]4\[Dash]\[Section]8 \
@@ -132790,7 +132790,7 @@ max-range speed, cost of transport, and the magnetic span crossed \[LongDash] \
 form a compact cross-species scorecard:\
 \>", "Text",
  CellMargins->{{50, 50}, {6, 
-  6}},ExpressionUUID->"228de8bc-ec9b-4206-bc17-f483390dc5fb"],
+  6}},ExpressionUUID->"84474527-c06a-467f-8ddd-36b5239df0ef"],
 
 Cell[BoxData[
  GraphicsBox[
@@ -134261,7 +134261,7 @@ KBQKhUKhUCgUCoVCoVAoFAqFQqFQKBQKhUKhUCgUaY7/B4lJzgw=
   PlotRange->{{0, 370.2857142857143}, {0, 210.34285714285716`}}]], "Output",
  CellMargins->{{Automatic, Automatic}, {10, 6}},
  ShowCellLabel->False,
- TextAlignment->Center,ExpressionUUID->"69c9f387-cb9a-4108-bad9-cffbac721245"],
+ TextAlignment->Center,ExpressionUUID->"1a9ab1d8-050b-4975-8840-62c60ae913bd"],
 
 Cell["\<\
 Figure 10.2  Cross-species scorecard pulling together the headline numbers \
@@ -134274,7 +134274,7 @@ mechanism) all still apply.\
  FontSize->11,
  FontSlant->Italic,
  FontColor->GrayLevel[
-  0.35],ExpressionUUID->"b00b4db8-36b1-431e-b64b-31bd88b3762d"]
+  0.35],ExpressionUUID->"b8aef3fb-1a70-4772-8709-b0eb5fc30e90"]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -134283,7 +134283,7 @@ Cell["11.  New ideas, and how to test them", "Section",
  FontFamily->"Roboto Condensed",
  FontSize->30,
  FontColor->RGBColor[
-  0.153, 0.51, 0.64],ExpressionUUID->"75ebc409-7366-421e-b0b2-7bcd81a2f1c3"],
+  0.153, 0.51, 0.64],ExpressionUUID->"dc52d9a4-84e8-4f84-8331-04a257c2935a"],
 
 Cell[TextData[{
  "Beyond reconstructing known journeys, this post surfaced two ",
@@ -134294,7 +134294,7 @@ occurrence-centroid data can frame but not decide \[LongDash] and saying so \
 plainly is the point."
 }], "Text",
  CellMargins->{{50, 50}, {6, 
-  6}},ExpressionUUID->"a11032f7-a57f-4e22-a2b9-1b4d39e4f4da"],
+  6}},ExpressionUUID->"0129243d-b609-4e27-b210-d66360c6ab48"],
 
 Cell[TextData[{
  StyleBox["Idea 1 \[LongDash] magnetic inclination as a latitude gauge.",
@@ -134317,7 +134317,7 @@ combined with magnetic-displacement experiments, not where-the-crowd-is \
 data."
 }], "Text",
  CellMargins->{{50, 50}, {6, 
-  6}},ExpressionUUID->"5ff80156-4744-4da6-9931-64ed5897a120"],
+  6}},ExpressionUUID->"f29a046e-53ee-4f52-96ca-5a47ebbe03fc"],
 
 Cell[TextData[{
  StyleBox["Idea 2 \[LongDash] migration speed paced by photoperiod.",
@@ -134340,7 +134340,7 @@ relative abundance gives 52 effort-corrected steps per year rather than our \
 on local photoperiod."
 }], "Text",
  CellMargins->{{50, 50}, {6, 
-  6}},ExpressionUUID->"59edf61f-69f3-400e-8f8b-509bbae4ff97"],
+  6}},ExpressionUUID->"f47f3d25-4971-4755-8e3f-12cbff15b7e0"],
 
 Cell[TextData[{
  StyleBox["Limitations, in one place.",
@@ -134362,7 +134362,7 @@ are pulled toward where the observers are. ",
 energetic layers are model overlays, not measurements of the birds themselves."
 }], "Text",
  CellMargins->{{50, 50}, {6, 
-  6}},ExpressionUUID->"9a7371ad-2629-4eaa-a3b2-f03e2c6ea756"],
+  6}},ExpressionUUID->"e80bcaa9-100a-4551-bcbf-20ccbfcd16f5"],
 
 Cell[TextData[{
  StyleBox["Test it yourself.",
@@ -134371,7 +134371,7 @@ Cell[TextData[{
 four commands:"
 }], "Text",
  CellMargins->{{50, 50}, {6, 
-  6}},ExpressionUUID->"0579c40b-3e4b-44c2-9d17-cb8550bfc37a"],
+  6}},ExpressionUUID->"306741a3-655b-469b-b339-a55356da7602"],
 
 Cell["\<\
 wolframscript -file wolfram/run_all.wls          # centroids, maps, \
@@ -134388,7 +134388,7 @@ wolframscript -file wolfram/energetics.wls       # Pennycuick flight energy (\
  FontFamily->"Courier",
  FontSize->11,
  Background->RGBColor[
-  0.95, 0.96, 0.98],ExpressionUUID->"a5be7b5f-907f-4f43-9a4d-c0bc345c537d"]
+  0.95, 0.96, 0.98],ExpressionUUID->"099cf392-d23d-4a44-ae63-d730fa90f1a0"]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -134397,7 +134397,7 @@ Cell["12.  Conclusions", "Section",
  FontFamily->"Roboto Condensed",
  FontSize->30,
  FontColor->RGBColor[
-  0.153, 0.51, 0.64],ExpressionUUID->"07005d28-9758-40bd-a96e-8e34cb16312e"],
+  0.153, 0.51, 0.64],ExpressionUUID->"e4b182d0-4805-45ef-8ad2-828ec6bb1975"],
 
 Cell["\<\
 With open data and a careful method, you can reconstruct continental-scale \
@@ -134408,7 +134408,7 @@ the planet's great migrants and to cross-validate them against a professional \
 abundance model.\
 \>", "Text",
  CellMargins->{{50, 50}, {6, 
-  6}},ExpressionUUID->"5a73b0e3-2878-4eda-bdbb-1067e5d8236c"],
+  6}},ExpressionUUID->"d320eeda-9be2-4b22-ad8c-928bcc924f51"],
 
 Cell[TextData[{
  "But the central lesson is a cautionary one. ",
@@ -134430,7 +134430,7 @@ and citizen-science occurrence data yield a faithful, validated picture of \
 where the birds actually are."
 }], "Text",
  CellMargins->{{50, 50}, {6, 
-  6}},ExpressionUUID->"3380ecdd-92a8-417a-b10a-0b2a8b5a5bc2"]
+  6}},ExpressionUUID->"24175778-3f6e-400a-aa1e-efce19d951f9"]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -134439,7 +134439,7 @@ Cell["13.  References", "Section",
  FontFamily->"Roboto Condensed",
  FontSize->30,
  FontColor->RGBColor[
-  0.153, 0.51, 0.64],ExpressionUUID->"97ed5584-83ac-4d24-8b1a-c984573411df"],
+  0.153, 0.51, 0.64],ExpressionUUID->"ab4b6f92-b990-4121-a0f6-d2f297fe9be0"],
 
 Cell[TextData[{
  StyleBox["Egevang, C., Stenhouse, I. J., Phillips, R. A., Petersen, A., Fox, \
@@ -134454,7 +134454,7 @@ J. W., & Silk, J. R. D.",
  " 107(5), 2078\[Dash]2081. [Geolocator tracking; ~70,900 km/yr round trip.]"
 }], "Text",
  CellMargins->{{50, 50}, {6, 
-  6}},ExpressionUUID->"822d3333-cade-45d7-b940-02076994077a"],
+  6}},ExpressionUUID->"7479ab8c-41a7-40fe-a3eb-505c10469db4"],
 
 Cell[TextData[{
  StyleBox["Hedenstr\[ODoubleDot]m, A., Norevik, G., Warfvinge, K., Andersson, \
@@ -134469,7 +134469,7 @@ A., B\[ADoubleDot]ckman, J., & \[CapitalARing]kesson, S.",
  " 26(22), 3066\[Dash]3070. [Common swifts remain airborne for ~10 months.]"
 }], "Text",
  CellMargins->{{50, 50}, {6, 
-  6}},ExpressionUUID->"9dd99b6a-2a7e-4640-97fe-0b3eb976dd5d"],
+  6}},ExpressionUUID->"4701052e-fe52-4271-825a-24bd9ed85781"],
 
 Cell[TextData[{
  StyleBox["Fink, D., Auer, T., Johnston, A., Strimas-Mackey, M., Ligocki, S., \
@@ -134487,7 +134487,7 @@ Robinson, O., Hochachka, W., et al.",
 \[Section]9 validation.]"
 }], "Text",
  CellMargins->{{50, 50}, {6, 
-  6}},ExpressionUUID->"6b30b773-4430-4db5-8273-53fcb6702d04"],
+  6}},ExpressionUUID->"0c397db7-aa15-44ac-a26c-b55df16375f1"],
 
 Cell[TextData[{
  StyleBox["GBIF.org",
@@ -134508,7 +134508,7 @@ download DOIs: Arctic tern \[LongDash] ",
  "."
 }], "Text",
  CellMargins->{{50, 50}, {6, 
-  6}},ExpressionUUID->"715f15ee-0da0-46b9-a80f-5b1d8ecce682"],
+  6}},ExpressionUUID->"d1f0f5e1-af00-455c-a13c-704b1cb34b21"],
 
 Cell[TextData[{
  StyleBox["Sullivan, B. L., Wood, C. L., Iliff, M. J., Bonney, R. E., Fink, \
@@ -134521,7 +134521,7 @@ sciences. ",
  " 142(10), 2282\[Dash]2292. [The eBird platform.]"
 }], "Text",
  CellMargins->{{50, 50}, {6, 
-  6}},ExpressionUUID->"dd1990d3-ac29-4cb4-816d-caf1804e2ab3"],
+  6}},ExpressionUUID->"5522ca47-82b9-4e7f-82cd-6294c8d20e7b"],
 
 Cell[TextData[{
  StyleBox["Newton, I.",
@@ -134533,7 +134533,7 @@ Cell[TextData[{
 migratory strategy.]"
 }], "Text",
  CellMargins->{{50, 50}, {6, 
-  6}},ExpressionUUID->"3e42e3a9-8103-49a4-9f95-5a320f15570c"],
+  6}},ExpressionUUID->"51c6e25b-a0a2-4366-b9eb-15757b69ab8f"],
 
 Cell[TextData[{
  StyleBox["Baker, A. J., Gonz\[AAcute]lez, P. M., Piersma, T., Niles, L. J., \
@@ -134546,7 +134546,7 @@ decreased refuelling rates and late arrival in Delaware Bay. ",
  " 271, 875\[Dash]882. [Red knot / horseshoe-crab stopover coupling.]"
 }], "Text",
  CellMargins->{{50, 50}, {6, 
-  6}},ExpressionUUID->"139fc9e3-e2fa-4d29-94a2-dbfb21403c74"],
+  6}},ExpressionUUID->"ed753ee1-86c0-47cb-aa87-94a86e3b8fdc"],
 
 Cell[TextData[{
  StyleBox["Pennycuick, C. J.",
@@ -134572,7 +134572,7 @@ parasite, and profile power, ",
  " \[LongDash] used in \[Section]7.]"
 }], "Text",
  CellMargins->{{50, 50}, {6, 
-  6}},ExpressionUUID->"189b462c-d80e-41d2-bb18-42d58f345b3f"],
+  6}},ExpressionUUID->"9c3ae2b0-b558-4c71-ad5f-c80a740ed21d"],
 
 Cell[TextData[{
  StyleBox["Mouritsen, H.",
@@ -134585,7 +134585,7 @@ animals. ",
 \[Section]8.]"
 }], "Text",
  CellMargins->{{50, 50}, {6, 
-  6}},ExpressionUUID->"9a141e4f-40d8-4554-81d0-b32ec785b6ca"],
+  6}},ExpressionUUID->"5097f7fe-2b00-42ba-8737-9b8b8baa07f6"],
 
 Cell[TextData[{
  StyleBox["Wiltschko, W., & Wiltschko, R.",
@@ -134600,7 +134600,7 @@ of migratory birds. ",
  " 191, 675\[Dash]693. [The inclination-compass sense cited in \[Section]8.]"
 }], "Text",
  CellMargins->{{50, 50}, {6, 
-  6}},ExpressionUUID->"c79f6f89-ac83-467e-8238-c918d83db82f"]
+  6}},ExpressionUUID->"82e94741-a3b0-45ba-b189-c5aeb5b014f1"]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -134609,7 +134609,7 @@ Cell["14.  Acknowledgements & data licences", "Section",
  FontFamily->"Roboto Condensed",
  FontSize->30,
  FontColor->RGBColor[
-  0.153, 0.51, 0.64],ExpressionUUID->"b6d63872-b928-4539-bd39-1a342f2626db"],
+  0.153, 0.51, 0.64],ExpressionUUID->"0eb99fab-034f-494d-9112-0829ddfc82ce"],
 
 Cell[TextData[{
  StyleBox["With thanks.",
@@ -134627,7 +134627,7 @@ Cell[TextData[{
 DOIs."
 }], "Text",
  CellMargins->{{50, 50}, {6, 
-  6}},ExpressionUUID->"802d5d6f-09ad-4c04-9fcf-446adf24097b"],
+  6}},ExpressionUUID->"585c6804-0c52-490a-ab00-5c91fca05c0c"],
 
 Cell[TextData[{
  "\[Bullet] ",
@@ -134642,7 +134642,7 @@ pending (rerun after the GBIF download completes)\[CloseCurlyDoubleQuote] \
 when the archive build is still in progress)."
 }], "Text",
  CellMargins->{{50, 50}, {6, 
-  6}},ExpressionUUID->"5904645a-3290-4c23-8823-6a42a6055aab"],
+  6}},ExpressionUUID->"dfc77b0a-3abb-44ea-9f65-cc07b2aae9c6"],
 
 Cell[TextData[{
  "\[Bullet] ",
@@ -134658,7 +134658,7 @@ Cell[TextData[{
 As required:"
 }], "Text",
  CellMargins->{{50, 50}, {6, 
-  6}},ExpressionUUID->"fd31e217-ed59-444f-8901-24490192b6d9"],
+  6}},ExpressionUUID->"f9f30dd2-9b96-4e5e-8c65-96c00b15a2ee"],
 
 Cell["\<\
 This material uses data from the eBird Status and Trends Project at the \
@@ -134673,7 +134673,7 @@ Ornithology.\
  FontSize->12,
  FontSlant->Italic,
  Background->RGBColor[
-  0.93, 0.95, 0.97],ExpressionUUID->"a557396a-7a24-4f18-bdc0-f92ac0ebc7d7"],
+  0.93, 0.95, 0.97],ExpressionUUID->"aea1fe24-45e3-469d-acd9-72314951decc"],
 
 Cell[TextData[{
  "\[Bullet] ",
@@ -134684,7 +134684,7 @@ Cell[TextData[{
 for privacy."
 }], "Text",
  CellMargins->{{50, 50}, {6, 
-  6}},ExpressionUUID->"1e527c05-b23a-4509-802b-3eaf49e47a8b"],
+  6}},ExpressionUUID->"b835d75f-f960-490d-974e-39a3a701f4ef"],
 
 Cell[TextData[{
  StyleBox["Tools.",
@@ -134699,7 +134699,7 @@ Cell[TextData[{
 figure is computed from data."
 }], "Text",
  CellMargins->{{50, 50}, {6, 
-  6}},ExpressionUUID->"a2867b87-a937-4a7f-9065-030a460308b0"]
+  6}},ExpressionUUID->"e2cd507b-30fb-4467-9188-d20897aceb92"]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -134708,7 +134708,7 @@ Cell["15.  Reproducibility", "Section",
  FontFamily->"Roboto Condensed",
  FontSize->30,
  FontColor->RGBColor[
-  0.153, 0.51, 0.64],ExpressionUUID->"9ce10e24-c222-4368-bd80-296d759e5710"],
+  0.153, 0.51, 0.64],ExpressionUUID->"7cf93a2e-eb6a-4a8c-80b7-bdf0f46f06d1"],
 
 Cell[TextData[{
  "All source code lives in the public repository ",
@@ -134733,7 +134733,7 @@ validation, R with the ",
  " package):"
 }], "Text",
  CellMargins->{{50, 50}, {6, 
-  6}},ExpressionUUID->"7e86fa55-26ba-44c0-9334-23efb53aafbf"],
+  6}},ExpressionUUID->"dff5e1ac-ecf9-4905-bf05-ca1f5b2497d2"],
 
 Cell["\<\
 # 1. Mint citable GBIF downloads (DOIs) + fetch full occurrence CSVs
@@ -134753,7 +134753,7 @@ wolframscript -file community/build_notebook.wls\
  FontFamily->"Courier",
  FontSize->11,
  Background->RGBColor[
-  0.95, 0.96, 0.98],ExpressionUUID->"2fc7fcad-360c-4968-9978-86586b03b9dc"],
+  0.95, 0.96, 0.98],ExpressionUUID->"fa26c938-aa49-4cc8-a84e-54328ba132a5"],
 
 Cell[TextData[{
  StyleBox["GBIF download DOIs.",
@@ -134773,12 +134773,12 @@ Cell[TextData[{
  "."
 }], "Text",
  CellMargins->{{50, 50}, {6, 
-  6}},ExpressionUUID->"f5fb4392-b362-4646-9d84-3377674c2117"],
+  6}},ExpressionUUID->"a0bc0860-58c7-42f3-a6f0-daa64a2c7372"],
 
 Cell["Generated on June 30, 2026.",
  FontSlant->Italic,
  FontColor->GrayLevel[
-  0.4],ExpressionUUID->"50841a2b-6bb2-46e3-ad65-4810c902adfb"]
+  0.4],ExpressionUUID->"b6d1f62f-5d44-46e1-b539-d098869b707e"]
 }, Open  ]]
 }, Open  ]]
 },
@@ -134788,7 +134788,7 @@ Visible->False,
 CellMargins->{{50, 50}, {6, 6}},
 FrontEndVersion->"15.0 for Mac OS X ARM (64-bit) (May 19, 2026)",
 StyleDefinitions->"Default.nb",
-ExpressionUUID->"9af251b4-6057-4a97-92b8-f19d7fab9122"
+ExpressionUUID->"fe3ec8d0-bbcc-4a9e-93d4-73f9fe4d7fdd"
 ]
 (* End of Notebook Content *)
 
@@ -134802,230 +134802,230 @@ CellTagsIndex->{}
 (*NotebookFileOutline
 Notebook[{
 Cell[CellGroupData[{
-Cell[576, 22, 185, 3, 70, "Title",ExpressionUUID->"83fe0f77-b078-423d-a58f-7557b07a2920"],
-Cell[764, 27, 252, 4, 70, "Subtitle",ExpressionUUID->"9e790cc7-33e2-4e7b-b5b7-03fb96711295"],
-Cell[1019, 33, 174, 3, 70, "Subsubtitle",ExpressionUUID->"e2e2cb6e-7e0d-42f5-bfac-64bbd2014cb9"],
-Cell[1196, 38, 1688795, 27764, 70, "Output",ExpressionUUID->"c7823b69-60d7-4d98-91d3-1e974a35fad1"],
+Cell[576, 22, 185, 3, 70, "Title",ExpressionUUID->"3b5368a2-26e4-46c9-ace1-81aa9db49257"],
+Cell[764, 27, 250, 4, 70, "Subtitle",ExpressionUUID->"1c44ba03-547d-4e9a-9fd6-18b8f1a1a3f5"],
+Cell[1017, 33, 174, 3, 70, "Subsubtitle",ExpressionUUID->"47792a6d-bc21-4570-be4e-4bd147f63338"],
+Cell[1194, 38, 1688795, 27764, 70, "Output",ExpressionUUID->"904e0949-d4a2-41b2-b7ed-d7bdfda24813"],
 Cell[CellGroupData[{
-Cell[1690016, 27806, 174, 4, 70, "Section",ExpressionUUID->"82f017ff-9e29-4caa-8f43-5e4eadce7d88"],
-Cell[1690193, 27812, 797, 26, 70, "Text",ExpressionUUID->"ec9f6740-34ae-46a9-9c8f-9faf50a9d91b"],
-Cell[1690993, 27840, 929, 25, 70, "Text",ExpressionUUID->"b579a6d3-7829-4413-b1d4-62085c847d3b"],
-Cell[1691925, 27867, 804, 18, 70, "Text",ExpressionUUID->"db1679dd-2b5d-4da1-a9a8-1cb634179edf"]
+Cell[1690014, 27806, 174, 4, 70, "Section",ExpressionUUID->"2ede60ad-e590-4fb4-8fda-404b4d79cf11"],
+Cell[1690191, 27812, 797, 26, 70, "Text",ExpressionUUID->"00abf34e-c96c-42f1-ba1d-5e8271426a82"],
+Cell[1690991, 27840, 929, 25, 70, "Text",ExpressionUUID->"33d75490-a733-4f81-8843-2346e073d969"],
+Cell[1691923, 27867, 804, 18, 70, "Text",ExpressionUUID->"b774ca9e-996d-4544-b6e2-7a1108a0fb55"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[1692766, 27890, 222, 4, 70, "Section",ExpressionUUID->"8fd455e8-f7cc-495f-b5e1-58d807893115"],
-Cell[1692991, 27896, 373, 8, 70, "Text",ExpressionUUID->"c4cdc97c-4d93-44f4-b1eb-266d39acf7ee"],
-Cell[1693367, 27906, 712, 15, 70, "Text",ExpressionUUID->"e2305ff2-c6e8-43e5-aa29-da0d04fb0314"],
-Cell[1694082, 27923, 281, 7, 70, "Input",ExpressionUUID->"9e45a41f-c1ba-4dab-b3c4-3e6bb612bc00"],
-Cell[1694366, 27932, 669, 18, 70, "Text",ExpressionUUID->"3fa7f8cb-40cf-42c7-9bd7-67acee7a1aa9"],
-Cell[1695038, 27952, 232, 5, 70, "Text",ExpressionUUID->"7edf622e-e87c-42e5-8694-703dce071674"],
-Cell[1695273, 27959, 760, 29, 70, "Text",ExpressionUUID->"c2c971b9-bdbb-4d7a-943e-b8cb715630c8"],
-Cell[1696036, 27990, 860, 28, 70, "Text",ExpressionUUID->"69b1687d-2c00-4ad5-a7d1-fc691f3418a7"],
-Cell[1696899, 28020, 276, 6, 70, "Text",ExpressionUUID->"e576029f-6566-42ab-892b-5a945f0a0a75"]
+Cell[1692764, 27890, 222, 4, 70, "Section",ExpressionUUID->"f1e881b7-d283-4353-b9a2-763fc7b89525"],
+Cell[1692989, 27896, 373, 8, 70, "Text",ExpressionUUID->"abaaf6a3-249e-4882-933b-dbf0023d1ad1"],
+Cell[1693365, 27906, 712, 15, 70, "Text",ExpressionUUID->"1f69b00e-9cbe-4a01-bcc1-e3ceecc72541"],
+Cell[1694080, 27923, 281, 7, 70, "Input",ExpressionUUID->"df97e8c3-7865-41d8-824e-a26995ff2a1d"],
+Cell[1694364, 27932, 669, 18, 70, "Text",ExpressionUUID->"0cec3caa-4284-432d-9668-51b3bd905268"],
+Cell[1695036, 27952, 232, 5, 70, "Text",ExpressionUUID->"9ddebe7a-e17b-4994-a0ff-880433f6dde4"],
+Cell[1695271, 27959, 760, 29, 70, "Text",ExpressionUUID->"cf50af3c-5c18-4114-8fc9-b7e0f7f38885"],
+Cell[1696034, 27990, 860, 28, 70, "Text",ExpressionUUID->"c7eaaee4-d93e-4bf1-bbfe-76c619de8ac4"],
+Cell[1696897, 28020, 276, 6, 70, "Text",ExpressionUUID->"648bc90b-eef5-466d-95fd-f0f0022097fe"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[1697212, 28031, 214, 4, 70, "Section",ExpressionUUID->"ce71ebbb-c1ba-4231-abc3-8395f6e8c567"],
-Cell[1697429, 28037, 693, 12, 70, "Text",ExpressionUUID->"85e962bf-3b6f-45da-b56f-6929aac19af3"],
-Cell[1698125, 28051, 693, 18, 70, "Text",ExpressionUUID->"f46ac96d-25de-475d-a4e6-964b210d2eb9"],
-Cell[1698821, 28071, 704, 16, 70, "Text",ExpressionUUID->"630835f1-1ada-45a4-9dc0-448aaceb5fcb"],
-Cell[1699528, 28089, 683, 16, 70, "Text",ExpressionUUID->"cc3f7471-7f5b-4f1d-adcc-3803177a7ec0"],
-Cell[1700214, 28107, 698, 12, 70, "Text",ExpressionUUID->"6f4f4772-74ae-438e-a58c-5f12018893ca"]
+Cell[1697210, 28031, 214, 4, 70, "Section",ExpressionUUID->"53328980-d3b5-45c4-8436-1701176d6d30"],
+Cell[1697427, 28037, 693, 12, 70, "Text",ExpressionUUID->"bb72ce14-561c-40da-bf6a-1752d48fc19f"],
+Cell[1698123, 28051, 693, 18, 70, "Text",ExpressionUUID->"ce4aa137-572f-4489-a825-5ff4df5e8987"],
+Cell[1698819, 28071, 704, 16, 70, "Text",ExpressionUUID->"772665f9-de48-4f93-8fc6-90bb5ca4896e"],
+Cell[1699526, 28089, 683, 16, 70, "Text",ExpressionUUID->"67a62b24-43a7-46e6-b7e4-1199326912c2"],
+Cell[1700212, 28107, 698, 12, 70, "Text",ExpressionUUID->"892515f2-3433-49f5-ab7f-88da8493b0c6"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[1700949, 28124, 220, 4, 70, "Section",ExpressionUUID->"0cb0680b-a742-498e-8060-d09176372d28"],
-Cell[1701172, 28130, 901, 24, 70, "Text",ExpressionUUID->"06246d96-b77b-4f20-806f-9ba2a3c45ed9"],
-Cell[1702076, 28156, 624, 15, 70, "Text",ExpressionUUID->"dc22d803-5302-441e-b1e5-3326bff341a8"],
-Cell[1702703, 28173, 1099, 22, 70, "Input",ExpressionUUID->"27eba099-1cc7-4294-ad5d-ddf3fcccdf78"],
-Cell[1703805, 28197, 459, 9, 70, "Text",ExpressionUUID->"88fe1786-04d3-4444-a7d9-1d0e712897de"],
+Cell[1700947, 28124, 220, 4, 70, "Section",ExpressionUUID->"60b59041-e648-4ed8-8029-a5f7a59b1d10"],
+Cell[1701170, 28130, 899, 24, 70, "Text",ExpressionUUID->"8eeeebe1-02c5-4ae6-ae1f-9fdf2f5e8e7d"],
+Cell[1702072, 28156, 624, 15, 70, "Text",ExpressionUUID->"dc8708da-bfb2-4485-9821-9907b1bd7534"],
+Cell[1702699, 28173, 1099, 22, 70, "Input",ExpressionUUID->"bfc1a371-2566-45f7-84fb-401ba7277f28"],
+Cell[1703801, 28197, 459, 9, 70, "Text",ExpressionUUID->"c7a00cfd-04b4-4c4b-9fe9-1f0cb285497b"],
 Cell[CellGroupData[{
-Cell[1704289, 28210, 710, 15, 70, "Input",ExpressionUUID->"c05ae421-dc63-43e6-aa26-c9fc5e2187ae"],
-Cell[1705002, 28227, 115922, 1911, 70, "Output",ExpressionUUID->"1d822ef6-d333-44be-b336-f47832959079"]
+Cell[1704285, 28210, 710, 15, 70, "Input",ExpressionUUID->"b01f37c5-3a23-4962-b695-4c65c5d4a259"],
+Cell[1704998, 28227, 115922, 1911, 70, "Output",ExpressionUUID->"dbf8e823-0ad0-4e8a-bade-ed73b61fed32"]
 }, Open  ]],
-Cell[1820939, 30141, 607, 14, 70, "Text",ExpressionUUID->"84892441-ee13-469b-b845-f90e29e036a5"],
-Cell[1821549, 30157, 930, 18, 70, "Text",ExpressionUUID->"f5083356-1e05-4997-8be8-30f66761a1a5"]
-}, Open  ]],
-Cell[CellGroupData[{
-Cell[1822516, 30180, 207, 4, 70, "Section",ExpressionUUID->"f772f696-6f0a-4355-a588-ba628aefbacf"],
-Cell[1822726, 30186, 594, 13, 70, "Text",ExpressionUUID->"78400971-df66-42ed-8017-80668be4eb2f"],
-Cell[CellGroupData[{
-Cell[1823345, 30203, 210, 3, 70, "Subsection",ExpressionUUID->"33722a35-a779-4353-9c9f-2f33f1847b8b"],
-Cell[1823558, 30208, 924, 20, 70, "Text",ExpressionUUID->"c6c2344a-5865-4b1e-b57f-3d2a00ccd3b6"],
-Cell[1824485, 30230, 700, 16, 70, "Text",ExpressionUUID->"86c24729-d1e8-43a3-9039-c7720c4f05f2"]
+Cell[1820935, 30141, 607, 14, 70, "Text",ExpressionUUID->"e926f88a-554c-47ad-abcd-9a17a785d7b7"],
+Cell[1821545, 30157, 930, 18, 70, "Text",ExpressionUUID->"f0283269-7a55-4d65-93a3-30235980c59c"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[1825222, 30251, 202, 3, 70, "Subsection",ExpressionUUID->"beeb3fc1-9259-4977-a960-667315ac6f6a"],
-Cell[1825427, 30256, 672, 12, 70, "Text",ExpressionUUID->"cedadb9c-8c9a-4e15-b936-38d159675887"],
-Cell[1826102, 30270, 793, 16, 70, "Input",ExpressionUUID->"a6e04f7e-3d40-404a-b188-3b6586ddc12d"],
-Cell[1826898, 30288, 694, 15, 70, "Text",ExpressionUUID->"ecbb3889-5614-4eb1-9043-c5083be93b06"]
+Cell[1822512, 30180, 207, 4, 70, "Section",ExpressionUUID->"8848b2df-2630-4119-bffe-e15024b3ae54"],
+Cell[1822722, 30186, 594, 13, 70, "Text",ExpressionUUID->"a7e7d64c-22eb-4af0-9f0d-d82d9e9cc69c"],
+Cell[CellGroupData[{
+Cell[1823341, 30203, 210, 3, 70, "Subsection",ExpressionUUID->"12acd81b-c248-4037-a60b-6a4abc1e1b1f"],
+Cell[1823554, 30208, 924, 20, 70, "Text",ExpressionUUID->"adb61420-b145-4817-b593-c8dffe807226"],
+Cell[1824481, 30230, 700, 16, 70, "Text",ExpressionUUID->"090e0ad8-dee2-454e-8bc2-07d135b32607"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[1825218, 30251, 202, 3, 70, "Subsection",ExpressionUUID->"ff72271e-8df8-4522-b3ea-62e5a4a7f16b"],
+Cell[1825423, 30256, 672, 12, 70, "Text",ExpressionUUID->"a21fa3ee-cef3-4401-8d3f-d74e431710df"],
+Cell[1826098, 30270, 793, 16, 70, "Input",ExpressionUUID->"0a4ce47d-6110-4521-bb2e-98d8a0bb0ea6"],
+Cell[1826894, 30288, 694, 15, 70, "Text",ExpressionUUID->"36135e96-ef6e-4874-ae8d-61e4de591d76"]
 }, Open  ]]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[1827641, 30309, 208, 4, 70, "Section",ExpressionUUID->"7bc0a5ce-689e-4e01-8625-597b9351bf63"],
-Cell[1827852, 30315, 679, 18, 70, "Text",ExpressionUUID->"69e54a62-782b-493f-a1bf-bbcb5a15467c"],
-Cell[1828534, 30335, 722, 18, 70, "Text",ExpressionUUID->"7d68f5e7-fe2d-4b72-9893-58e84fcfe254"],
-Cell[1829259, 30355, 709, 14, 70, "Input",ExpressionUUID->"9ef14052-188b-4a64-be9d-6bda8a74d4cd"],
-Cell[1829971, 30371, 614, 10, 70, "Text",ExpressionUUID->"4ebb8ebc-edb7-402d-ad8c-0509528bf186"],
-Cell[1830588, 30383, 667365, 10951, 70, "Output",ExpressionUUID->"9234c38a-e4d5-4868-814c-cd422a9736cd"],
-Cell[2497956, 41336, 439, 10, 70, "Text",ExpressionUUID->"7ab6089d-78d7-4ddb-8b59-5f2f64aaca8e"],
-Cell[2498398, 41348, 739207, 12129, 70, "Output",ExpressionUUID->"7a80c564-585f-4260-a6f9-a5d94ff6b535"],
-Cell[3237608, 53479, 494, 11, 70, "Text",ExpressionUUID->"a966ff1c-9e31-4ebb-a190-d1948ddebc45"],
-Cell[3238105, 53492, 483673, 7939, 70, "Output",ExpressionUUID->"f2ba2c12-3ef0-46b6-b4dd-ad8643e0a975"],
-Cell[3721781, 61433, 1068, 24, 70, "Text",ExpressionUUID->"68cc1854-b2c2-49a8-8110-94f81b812347"],
+Cell[1827637, 30309, 208, 4, 70, "Section",ExpressionUUID->"711ab4e4-933c-4af2-b064-ef9ed00dd14f"],
+Cell[1827848, 30315, 679, 18, 70, "Text",ExpressionUUID->"cb062b1a-c427-4a59-b705-d60b4c0fb581"],
+Cell[1828530, 30335, 722, 18, 70, "Text",ExpressionUUID->"5abbb8a7-9a91-4335-89e1-2ad631ffe183"],
+Cell[1829255, 30355, 709, 14, 70, "Input",ExpressionUUID->"fa135371-55d8-4bee-b8e6-313715fdb293"],
+Cell[1829967, 30371, 614, 10, 70, "Text",ExpressionUUID->"df2adc02-639e-4622-8e64-7cdc9a1120b8"],
+Cell[1830584, 30383, 667365, 10951, 70, "Output",ExpressionUUID->"47641ddb-c8f9-45cf-bbfe-f61400e40b13"],
+Cell[2497952, 41336, 439, 10, 70, "Text",ExpressionUUID->"b7d3efc3-34e9-4d2d-b94b-80da42ead00e"],
+Cell[2498394, 41348, 739207, 12129, 70, "Output",ExpressionUUID->"b947b5b7-612a-4a29-a272-db9890058703"],
+Cell[3237604, 53479, 494, 11, 70, "Text",ExpressionUUID->"895da798-f9e8-4d75-b628-4081a1405d48"],
+Cell[3238101, 53492, 483673, 7939, 70, "Output",ExpressionUUID->"212b8141-2e1e-4cbf-9a04-684e09cef818"],
+Cell[3721777, 61433, 1068, 24, 70, "Text",ExpressionUUID->"cd240046-e59a-4a24-8774-6096ab0da629"],
 Cell[CellGroupData[{
-Cell[3722874, 61461, 250, 6, 70, "Subsection",ExpressionUUID->"0f819888-43ca-4403-a681-5d9e34d918be"],
-Cell[3723127, 61469, 1024, 18, 70, "Text",ExpressionUUID->"cbe63a82-e964-4ae3-a286-1724f2590a59"],
-Cell[3724154, 61489, 44638, 741, 70, "Output",ExpressionUUID->"29942787-b65b-49b1-b772-e425732884dc"],
-Cell[3768795, 62232, 831, 21, 70, "Text",ExpressionUUID->"2f87b5e1-fa51-4a90-a909-4c798207e786"]
+Cell[3722870, 61461, 250, 6, 70, "Subsection",ExpressionUUID->"ce1f2022-44e6-4e88-9184-6f8e3feda93b"],
+Cell[3723123, 61469, 1024, 18, 70, "Text",ExpressionUUID->"3123e357-2626-43e3-b258-46c55f2fe3dc"],
+Cell[3724150, 61489, 44638, 741, 70, "Output",ExpressionUUID->"c5c71978-2e5d-4fc7-8b8f-eb2337b9475f"],
+Cell[3768791, 62232, 831, 21, 70, "Text",ExpressionUUID->"d6edc40f-6d16-4fbd-b5d3-480288ff5b42"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[3769663, 62258, 235, 5, 70, "Subsection",ExpressionUUID->"b3ae2285-d3d8-46a4-b7d6-836fcfc4a1e8"],
-Cell[3769901, 62265, 676, 13, 70, "Text",ExpressionUUID->"a23e1a45-42df-4e0d-8a29-1d07f9eb16cc"],
-Cell[3770580, 62280, 484134, 7947, 70, "Output",ExpressionUUID->"fb301440-074c-4bbd-8ed1-7d6383f1b08c"],
-Cell[4254717, 70229, 550, 11, 70, "Text",ExpressionUUID->"cb02892f-a546-40b6-87b6-a95ef9a6464c"],
-Cell[4255270, 70242, 1107313, 18163, 70, "Output",ExpressionUUID->"efa80728-a4af-4f2f-a17a-ac6971e82fac"],
-Cell[5362586, 88407, 350, 9, 70, "Text",ExpressionUUID->"e9659c82-5b9d-4325-b7c1-21c9174bfe9b"],
-Cell[5362939, 88418, 618797, 10155, 70, "Output",ExpressionUUID->"f33366f4-c57f-4bd3-b7bf-a1e643d8cc4e"],
-Cell[5981739, 98575, 499, 12, 70, "Text",ExpressionUUID->"d9982e7d-284b-4ec6-bee2-74a110ece397"]
+Cell[3769659, 62258, 235, 5, 70, "Subsection",ExpressionUUID->"f1096715-a5e8-4e5a-a3a8-52b40ac07a41"],
+Cell[3769897, 62265, 676, 13, 70, "Text",ExpressionUUID->"4dcc704d-7f86-4af7-b77a-639bfc34230a"],
+Cell[3770576, 62280, 484134, 7947, 70, "Output",ExpressionUUID->"65579543-5884-4c1b-93c8-08cce330bd7d"],
+Cell[4254713, 70229, 550, 11, 70, "Text",ExpressionUUID->"b8436429-53ae-44a0-b164-7a9170022070"],
+Cell[4255266, 70242, 1107313, 18163, 70, "Output",ExpressionUUID->"edd73cd1-79b1-4b83-8ed3-8e9e7e5780f8"],
+Cell[5362582, 88407, 350, 9, 70, "Text",ExpressionUUID->"c58d386b-559a-4913-9740-a3be0b6c1c80"],
+Cell[5362935, 88418, 618797, 10155, 70, "Output",ExpressionUUID->"9cdc4340-b78e-4098-b7e5-d5211c3dd2fe"],
+Cell[5981735, 98575, 499, 12, 70, "Text",ExpressionUUID->"7bfda7f3-534b-4d72-b6e6-71fa9d1c3687"]
 }, Open  ]]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[5982287, 98593, 203, 4, 70, "Section",ExpressionUUID->"b5ac9bc6-a781-41dc-9c37-b92d17b417bf"],
-Cell[5982493, 98599, 555, 9, 70, "Text",ExpressionUUID->"92372dec-7cc3-4120-bd97-d1de747d3303"],
-Cell[5983051, 98610, 394, 8, 70, "Text",ExpressionUUID->"695497ff-6638-4c8b-8e74-ec33f53733ea"],
+Cell[5982283, 98593, 203, 4, 70, "Section",ExpressionUUID->"f72b4d9c-3f46-41a3-a0e7-5d0ec5301577"],
+Cell[5982489, 98599, 555, 9, 70, "Text",ExpressionUUID->"7abfa464-25f8-4a6a-bcfc-14fd06c8ae74"],
+Cell[5983047, 98610, 394, 8, 70, "Text",ExpressionUUID->"f69b9ce1-15a7-4822-8b6e-5f8e2e1dfde8"],
 Cell[CellGroupData[{
-Cell[5983470, 98622, 804, 17, 70, "Input",ExpressionUUID->"471177fd-3718-4c23-a045-2d784392baf3"],
-Cell[5984277, 98641, 25996, 437, 70, "Output",ExpressionUUID->"3d1ff2f1-3168-42c2-b401-1e73256fda51"]
+Cell[5983466, 98622, 804, 17, 70, "Input",ExpressionUUID->"e2abcfd9-5a68-4a07-8762-3bf72fe69f47"],
+Cell[5984273, 98641, 25996, 437, 70, "Output",ExpressionUUID->"214bcd8e-5c0b-4485-bf34-9f9a4e9f2d48"]
 }, Open  ]],
-Cell[6010288, 99081, 504, 11, 70, "Text",ExpressionUUID->"df362aa2-d892-48fe-bdfa-f33c8b928447"],
-Cell[6010795, 99094, 1143, 25, 70, "Text",ExpressionUUID->"08429671-b497-467b-bca6-be537d09fa35"],
+Cell[6010284, 99081, 504, 11, 70, "Text",ExpressionUUID->"db1e8f4d-9471-4bad-81d2-07665d2debae"],
+Cell[6010791, 99094, 1143, 25, 70, "Text",ExpressionUUID->"93da93df-6cc1-4fc9-9841-041654f6aad6"],
 Cell[CellGroupData[{
-Cell[6011963, 99123, 184, 3, 70, "Subsection",ExpressionUUID->"7c586d12-9fbd-4658-ac45-fe2027f637db"],
-Cell[6012150, 99128, 394, 7, 70, "Text",ExpressionUUID->"960a807e-c5b7-4751-9f85-5e386271ba45"],
-Cell[6012547, 99137, 1205227, 19891, 70, "Output",ExpressionUUID->"0c282b71-7dbe-4025-8fea-a320872c9739"],
-Cell[7217777, 119030, 354, 8, 70, "Text",ExpressionUUID->"fe41a8c3-b7c1-4d5d-85c5-fe216cf39fba"]
+Cell[6011959, 99123, 184, 3, 70, "Subsection",ExpressionUUID->"32220824-6c7c-45e7-ad0c-a5751dec5bd0"],
+Cell[6012146, 99128, 394, 7, 70, "Text",ExpressionUUID->"b4b78964-cd80-4f24-8c7c-e03f0ab5b8fa"],
+Cell[6012543, 99137, 1205227, 19891, 70, "Output",ExpressionUUID->"2853ebd3-08be-4254-85d8-dc6d626ede45"],
+Cell[7217773, 119030, 354, 8, 70, "Text",ExpressionUUID->"6643f80b-3ef3-409b-b4fd-b1116b2b015f"]
 }, Open  ]]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[7218180, 119044, 190, 4, 70, "Section",ExpressionUUID->"da4ae438-b0ac-4861-9d88-3c9f27856cb5"],
-Cell[7218373, 119050, 603, 13, 70, "Text",ExpressionUUID->"abde1d64-b4e8-472e-8a76-31100692c89f"],
-Cell[7218979, 119065, 797, 23, 70, "Text",ExpressionUUID->"774679b2-502a-4e3c-a9ee-a4264add472c"],
+Cell[7218176, 119044, 190, 4, 70, "Section",ExpressionUUID->"efef4d0f-074e-4ab5-aa46-dba73b4ed025"],
+Cell[7218369, 119050, 603, 13, 70, "Text",ExpressionUUID->"d307d363-1f0b-4a93-a404-e5a4557b8f4e"],
+Cell[7218975, 119065, 797, 23, 70, "Text",ExpressionUUID->"555f57e0-9dcf-4d20-8086-9e7f12ed2fa7"],
 Cell[CellGroupData[{
-Cell[7219801, 119092, 686, 13, 70, "Input",ExpressionUUID->"6e91d8c8-b161-4241-9f37-187115247629"],
-Cell[7220490, 119107, 85058, 1403, 70, "Output",ExpressionUUID->"f2c14916-9ecb-46e0-95fa-72ca780b05e9"]
+Cell[7219797, 119092, 686, 13, 70, "Input",ExpressionUUID->"e93b4242-3f8e-4dc6-8b20-212bf2cd546e"],
+Cell[7220486, 119107, 85058, 1403, 70, "Output",ExpressionUUID->"7755ab83-6c9c-43d9-813e-3dee4d7c8ab9"]
 }, Open  ]],
-Cell[7305563, 120513, 410, 9, 70, "Text",ExpressionUUID->"6d6b5829-71fc-4470-822b-c2a6f5b5752d"],
-Cell[7305976, 120524, 1010, 22, 70, "Text",ExpressionUUID->"def3b5e6-14f3-4caa-a36c-c41577681f0d"],
+Cell[7305559, 120513, 410, 9, 70, "Text",ExpressionUUID->"8980e98f-a645-48b8-b040-c5b9b1d2cd96"],
+Cell[7305972, 120524, 1010, 22, 70, "Text",ExpressionUUID->"b1e355b2-a995-4167-8a0b-6fd0b35a5338"],
 Cell[CellGroupData[{
-Cell[7307011, 120550, 192, 3, 70, "Subsection",ExpressionUUID->"a8a73690-33fc-4a4d-9ac5-95890beb59a7"],
-Cell[7307206, 120555, 1309, 27, 70, "Text",ExpressionUUID->"228a6c1f-800b-4885-9c42-32f3072b69d9"],
-Cell[7308518, 120584, 59264, 981, 70, "Output",ExpressionUUID->"5817d022-f17f-4f29-bac0-70dabe829813"],
-Cell[7367785, 121567, 644, 14, 70, "Text",ExpressionUUID->"0f6c23e6-bc3c-496a-8f73-f6b9fb558ed1"]
+Cell[7307007, 120550, 192, 3, 70, "Subsection",ExpressionUUID->"16f744f3-6f02-46ad-aa8d-5b91be5657cd"],
+Cell[7307202, 120555, 1309, 27, 70, "Text",ExpressionUUID->"393ec9e8-54f5-4f62-b67d-3a3d4cec1425"],
+Cell[7308514, 120584, 59264, 981, 70, "Output",ExpressionUUID->"22fe39f4-8207-44f3-afff-eef3d934f4d1"],
+Cell[7367781, 121567, 644, 14, 70, "Text",ExpressionUUID->"1d156f1a-c494-43e3-affe-c75c05699348"]
 }, Open  ]]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[7368478, 121587, 193, 4, 70, "Section",ExpressionUUID->"71b778b3-174a-4d07-bdba-8e928c12e88c"],
-Cell[7368674, 121593, 653, 13, 70, "Text",ExpressionUUID->"b74a5929-d5ed-4777-b3a8-b68edeb93cfe"],
-Cell[7369330, 121608, 1486, 46, 70, "Text",ExpressionUUID->"96ddfde2-2643-458f-8411-24557d5f5d14"],
-Cell[7370819, 121656, 1005, 35, 70, "Text",ExpressionUUID->"0dd2e38e-78cf-44de-b550-1e67e541f4e9"],
+Cell[7368474, 121587, 193, 4, 70, "Section",ExpressionUUID->"0efbfc9b-52ea-4ce9-aabe-a51212225192"],
+Cell[7368670, 121593, 653, 13, 70, "Text",ExpressionUUID->"364bf689-157c-44c3-8b52-0bcd7e788f57"],
+Cell[7369326, 121608, 1486, 46, 70, "Text",ExpressionUUID->"eab45729-ac6d-48b4-b217-e3b47e3f8437"],
+Cell[7370815, 121656, 1005, 35, 70, "Text",ExpressionUUID->"72a189c6-d5c2-4ed2-9bec-a1294e8c9b00"],
 Cell[CellGroupData[{
-Cell[7371849, 121695, 729, 13, 70, "Input",ExpressionUUID->"911f6046-ad83-4e17-8c2e-beedb3a25308"],
-Cell[7372581, 121710, 81793, 1350, 70, "Output",ExpressionUUID->"7de94086-c7f4-41a7-b671-2d61c8f7f003"]
+Cell[7371845, 121695, 729, 13, 70, "Input",ExpressionUUID->"3817b8d5-3f1e-4d0a-a14f-2de213334c1e"],
+Cell[7372577, 121710, 81793, 1350, 70, "Output",ExpressionUUID->"eb5757b9-8209-4ed7-a6d4-737f43c3826d"]
 }, Open  ]],
-Cell[7454389, 123063, 726, 23, 70, "Text",ExpressionUUID->"71d73497-6576-4994-beff-aa8d20f3774b"],
-Cell[7455118, 123088, 69353, 1146, 70, "Output",ExpressionUUID->"54a2ea5d-c9e3-4edc-b4e3-73aad76be4cf"],
-Cell[7524474, 124236, 683, 18, 70, "Text",ExpressionUUID->"69a25656-0097-4cb0-9b48-08836d92e3b4"],
-Cell[7525160, 124256, 862, 20, 70, "Text",ExpressionUUID->"d284f686-b145-4894-8ead-9f6d3c31d59f"]
-}, Open  ]],
-Cell[CellGroupData[{
-Cell[7526059, 124281, 209, 4, 70, "Section",ExpressionUUID->"7cd7b3fb-087a-4188-bfe7-265bd5837be2"],
-Cell[7526271, 124287, 1126, 32, 70, "Text",ExpressionUUID->"a218b2b8-bb79-4945-97f8-15b475f619db"],
-Cell[7527400, 124321, 577, 14, 70, "Text",ExpressionUUID->"28e3baf6-2a17-48cb-9f36-5b033356f9c5"],
-Cell[CellGroupData[{
-Cell[7528002, 124339, 463, 9, 70, "Input",ExpressionUUID->"17201cea-131c-4bf6-b955-eb24acb0f5dc"],
-Cell[7528468, 124350, 153039, 2518, 70, "Output",ExpressionUUID->"40d6f352-1f37-4788-a994-a2fdc9705f1d"]
-}, Open  ]],
-Cell[7681522, 126871, 532, 11, 70, "Text",ExpressionUUID->"b03f06b5-fd08-4dba-9271-217b2d9993fb"],
-Cell[7682057, 126884, 119162, 1963, 70, "Output",ExpressionUUID->"e3b46be6-f3f2-4801-91da-bb25877c452d"],
-Cell[7801222, 128849, 434, 10, 70, "Text",ExpressionUUID->"fe9c2dfe-5016-4ab4-bc77-8a89d37da158"],
-Cell[7801659, 128861, 1605, 39, 70, "Text",ExpressionUUID->"32e693f0-5462-4d7d-8cf5-96a2132f9f29"]
+Cell[7454385, 123063, 726, 23, 70, "Text",ExpressionUUID->"9be7ec9a-e4c0-414e-bca0-b9e59dd8a7f2"],
+Cell[7455114, 123088, 69353, 1146, 70, "Output",ExpressionUUID->"707852eb-6e59-4c29-a159-6108a9447c5f"],
+Cell[7524470, 124236, 683, 18, 70, "Text",ExpressionUUID->"351b0b0b-b4b9-4dcb-b7cb-b3a9044d5237"],
+Cell[7525156, 124256, 862, 20, 70, "Text",ExpressionUUID->"5de8c16b-84ab-4ebd-8728-2657a9bf35ef"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[7803301, 128905, 204, 4, 70, "Section",ExpressionUUID->"577bce7d-3cd5-410d-9f20-798a306aa129"],
-Cell[7803508, 128911, 754, 16, 70, "Text",ExpressionUUID->"ca79d41f-58d6-45ed-a86a-f424fe27559f"],
-Cell[7804265, 128929, 706, 19, 70, "Text",ExpressionUUID->"e3635d3e-31aa-4f03-be49-5dd9000e0267"],
-Cell[7804974, 128950, 831, 16, 70, "Input",ExpressionUUID->"f680cd52-4477-46d1-84dc-e03d8092ec6c"],
-Cell[7805808, 128968, 776, 19, 70, "Text",ExpressionUUID->"7da6dc8d-916f-48c1-a681-131f13d26247"],
-Cell[7806587, 128989, 872, 26, 70, "Text",ExpressionUUID->"ecf5f442-4e82-4bc7-af22-b513956883d4"],
-Cell[7807462, 129017, 577, 13, 70, "Text",ExpressionUUID->"989efcc3-993e-4158-a40d-3bae56634d5e"]
+Cell[7526055, 124281, 209, 4, 70, "Section",ExpressionUUID->"6a46f8d5-29db-4dc8-b29e-4c55e9eaa53f"],
+Cell[7526267, 124287, 1126, 32, 70, "Text",ExpressionUUID->"3e324582-0a53-4822-a554-28271573f167"],
+Cell[7527396, 124321, 577, 14, 70, "Text",ExpressionUUID->"244885b5-78d4-4a35-9d10-cff05c3d8d56"],
+Cell[CellGroupData[{
+Cell[7527998, 124339, 463, 9, 70, "Input",ExpressionUUID->"eab9012b-b2fc-426c-bbd2-70c95e63f746"],
+Cell[7528464, 124350, 153039, 2518, 70, "Output",ExpressionUUID->"fd6552a2-b0e5-4920-b6e9-65177e4e9bd0"]
+}, Open  ]],
+Cell[7681518, 126871, 532, 11, 70, "Text",ExpressionUUID->"bc94e0e7-315e-49ea-b491-4a00cdcedf8e"],
+Cell[7682053, 126884, 119162, 1963, 70, "Output",ExpressionUUID->"240acfd6-65ea-4dd6-944e-6a652342f286"],
+Cell[7801218, 128849, 434, 10, 70, "Text",ExpressionUUID->"132019ea-e00a-4a60-b608-24e43b12025f"],
+Cell[7801655, 128861, 1605, 39, 70, "Text",ExpressionUUID->"160855aa-7b0b-41dd-a815-49cd4a2c694b"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[7808076, 129035, 215, 4, 70, "Section",ExpressionUUID->"554c7d3b-58b8-4262-b0c1-b6b3fc9a69a2"],
-Cell[7808294, 129041, 621, 15, 70, "Text",ExpressionUUID->"1942c414-3ebb-451b-8c11-77e167d59e91"],
-Cell[CellGroupData[{
-Cell[7808940, 129060, 839, 15, 70, "Input",ExpressionUUID->"b721a0c1-965b-41ba-b9d6-63f3502c68aa"],
-Cell[7809782, 129077, 40701, 678, 70, "Output",ExpressionUUID->"27522914-93ed-4816-b496-471714d08618"]
-}, Open  ]],
-Cell[7850498, 129758, 411, 11, 70, "Text",ExpressionUUID->"d3301567-9df2-4e0e-8699-de3b3c07dd08"],
-Cell[7850912, 129771, 37065, 618, 70, "Output",ExpressionUUID->"b9a8e75a-ff94-4a8c-a9ed-cc89bf043388"],
-Cell[7887980, 130391, 376, 11, 70, "Text",ExpressionUUID->"30550857-472f-418c-aebc-cbdd499addd6"],
-Cell[7888359, 130404, 42096, 701, 70, "Output",ExpressionUUID->"3b8b78be-4717-4721-8669-1b364311d6fe"],
-Cell[7930458, 131107, 372, 11, 70, "Text",ExpressionUUID->"43c1ab29-8288-4717-bff3-d85bd7185ee2"],
-Cell[7930833, 131120, 446, 9, 70, "Text",ExpressionUUID->"3482112f-9af1-4553-b3ed-e53c2eaa72a0"]
+Cell[7803297, 128905, 204, 4, 70, "Section",ExpressionUUID->"51766512-1564-4bde-8c9c-9fd9d581c009"],
+Cell[7803504, 128911, 754, 16, 70, "Text",ExpressionUUID->"139eae58-6dd2-4895-be2f-558b972b6940"],
+Cell[7804261, 128929, 706, 19, 70, "Text",ExpressionUUID->"3e52160c-0f7b-4106-a28f-5e3564ea2e7e"],
+Cell[7804970, 128950, 831, 16, 70, "Input",ExpressionUUID->"c08e7483-73a0-44fc-8cf7-52e18bb96497"],
+Cell[7805804, 128968, 776, 19, 70, "Text",ExpressionUUID->"f17e75d7-b0b4-418b-82d0-30919f765986"],
+Cell[7806583, 128989, 872, 26, 70, "Text",ExpressionUUID->"20f131dd-c133-45e1-a961-5aa3de08e52f"],
+Cell[7807458, 129017, 577, 13, 70, "Text",ExpressionUUID->"c59e35e6-b37d-4ab5-b49a-d036556ab0f9"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[7931316, 131134, 196, 4, 70, "Section",ExpressionUUID->"6a808308-1dd3-43b3-b00d-9a78df870b1b"],
-Cell[7931515, 131140, 338, 6, 70, "Text",ExpressionUUID->"af2d1e2c-7ead-4281-9824-8b82e0953a39"],
-Cell[7931856, 131148, 96028, 1583, 70, "Output",ExpressionUUID->"22cd0eec-9a3f-4389-beeb-2904ce929170"],
-Cell[8027887, 132733, 463, 10, 70, "Text",ExpressionUUID->"f17196fe-0de8-4d08-96a7-094a42b5cc57"],
-Cell[8028353, 132745, 718, 12, 70, "Text",ExpressionUUID->"f77b40c4-5538-4090-930c-35fdee48e3f0"],
-Cell[8029074, 132759, 582, 11, 70, "Text",ExpressionUUID->"0ded20e1-4972-49c7-b87d-b8b69d202cc3"],
-Cell[8029659, 132772, 591, 11, 70, "Text",ExpressionUUID->"fc52a9f1-a8c1-4e62-b4ba-938e47658635"],
-Cell[8030253, 132785, 385, 7, 70, "Text",ExpressionUUID->"228de8bc-ec9b-4206-bc17-f483390dc5fb"],
-Cell[8030641, 132794, 89080, 1469, 70, "Output",ExpressionUUID->"69c9f387-cb9a-4108-bad9-cffbac721245"],
-Cell[8119724, 134265, 508, 11, 70, "Text",ExpressionUUID->"b00b4db8-36b1-431e-b64b-31bd88b3762d"]
+Cell[7808072, 129035, 215, 4, 70, "Section",ExpressionUUID->"26cc695a-86f1-41b3-bb05-1f6828c03ea8"],
+Cell[7808290, 129041, 621, 15, 70, "Text",ExpressionUUID->"e7518efb-ce84-4eb1-988c-2f7035418e8f"],
+Cell[CellGroupData[{
+Cell[7808936, 129060, 839, 15, 70, "Input",ExpressionUUID->"1e425054-d96f-4213-bf34-844171968ce7"],
+Cell[7809778, 129077, 40701, 678, 70, "Output",ExpressionUUID->"93a406cd-52e5-427a-bb06-3c3eb1d10afd"]
+}, Open  ]],
+Cell[7850494, 129758, 411, 11, 70, "Text",ExpressionUUID->"40f18027-5c03-4494-b3d6-32f5c2e5c3e1"],
+Cell[7850908, 129771, 37065, 618, 70, "Output",ExpressionUUID->"d9c8b6e1-3200-4ca7-85ca-d9eab94596ba"],
+Cell[7887976, 130391, 376, 11, 70, "Text",ExpressionUUID->"ce4313fa-79eb-4d1c-9030-3d7a3d90abca"],
+Cell[7888355, 130404, 42096, 701, 70, "Output",ExpressionUUID->"2345f396-9416-4a29-8c92-c1f2e8bdf477"],
+Cell[7930454, 131107, 372, 11, 70, "Text",ExpressionUUID->"8fb19f29-c563-4fa9-b3c8-59abd4103f4a"],
+Cell[7930829, 131120, 446, 9, 70, "Text",ExpressionUUID->"5954a55a-207e-4d25-a597-ef45a20f3315"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[8120269, 134281, 202, 4, 70, "Section",ExpressionUUID->"75ebc409-7366-421e-b0b2-7bcd81a2f1c3"],
-Cell[8120474, 134287, 407, 9, 70, "Text",ExpressionUUID->"a11032f7-a57f-4e22-a2b9-1b4d39e4f4da"],
-Cell[8120884, 134298, 869, 21, 70, "Text",ExpressionUUID->"5ff80156-4744-4da6-9931-64ed5897a120"],
-Cell[8121756, 134321, 808, 21, 70, "Text",ExpressionUUID->"59edf61f-69f3-400e-8f8b-509bbae4ff97"],
-Cell[8122567, 134344, 962, 20, 70, "Text",ExpressionUUID->"9a7371ad-2629-4eaa-a3b2-f03e2c6ea756"],
-Cell[8123532, 134366, 267, 7, 70, "Text",ExpressionUUID->"0579c40b-3e4b-44c2-9d17-cb8550bfc37a"],
-Cell[8123802, 134375, 580, 15, 70, "Program",ExpressionUUID->"a5be7b5f-907f-4f43-9a4d-c0bc345c537d"]
+Cell[7931312, 131134, 196, 4, 70, "Section",ExpressionUUID->"e13c5ae8-cf73-4d44-95c8-1468a68d89ec"],
+Cell[7931511, 131140, 338, 6, 70, "Text",ExpressionUUID->"95e22f15-2816-433b-af97-010a2d177f42"],
+Cell[7931852, 131148, 96028, 1583, 70, "Output",ExpressionUUID->"7739a7e1-5143-46c2-8975-1d6546746e3e"],
+Cell[8027883, 132733, 463, 10, 70, "Text",ExpressionUUID->"4ab48d02-95f3-46a8-95a2-e6bf0d261d05"],
+Cell[8028349, 132745, 718, 12, 70, "Text",ExpressionUUID->"3508c461-c9d6-418c-87f3-66eabca34d12"],
+Cell[8029070, 132759, 582, 11, 70, "Text",ExpressionUUID->"6e4cadb3-35c8-4753-9025-6f62410d29b9"],
+Cell[8029655, 132772, 591, 11, 70, "Text",ExpressionUUID->"ffaf81b7-5af2-43e7-bc0b-643e12194555"],
+Cell[8030249, 132785, 385, 7, 70, "Text",ExpressionUUID->"84474527-c06a-467f-8ddd-36b5239df0ef"],
+Cell[8030637, 132794, 89080, 1469, 70, "Output",ExpressionUUID->"1a9ab1d8-050b-4975-8840-62c60ae913bd"],
+Cell[8119720, 134265, 508, 11, 70, "Text",ExpressionUUID->"b8aef3fb-1a70-4772-8709-b0eb5fc30e90"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[8124419, 134395, 182, 4, 70, "Section",ExpressionUUID->"07005d28-9758-40bd-a96e-8e34cb16312e"],
-Cell[8124604, 134401, 525, 9, 70, "Text",ExpressionUUID->"5a73b0e3-2878-4eda-bdbb-1067e5d8236c"],
-Cell[8125132, 134412, 887, 20, 70, "Text",ExpressionUUID->"3380ecdd-92a8-417a-b10a-0b2a8b5a5bc2"]
+Cell[8120265, 134281, 202, 4, 70, "Section",ExpressionUUID->"dc52d9a4-84e8-4f84-8331-04a257c2935a"],
+Cell[8120470, 134287, 407, 9, 70, "Text",ExpressionUUID->"0129243d-b609-4e27-b210-d66360c6ab48"],
+Cell[8120880, 134298, 869, 21, 70, "Text",ExpressionUUID->"f29a046e-53ee-4f52-96ca-5a47ebbe03fc"],
+Cell[8121752, 134321, 808, 21, 70, "Text",ExpressionUUID->"f47f3d25-4971-4755-8e3f-12cbff15b7e0"],
+Cell[8122563, 134344, 962, 20, 70, "Text",ExpressionUUID->"e80bcaa9-100a-4551-bcbf-20ccbfcd16f5"],
+Cell[8123528, 134366, 267, 7, 70, "Text",ExpressionUUID->"306741a3-655b-469b-b339-a55356da7602"],
+Cell[8123798, 134375, 580, 15, 70, "Program",ExpressionUUID->"099cf392-d23d-4a44-ae63-d730fa90f1a0"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[8126056, 134437, 181, 4, 70, "Section",ExpressionUUID->"97ed5584-83ac-4d24-8b1a-c984573411df"],
-Cell[8126240, 134443, 539, 13, 70, "Text",ExpressionUUID->"822d3333-cade-45d7-b940-02076994077a"],
-Cell[8126782, 134458, 527, 13, 70, "Text",ExpressionUUID->"9dd99b6a-2a7e-4640-97fe-0b3eb976dd5d"],
-Cell[8127312, 134473, 625, 16, 70, "Text",ExpressionUUID->"6b30b773-4430-4db5-8273-53fcb6702d04"],
-Cell[8127940, 134491, 695, 19, 70, "Text",ExpressionUUID->"715f15ee-0da0-46b9-a80f-5b1d8ecce682"],
-Cell[8128638, 134512, 441, 11, 70, "Text",ExpressionUUID->"dd1990d3-ac29-4cb4-816d-caf1804e2ab3"],
-Cell[8129082, 134525, 341, 10, 70, "Text",ExpressionUUID->"3e42e3a9-8103-49a4-9f95-5a320f15570c"],
-Cell[8129426, 134537, 509, 11, 70, "Text",ExpressionUUID->"139fc9e3-e2fa-4d29-94a2-dbfb21403c74"],
-Cell[8129938, 134550, 636, 24, 70, "Text",ExpressionUUID->"189b462c-d80e-41d2-bb18-42d58f345b3f"],
-Cell[8130577, 134576, 374, 11, 70, "Text",ExpressionUUID->"9a141e4f-40d8-4554-81d0-b32ec785b6ca"],
-Cell[8130954, 134589, 503, 13, 70, "Text",ExpressionUUID->"c79f6f89-ac83-467e-8238-c918d83db82f"]
+Cell[8124415, 134395, 182, 4, 70, "Section",ExpressionUUID->"e4b182d0-4805-45ef-8ad2-828ec6bb1975"],
+Cell[8124600, 134401, 525, 9, 70, "Text",ExpressionUUID->"d320eeda-9be2-4b22-ad8c-928bcc924f51"],
+Cell[8125128, 134412, 887, 20, 70, "Text",ExpressionUUID->"24175778-3f6e-400a-aa1e-efce19d951f9"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[8131494, 134607, 203, 4, 70, "Section",ExpressionUUID->"b6d63872-b928-4539-bd39-1a342f2626db"],
-Cell[8131700, 134613, 596, 16, 70, "Text",ExpressionUUID->"802d5d6f-09ad-4c04-9fcf-446adf24097b"],
-Cell[8132299, 134631, 537, 13, 70, "Text",ExpressionUUID->"5904645a-3290-4c23-8823-6a42a6055aab"],
-Cell[8132839, 134646, 474, 14, 70, "Text",ExpressionUUID->"fd31e217-ed59-444f-8901-24490192b6d9"],
-Cell[8133316, 134662, 577, 13, 70, "Text",ExpressionUUID->"a557396a-7a24-4f18-bdc0-f92ac0ebc7d7"],
-Cell[8133896, 134677, 352, 9, 70, "Text",ExpressionUUID->"1e527c05-b23a-4509-802b-3eaf49e47a8b"],
-Cell[8134251, 134688, 475, 13, 70, "Text",ExpressionUUID->"a2867b87-a937-4a7f-9065-030a460308b0"]
+Cell[8126052, 134437, 181, 4, 70, "Section",ExpressionUUID->"ab4b6f92-b990-4121-a0f6-d2f297fe9be0"],
+Cell[8126236, 134443, 539, 13, 70, "Text",ExpressionUUID->"7479ab8c-41a7-40fe-a3eb-505c10469db4"],
+Cell[8126778, 134458, 527, 13, 70, "Text",ExpressionUUID->"4701052e-fe52-4271-825a-24bd9ed85781"],
+Cell[8127308, 134473, 625, 16, 70, "Text",ExpressionUUID->"0c397db7-aa15-44ac-a26c-b55df16375f1"],
+Cell[8127936, 134491, 695, 19, 70, "Text",ExpressionUUID->"d1f0f5e1-af00-455c-a13c-704b1cb34b21"],
+Cell[8128634, 134512, 441, 11, 70, "Text",ExpressionUUID->"5522ca47-82b9-4e7f-82cd-6294c8d20e7b"],
+Cell[8129078, 134525, 341, 10, 70, "Text",ExpressionUUID->"51c6e25b-a0a2-4366-b9eb-15757b69ab8f"],
+Cell[8129422, 134537, 509, 11, 70, "Text",ExpressionUUID->"ed753ee1-86c0-47cb-aa87-94a86e3b8fdc"],
+Cell[8129934, 134550, 636, 24, 70, "Text",ExpressionUUID->"9c3ae2b0-b558-4c71-ad5f-c80a740ed21d"],
+Cell[8130573, 134576, 374, 11, 70, "Text",ExpressionUUID->"5097f7fe-2b00-42ba-8737-9b8b8baa07f6"],
+Cell[8130950, 134589, 503, 13, 70, "Text",ExpressionUUID->"82e94741-a3b0-45ba-b189-c5aeb5b014f1"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[8134763, 134706, 186, 4, 70, "Section",ExpressionUUID->"9ce10e24-c222-4368-bd80-296d759e5710"],
-Cell[8134952, 134712, 792, 23, 70, "Text",ExpressionUUID->"7e86fa55-26ba-44c0-9334-23efb53aafbf"],
-Cell[8135747, 134737, 670, 18, 70, "Program",ExpressionUUID->"2fc7fcad-360c-4968-9978-86586b03b9dc"],
-Cell[8136420, 134757, 607, 18, 70, "Text",ExpressionUUID->"f5fb4392-b362-4646-9d84-3377674c2117"],
-Cell[8137030, 134777, 141, 3, 70, InheritFromParent,ExpressionUUID->"50841a2b-6bb2-46e3-ad65-4810c902adfb"]
+Cell[8131490, 134607, 203, 4, 70, "Section",ExpressionUUID->"0eb99fab-034f-494d-9112-0829ddfc82ce"],
+Cell[8131696, 134613, 596, 16, 70, "Text",ExpressionUUID->"585c6804-0c52-490a-ab00-5c91fca05c0c"],
+Cell[8132295, 134631, 537, 13, 70, "Text",ExpressionUUID->"dfc77b0a-3abb-44ea-9f65-cc07b2aae9c6"],
+Cell[8132835, 134646, 474, 14, 70, "Text",ExpressionUUID->"f9f30dd2-9b96-4e5e-8c65-96c00b15a2ee"],
+Cell[8133312, 134662, 577, 13, 70, "Text",ExpressionUUID->"aea1fe24-45e3-469d-acd9-72314951decc"],
+Cell[8133892, 134677, 352, 9, 70, "Text",ExpressionUUID->"b835d75f-f960-490d-974e-39a3a701f4ef"],
+Cell[8134247, 134688, 475, 13, 70, "Text",ExpressionUUID->"e2cd507b-30fb-4467-9188-d20897aceb92"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[8134759, 134706, 186, 4, 70, "Section",ExpressionUUID->"7cf93a2e-eb6a-4a8c-80b7-bdf0f46f06d1"],
+Cell[8134948, 134712, 792, 23, 70, "Text",ExpressionUUID->"dff5e1ac-ecf9-4905-bf05-ca1f5b2497d2"],
+Cell[8135743, 134737, 670, 18, 70, "Program",ExpressionUUID->"fa26c938-aa49-4cc8-a84e-54328ba132a5"],
+Cell[8136416, 134757, 607, 18, 70, "Text",ExpressionUUID->"a0bc0860-58c7-42f3-a6f0-daa64a2c7372"],
+Cell[8137026, 134777, 141, 3, 70, InheritFromParent,ExpressionUUID->"b6d1f62f-5d44-46e1-b539-d098869b707e"]
 }, Open  ]]
 }, Open  ]]
 }

@@ -241,7 +241,7 @@ writeAll[{
 title["Bird migration paths from eBird data"],
 
 subtitle["Seasonal maps and animated population centroids for the Arctic \
-tern, common swift, and red knot \[LongDash] from hundreds of millions of \
+tern, common swift, and red knot \[LongDash] from more than two billion \
 citizen-science observations"],
 
 Cell["Wolfram Community submission \[LongDash] 2026", "Subsubtitle",
@@ -409,7 +409,7 @@ hd1["2.  The data: eBird, GBIF, and the effort-bias problem"],
 
 para[{ital["Where the data come from."], " ", bold["eBird"],
    ", run by the Cornell Lab of Ornithology, is the world's largest \
-biodiversity citizen-science project: hundreds of millions of bird \
+biodiversity citizen-science project: more than two billion bird \
 observations submitted by hundreds of thousands of volunteer birdwatchers \
 as dated, located checklists. We do not query eBird directly. Instead we \
 access its observations through ", bold["GBIF"],

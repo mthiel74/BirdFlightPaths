@@ -3,7 +3,7 @@
 Seasonal migration maps and animated **population centroids** for three iconic
 long-distance migrants — the **Arctic tern** (*Sterna paradisaea*), the
 **common swift** (*Apus apus*), and the **red knot** (*Calidris canutus*) —
-built from hundreds of millions of citizen-science observations.
+built from more than two billion citizen-science observations.
 
 The end product is a self-contained **Wolfram Community notebook**
 (`community/bird_migration.nb`) that is detailed, scientific and educational.

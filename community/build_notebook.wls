@@ -566,8 +566,8 @@ BarChart[prim[[All, 4]],
 imgCell["path_lengths.png"],
 captionCell["Figure 5.1  Annual displacement of the monthly population \
 centroid along each species' primary flyway: common swift (Afro-Palearctic) \
-\[TildeTilde] 13,900 km, red knot (Americas) \[TildeTilde] 9,500 km, Arctic \
-tern (Atlantic basin) \[TildeTilde] 24,900 km. The deliberately broken \
+\[TildeTilde] 14,000 km, red knot (Americas) \[TildeTilde] 7,900 km, Arctic \
+tern (Atlantic basin) \[TildeTilde] 24,100 km. The deliberately broken \
 global red-knot track is excluded."],
 
 Cell[TextData[{
@@ -580,7 +580,7 @@ in both directions. For the Arctic tern the centroid figure ",
 circumpolar, east\[Dash]west motion in different longitudes cancels in the \
 mean, so the centroid mostly captures the north\[Dash]south sweep. Tracked \
 individual Arctic terns average about ", bold["70,900 km per year"],
-   " (Egevang et al. 2010) \[LongDash] roughly three times the ~24,900 km \
+   " (Egevang et al. 2010) \[LongDash] roughly three times the ~24,100 km \
 centroid displacement. The centroid is a population statistic; the \
 geolocator figure is an individual's odometer. Do not conflate them."
 }], "Text", CellMargins -> {{60, 60}, {6, 10}},
@@ -631,7 +631,7 @@ ExternalEvaluate[r, \"
 
 para[{ital["The result."], " Our occurrence-based centroids agree with \
 Cornell's professionally modelled abundance centroids to within roughly ",
-   bold["1,500\[Dash]1,900 km"], " on average, along flyways thousands of \
+   bold["1,300\[Dash]1,750 km"], " on average, along flyways thousands of \
 kilometres long: common swift ~", ToString[swiftSep], " km, red knot ~",
    ToString[knotSep], " km, Arctic tern ~", ToString[ternSep],
    " km mean monthly separation. For a coarse, presence-weighted method \
@@ -726,7 +726,7 @@ para[{bold["Arctic tern \[LongDash] the pole-to-pole Atlantic sweep."],
    " The latitude-versus-month signal is the cleanest in the dataset: a \
 centroid that climbs to high-Arctic breeding latitudes in the boreal \
 summer and plunges toward the Southern Ocean in the austral summer. The \
-centroid displacement (~24,900 km) is large yet still understates the \
+centroid displacement (~24,100 km) is large yet still understates the \
 individual journey (~70,900 km), because circumpolar east\[Dash]west motion \
 cancels in the population mean \[LongDash] a vivid illustration of the \
 difference between a population statistic and an individual track."}],
@@ -734,13 +734,13 @@ difference between a population statistic and an individual track."}],
 para[{bold["Common swift \[LongDash] the Europe\[LeftRightArrow]\
 sub-Saharan shuttle."], " A single coherent flyway, and therefore the \
 easiest centroid to trust: a tight summer concentration over Europe \
-collapses into a sub-Saharan African wintering centre and back, ~13,900 km \
+collapses into a sub-Saharan African wintering centre and back, ~14,000 km \
 of annual centroid travel. The swift shows what the method looks like when \
 nothing has to be corrected for multiple populations \[LongDash] it just \
 works."}],
 
 para[{bold["Red knot \[LongDash] the Americas long-haul (and the cautionary \
-tale)."], " On its Americas flyway the knot traces a coherent ~9,500 km \
+tale)."], " On its Americas flyway the knot traces a coherent ~7,900 km \
 loop between Arctic breeding grounds and southern wintering areas, with the \
 Delaware Bay stopover embedded in the spring leg. It is also the species \
 that exposed the multi-flyway trap: pooled globally, its centroid is \

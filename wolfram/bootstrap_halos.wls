@@ -72,6 +72,13 @@ panel[key_] := Module[{data = bootAll[key], pts, las, los, latR, lonR},
   las = pts[[All, 1]]; los = pts[[All, 2]];
   latR = {Max[-90, Min[las] - 6], Min[90, Max[las] + 6]};
   lonR = {Max[-180, Min[los] - 6], Min[180, Max[los] + 6]};
+  (* pad longitude so the panel is at least as wide as it is tall: narrow
+     N-S strips otherwise render as very tall portrait images that overflow a
+     notebook page. Keeps each figure roughly square -> fits with its caption. *)
+  With[{latSpan = latR[[2]] - latR[[1]], lonSpan = lonR[[2]] - lonR[[1]]},
+    If[lonSpan < latSpan,
+      With[{c = Mean[lonR], half = latSpan/2},
+        lonR = {Max[-180, c - half], Min[180, c + half]}]]];
   GeoGraphics[
     {Flatten@Table[
        With[{m = d[[1]], ell = d[[2, 2]], ctr = d[[2, 1]]},

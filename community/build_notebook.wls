@@ -98,11 +98,15 @@ resizedCopy[path_] := Module[{cached, w, h, im,
    cached];
 
 imgWidth = 640;
+(* tall, portrait-ish figures (the per-species bootstrap globes) are displayed
+   smaller so the figure + its caption fit on a single page instead of spilling
+   across page breaks *)
+dispWidth[file_] := If[StringContainsQ[file, "bootstrap_halos_"], 430, imgWidth];
 
 imgCell[file_] := Module[{path = FileNameJoin[{imgDir, file}], small, im},
    If[FileExistsQ[path],
      small = resizedCopy[path];
-     im = Image[Import[small], ImageSize -> imgWidth];
+     im = Image[Import[small], ImageSize -> dispWidth[file]];
      Cell[BoxData @ ToBoxes[im], "Output",
         ShowCellLabel -> False, TextAlignment -> Center,
         CellMargins -> {{Automatic, Automatic}, {10, 6}}],
